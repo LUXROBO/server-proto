@@ -5,7 +5,6 @@ https://github.com/uber/prototool#installation
 mac : brew install prototool
 
 ```
-
 # lint execute
 prototool lint 
 # proto compile then golang, python generated file
@@ -13,7 +12,6 @@ prototool compile
 # gernerate proto
 prototool generate 
 cd gen
-
 ```
 
 ## Deploy CI/CD 
