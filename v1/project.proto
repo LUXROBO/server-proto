@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+package v1;
+
+option csharp_namespace = "Luxrobo.v1";
+option go_package = "luxrobo/v1";
+option java_multiple_files = true;
+option java_outer_classname = "ProjectProto";
+option java_package = "com.luxrobo.v1";
+option objc_class_prefix = "TPX";
+option php_namespace = "Luxrobo\\v1";
+
+import "v1/base.proto";
+import "v1/enum.proto";
+import "v1/lesson.proto";
+
+// ProjectE 프로젝트 정보
+message ProjectE {
+  int64 no = 1;
+  // userKey
+  string userKey = 2; 
+  // uuid
+  string uuid = 3;
+  // 제목
+  string title = 4;
+  // 코드 타입
+  ProjectCodeType codeType = 5;
+  // 코드 데이타 
+  string jsonData = 6;
+  // 썸네일 이미지
+  ImageInfoE thumb = 7;
+  // 작성 날짜 
+  int64 createdAt = 8;
+  // 수정 날짜 
+  int64 updatedAt = 9;
+}
+
+// ProjectWorkE 프로젝트 작품
+message ProjectWorkE {
+  int64 no = 1;
+  // 강의 No 
+  int64 lessonNo = 2;
+  // 강의 컨텐츠 No
+  int64 lessonContentNo = 3;
+  // userNo
+  int64 userNo = 4; 
+  // userName
+  string userName = 5;
+  // provider
+  string provider = 6;
+  // 제목
+  string title = 7;
+  // 코드 타입
+  ProjectCodeType codeType = 8;
+  // 코드 데이타 
+  string jsonData = 9;
+  //
+  LessonPlanContentTemplateCodingE codingTemplate = 10;
+  // 썸네일 이미지
+  ImageInfoE thumb = 11;
+  // 작성 날짜 
+  int64 createdAt = 12;
+  // 수정 날짜 
+  int64 updatedAt = 13;
+
+}

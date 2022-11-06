@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package v1;
+
+option csharp_namespace = "Luxrobo.v1";
+option go_package = "luxrobo/v1";
+option java_multiple_files = true;
+option java_outer_classname = "MediaProto";
+option java_package = "com.luxrobo.v1";
+option objc_class_prefix = "TPX";
+option php_namespace = "Luxrobo\\v1";
+
+import "v1/base.proto";
+
+// VideoInfoE ...
+message VideoInfoE {
+  string id = 1;
+  int64 serviceNo = 2;
+  string serviceType = 3;
+  int32 idx = 4;
+  string lang = 5;
+  string jobId = 6;
+  string status = 7;
+  int64 timestamp = 8;
+  repeated ImageInfoE thubmails = 9;
+  repeated VideoDetailE videoDetails = 10;
+}
+
+// VideoDetailE ...
+message VideoDetailE {
+  int32 widthInPx = 1;
+  int32 heightInPx = 2;
+  string url = 3;
+  string videoType = 4;
+  int32 durationInMs = 5;
+}

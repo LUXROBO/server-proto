@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+
+option java_multiple_files = true;
+option java_package = "io.grpc.modi.correction";
+option java_outer_classname = "ModiCorrectionProto";
+option go_package = "luxrobo/modi_correction";
+option objc_class_prefix = "";
+
+
+package nlp;
+
+
+service Extractor {
+  rpc Extract (CommandSentence) returns (CodeComponent) {}
+}
+
+message CommandSentence {
+  string sentence = 1;
+}
+
+message CodeComponent {
+  string device_location = 1;
+  string device_name = 2;
+  string device_function = 3;
+}

@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package v1;
+
+option csharp_namespace = "Luxrobo.v1";
+option go_package = "luxrobo/v1";
+option java_multiple_files = true;
+option java_outer_classname = "ProjectApiProto";
+option java_package = "com.luxrobo.v1";
+option objc_class_prefix = "TPX";
+option php_namespace = "Luxrobo\\v1";
+
+import "v1/base.proto";
+import "v1/project.proto";
+
+// ProjectAPI service.
+service ProjectAPI {
+  // ProjectGraphqlQuery graphql query helper method.
+  rpc ProjectGraphqlQuery(ProjectGraphqlQueryRequest) returns (ProjectGraphqlQueryResponse);
+  // ProjectWorkList .
+  rpc ProjectWorkList(ProjectWorkListRequest) returns (ProjectWorkListResponse);
+  // ProjectHealth check method.
+  rpc ProjectHealth(ProjectHealthRequest) returns (ProjectHealthResponse) {}
+}
+
+// ProjectGraphqlQueryRequest graphql query
+message ProjectGraphqlQueryRequest {
+    string query  = 1;
+    string operationName = 2;
+}
+
+// ProjectGraphqlQueryResponse graphql query response
+message ProjectGraphqlQueryResponse {
+    Error err = 1;
+    string result = 2;
+}
+
+message ProjectWorkListRequest {
+  int64 lessonNo = 1;
+  repeated int64 userNos = 2;
+  string provider = 3;
+}
+
+message ProjectWorkListResponse {
+  Error err = 1;
+  repeated ProjectWorkE projectWorks = 2;
+}
+
+// ProductHealthRequest health request 
+message ProjectHealthRequest {}
+
+// ProjectHealthResponse health response
+message ProjectHealthResponse {
+    Error err = 1;
+    bool status = 2;
+}

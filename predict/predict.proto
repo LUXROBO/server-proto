@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package predict;
+
+option csharp_namespace = "Luxrobo.predict";
+option go_package = "luxrobo/predict";
+option java_multiple_files = true;
+option java_outer_classname = "RecommendApiProto";
+option java_package = "com.luxrobo.predict";
+option objc_class_prefix = "TPX";
+option php_namespace = "Luxrobo\\predict";
+
+// Service Definition for Recommend
+service Predictor {
+  rpc GetPredict (Numbers) returns (Predictions) {}
+}
+
+// user_number and question_number
+message Numbers {
+  int32 unum = 1;
+  int32 qnum = 2;
+}
+
+// TC통과율, 소요시간, 종합점수
+message Predictions {
+  float passrate = 1;
+  int32 time = 2;
+  float score = 3;
+}

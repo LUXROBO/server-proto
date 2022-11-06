@@ -1,0 +1,77 @@
+syntax = "proto3";
+
+package v1;
+
+option csharp_namespace = "Luxrobo.v1";
+option go_package = "luxrobo/v1";
+option java_multiple_files = true;
+option java_outer_classname = "RunnercliProto";
+option java_package = "com.luxrobo.v1";
+option objc_class_prefix = "TPX";
+option php_namespace = "Luxrobo\\v1";
+
+
+// RunnercliContainerE ... 
+message RunnercliContainerE {
+  string id = 1;
+  string name = 2;
+  string imageName = 3;
+  string namespace = 4;
+  string podName = 5;
+  string containerName = 6;
+  RunnercliAccessLinkE accessLink = 7;
+  bool isLive = 8;
+  string status = 9;
+  string creationTimestamp = 10;
+}
+
+// RunnercliAccessLinkE 링크주소
+message RunnercliAccessLinkE {
+  string workspace = 1;
+  string terminal = 2;
+}
+
+// RunnercliPodE ...
+message RunnercliPodE {
+  RunnercliObjectMetaE objectMeta  = 1;
+  RunnercliTypeMetaE typeMeta = 2;
+  string status = 3;
+  int32 restartCount = 4;
+  string nodeName = 5;
+  repeated string containerImages = 6;
+}
+
+// RunnercliObjectMetaE ...
+message RunnercliObjectMetaE {
+  string uid = 1;
+  string name = 2;
+  string namespace = 3;
+  string creationTimestamp = 4;
+  map<string,string> labels = 5;
+}
+
+// RunnercliTypeMetaE ...
+message RunnercliTypeMetaE {
+  string kind = 1;
+}
+
+// RunnercliSoftwareSpecE 소프트웨어 스펙
+message RunnercliSoftwareSpecE {
+  RunnercliSoftwareSpecOSType os = 1;
+  RunnercliSoftwareSpecTemplateType template = 2; 
+}
+
+// RunnercliSoftwareSpecOSType os spec
+enum RunnercliSoftwareSpecOSType {
+  UBUNTU_18_04 = 0;
+}
+
+// RunnercliSoftwareSpecTemplateType template spec
+enum RunnercliSoftwareSpecTemplateType {
+  // golang default template
+  GOLANG = 0;
+  // python default template
+  PYTHON = 1;
+  // typescript default template
+  TYPESCRIPT = 2;
+}

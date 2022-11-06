@@ -1,0 +1,239 @@
+syntax = "proto3";
+
+package v1;
+
+option csharp_namespace = "Luxrobo.v1";
+option go_package = "luxrobo/v1";
+option java_multiple_files = true;
+option java_outer_classname = "ClassroomProto";
+option java_package = "com.luxrobo.v1";
+option objc_class_prefix = "TPX";
+option php_namespace = "Luxrobo\\v1";
+
+
+import "v1/base.proto";
+import "v1/enum.proto";
+import "v1/lesson.proto";
+
+// ClassroomE 학급
+message ClassroomE {
+  // auto No
+  int64 no = 1;
+   // classroomNo
+  int64 classroomNo = 2;
+  // 학급 생성자 No
+  int64 ownerNo = 3;
+  // 학급 생성자 이름
+  string ownerName = 4;
+  // 학급 이름
+  string title = 5;
+  // 학급 설명
+  string summary = 6;
+  // 학급 메인 이미지
+  ImageInfoE mainImg = 7;
+  // 학급 활동 정보
+  ClassroomActivityE activity = 8;
+  // 순서 idx
+  int32 idx = 9;
+  // 오픈 여부
+  ClassroomOpenType openType = 10;
+  // 학급 학년
+  string gradeType = 11;
+  // 수업 개수 
+  int32 cLesson = 12;
+  // 진행중인 수업 개수 
+  int32 cLessonDoing = 13;
+  // 작성 날짜 
+  int64 createdAt = 14;
+  // 수정 날짜 
+  int64 updatedAt = 15;
+}
+
+
+// 학급 활동정보
+message ClassroomActivityE {
+  // 알림수
+  int32 cAlarm = 1;
+  // 학생수
+  int32 cStudent = 2;
+}
+
+
+// ClassroomNoticeE 학급 공지사항
+message ClassroomNoticeE {
+  // auto No
+  int64 no = 1;
+   // classroomNo
+  int64 classroomNo = 2;
+  // 공지사항 제목
+  string title = 3;
+  // 공지 내용
+  string content = 4;
+  // 새로운 공지사항 여부
+  bool isNew = 5;
+  // 작성 날짜 
+  int64 createdAt = 6;
+  // 수정 날짜 
+  int64 updatedAt = 7;
+}
+
+// ClassroomHomeworkE 학급 숙제
+message ClassroomHomeworkE {
+  // auto No
+  int64 no = 1;
+  // classroomNo
+  int64 classroomNo = 2;
+  // 수업 No 
+  int64 lessonNo = 3;
+  // 숙제 제목
+  string title = 4;
+  // 숙제 내용
+  string content = 5;
+  // 만료 날짜 
+  string expireDate = 6;
+  // 새로운 여부
+  bool isNew = 7;
+  // 숙제 제출한 사용자 
+  int64 userNo = 8;
+  // 숙제 제출한 사용자 이름
+  string userName = 9;
+  // 수업 이름 
+  string lessonName = 10;
+  // 숙제 제출 여부 
+  bool isSubmission = 11;
+  // 숙제 진행 정보
+  LessonProgressE lessonProgress = 12;
+  // 작성 날짜 
+  int64 createdAt = 13;
+  // 수정 날짜 
+  int64 updatedAt = 14;
+}
+
+// ClassroomStudentHomeworkE 학급 학생 숙제
+message ClassroomStudentHomeworkE {
+  // auto No
+  int64 no = 1;
+  // homeworkNo
+  int64 homeworkNo = 2;
+  // 숙제 내용
+  string content = 3;
+  // 숙제 제출한 사용자 
+  int64 userNo = 4;
+  // 숙제 제출한 사용자 이름
+  string userName = 5;
+  // 파일정보
+  string file = 6;
+  // 작성 날짜 
+  int64 createdAt = 7;
+  // 수정 날짜 
+  int64 updatedAt = 8;
+}
+
+// ClassroomStudentE 학급 학생
+message ClassroomStudentE {
+  // auto No
+  int64 no = 1;
+   // classroomNo
+  int64 classroomNo = 2;
+  // 학급 학생 이름
+  string name = 3;
+  // 학생 ID
+  string userId = 4;
+  // 출석 개수 
+  int32 cAttendance = 5;
+  // 각오 한마디 
+  string shortWord = 6;
+  // 학생 패스워드 
+  string Password = 7;
+  // 마지막 접속시간
+  int64 lastAccessTime = 8;
+  // 학습 dashboard
+  ClassroomStudentLessonDashboardE lessonDashboard = 9;
+  // 작성 날짜 
+  int64 createdAt = 10;
+  // 수정 날짜 
+  int64 updatedAt = 11;
+}
+
+message ClassroomStudentLessonDashboardE {
+  // auto No
+  int64 no = 1;
+  // 학급 학생 이름
+  string userName = 2;
+  // 학생 No
+  int64 userNo = 3;
+  // 학급 No
+  int64 classroomNo = 4;
+  // 수업 No 
+  int64 lessonNo = 5;
+  //
+  string lessonName = 6;
+  // 숙제 진행 정보
+  LessonProgressE lessonProgress = 7;
+  //
+  int64 learningTime = 8;
+  //
+  string status = 9;
+  //
+  repeated ClassroomWorkE works = 10;
+  // 작성 날짜 
+  int64 createdAt = 11;
+  // 수정 날짜 
+  int64 updatedAt = 12;
+}
+
+// ClassroomLoginE 학생 로그인 정보
+message ClassroomLoginE {
+  string token = 1;
+  string refreshToken = 2;
+  int64 classroomNo = 3;
+  int64 expireTime = 4;
+  bool isUpdatePassword = 5;
+  string userId = 6;
+  string name = 7;
+}
+
+// ClassroomLessonE 학급 강의정보
+message ClassroomLessonE {
+  // 등록 No
+  int64 no = 1;
+  // 학급 No
+  int64 classroomNo = 2;
+  // 수업 No 
+  int64 lessonNo = 3;
+  // 강의시작 
+  int64 startTime = 4;
+  // 강의 시작 타입 
+  string startType = 5;
+  // 강의 시작 여부 
+  bool isStart = 6;
+  // 작성 날짜 
+  int64 createdAt = 8;
+  // 수정 날짜 
+  int64 updatedAt = 9;
+}
+
+// ClassroomWorkE 학급 작품
+message ClassroomWorkE {
+  // 등록 No
+  int64 no = 1;
+  // 학급 No
+  int64 classroomNo = 2;
+  // 수업 No 
+  int64 lessonNo = 3;
+  // 강의 컨텐츠 No 
+  int64 lessonContentNo = 4;
+  // 사용자 이름
+  string userName = 5;
+  // 사용자 ID
+  int64 userNo = 6;
+  // 코드정보
+  string code = 7;
+  // 코딩 템플릿
+  LessonPlanContentTemplateCodingE codingTemplate = 8;
+  // 작성 날짜 
+  int64 createdAt = 9;
+  // 수정 날짜 
+  int64 updatedAt = 10;
+
+}

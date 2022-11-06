@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package v1;
+
+option csharp_namespace = "Luxrobo.v1";
+option go_package = "luxrobo/v1";
+option java_multiple_files = true;
+option java_outer_classname = "AppProto";
+option java_package = "com.luxrobo.v1";
+option objc_class_prefix = "TPX";
+option php_namespace = "Luxrobo\\v1";
+
+import "v1/base.proto";
+
+// AppVersionE 버전정보
+message AppVersionE {
+  bool isUpdate = 1;
+  bool isForceUpdate = 2;
+  string version = 3;
+  string downloadURL = 4;
+  string comment = 5;
+}
+
+// AppBannerE 배너 정보
+message AppBannerE {
+// auto No
+  int64 no = 1;
+  string title = 2;
+  string subTitle = 3;
+  string type = 4;
+  ImageInfoE image = 5;
+  string openType = 6;
+  int32 idx = 7;
+}
+
+
+// AppInitE 초기정보
+message AppInitE {
+  repeated string bgAudioUrls = 1;
+  string codingUrl = 2;
+  AppGuideLanguageE guideLanguage = 3;
+}
+
+message AppGuideLanguageE {
+  AppGuideE ko = 1;
+  AppGuideE en = 2;
+  AppGuideE jp = 3;
+
+}
+
+// AppGuideE 앱 가이드 정보
+message AppGuideE {
+  repeated AppGuideContentE main = 1;
+  repeated AppGuideContentE coding = 2;
+  repeated AppGuideContentE freeCoding = 3;
+  repeated AppGuideContentE project = 4;
+  AppGuideContentE uploadCodingTip = 5;
+}
+
+// AppGuideContentE 앱 가이드 컨텐츠 정보
+message AppGuideContentE {
+  // 이미지
+  ImageInfoE img = 1;
+}
+

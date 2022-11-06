@@ -1,0 +1,91 @@
+syntax = "proto3";
+
+package v1;
+
+option csharp_namespace = "Luxrobo.v1";
+option go_package = "luxrobo/v1";
+option java_multiple_files = true;
+option java_outer_classname = "RunnercliAPIProto";
+option java_package = "com.luxrobo.v1";
+option objc_class_prefix = "TPX";
+option php_namespace = "Luxrobo\\v1";
+
+import "v1/base.proto";
+import "v1/runnercli.proto";
+
+// RunnerCLIAPI service.
+service RunnerCLIAPI {
+  // RunnerCLIContainerList 리스트
+  rpc RunnerCLIContainerList(RunnerCLIContainerListRequest) returns (RunnerCLIContainerListResponse);
+  // RunnerCLIContainerCreate 컨테이너 생성
+  rpc RunnerCLIContainerCreate(RunnerCLIContainerCreateRequest) returns (RunnerCLIContainerCreateResponse);
+  // RunnerCLIContainerStart 컨테이너 시작
+  rpc RunnerCLIContainerStart(RunnerCLIContainerStartRequest) returns (RunnerCLIContainerStartResponse);
+  // RunnerCLIContainerDelete 컨테이너 삭제
+  rpc RunnerCLIContainerDelete(RunnerCLIContainerDeleteRequest) returns (RunnerCLIContainerDeleteResponse);
+  // RunnerCLITerminalSessionId container 터미널 접근 
+  rpc RunnerCLITerminalSessionID(RunnerCLITerminalSessionIDRequest) returns (RunnerCLITerminalSessionIDResponse);
+
+}
+
+// RunnerCLIContainerListRequest 컨테이너 query
+message RunnerCLIContainerListRequest {
+  string namespace = 1;
+}
+
+// RunnerCLIContainerListResponse 컨테이너 response
+message RunnerCLIContainerListResponse {
+  Error err = 1;
+  repeated RunnercliContainerE containers = 2;
+}
+
+// RunnerCLIContainerCreateRequest 컨테이너 생성 요청 
+message RunnerCLIContainerCreateRequest {
+  string name = 1;
+  string imageName = 2;
+}
+
+// RunnerCLIContainerCreateResponse 컨테이너 생성 완료 응답값
+message RunnerCLIContainerCreateResponse {
+  Error err = 1;
+  RunnercliContainerE container = 2;
+}
+
+// RunnerCLIContainerStartRequest 컨테이너 시작 요청 
+message RunnerCLIContainerStartRequest {
+  string namespace = 1;
+  string name = 2;
+  string accessLinkWorkspace = 3;
+}
+
+// RunnerCLIContainerStartResponse 컨테이너 시작 완료 응답값
+message RunnerCLIContainerStartResponse {
+  Error err = 1;
+  RunnercliContainerE container = 2;
+
+}
+
+// RunnerCLIContainerDeleteRequest 컨테이너 삭제 요청 
+message RunnerCLIContainerDeleteRequest {
+  string namespace = 1;
+  string name = 2;
+}
+
+// RunnerCLIContainerDeleteResponse 컨테이너 삭제 완료 응답값
+message RunnerCLIContainerDeleteResponse {
+  Error err = 1;
+}
+
+// RunnerCLITerminalSessionIDRequest 터미널 접근 sesison id 요청
+message RunnerCLITerminalSessionIDRequest {
+  string namespace = 1;
+  string podName = 2;
+  string containerName = 3;
+}
+
+// RunnerCLITerminalSessionIDResponse ....
+message RunnerCLITerminalSessionIDResponse {
+  Error err = 1;
+  string sessionId = 2;
+  string domain = 3;
+}

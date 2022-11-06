@@ -1,0 +1,145 @@
+syntax = "proto3";
+
+package v1;
+
+option csharp_namespace = "Luxrobo.v1";
+option go_package = "luxrobo/v1";
+option java_multiple_files = true;
+option java_outer_classname = "UploadApiProto";
+option java_package = "com.luxrobo.v1";
+option objc_class_prefix = "TPX";
+option php_namespace = "Luxrobo\\v1";
+
+import "v1/base.proto";
+import "v1/upload.proto";
+
+// UploadAPI service.
+service UploadAPI {
+  // UploadGraphqlQuery graphql query helper method.
+  rpc UploadGraphqlQuery(UploadGraphqlQueryRequest) returns (UploadGraphqlQueryResponse);
+  // UploadPdfToImages image upload
+  rpc UploadPdfToImages(UploadPdfToImagesRequest) returns (UploadPdfToImagesResponse);
+  // UploadImage image upload
+  rpc UploadImage(UploadImageRequest) returns (UploadImageResponse);
+  // UploadImageList ...
+  rpc UploadImageList(UploadImageListRequest) returns (UploadImageListResponse);
+  // UploadImageMap ....
+  rpc UploadImageMap(UploadImageMapRequest) returns (UploadImageMapResponse);
+  // UploadHealth check method.
+  rpc UploadHealth(UploadHealthRequest) returns (UploadHealthResponse) {}
+  // UploadFile ...
+  rpc UploadFile(UploadFileRequest) returns (UploadFileResponse);
+  // UploadFile ...
+  rpc SingleUploadFile(SingleUploadFileRequest) returns (SingleUploadFileResponse);
+}
+
+// UploadGraphqlQueryRequest graphql query
+message UploadGraphqlQueryRequest {
+    string query  = 1;
+    string operationName = 2;
+}
+
+// UploadGraphqlQueryResponse graphql query response
+message UploadGraphqlQueryResponse {
+    Error err = 1;
+    string result = 2;
+}
+
+message UploadPdfToImagesRequest {
+  string id = 1;
+  string serviceName = 2;
+  string base64 = 3;
+}
+
+message UploadPdfToImagesResponse {
+  Error err = 1;
+  repeated ImageInfoE images = 2;
+}
+
+message UploadImageRequest {
+  string id = 1;
+  string serviceName = 2;
+  string imageBase64 = 3;
+  ImageInfoE image = 4;
+}
+
+message UploadImageResponse {
+  Error err = 1;
+  string key = 2;
+  ImageInfoE image = 3;
+
+}
+
+// UploadImageListWhere 필터 조건 정보
+message UploadImageListWhere {
+  repeated string serviceIds = 1;
+  string serviceType = 2;
+}
+
+message UploadImageListRequest {
+  int32 first = 1;
+  string after = 2;
+  int32 offset = 3;
+  OrderByE orderBy = 4;
+  UploadImageListWhere where = 5;
+}
+
+message UploadImageListResponse {
+  Error err = 1;
+  int32 total = 2;
+  repeated UploadImageE uploadImages = 3;
+}
+
+message UploadImageMapRequest {
+  repeated string serviceIds = 1;
+  string serviceType = 2;
+}
+
+
+message UploadImageMapResponse {
+  Error err = 1;
+  map<string, UploadImagesE> uploadMapImages = 2;
+}
+
+// UploadHealthRequest health request 
+message UploadHealthRequest {}
+
+// UploadHealthResponse health response
+message UploadHealthResponse {
+  Error err = 1;
+  bool status = 2;
+}
+
+// UploadFileRequest
+message UploadFileRequest {
+  string functionType = 1;
+  string id = 2;
+  string file = 3;
+}
+
+// UploadFileResponse
+message UploadFileResponse {
+  Error err = 1;
+  string url = 2;
+}
+
+// SingleUploadFileRequest
+message SingleUploadFileRequest {
+  string functionType = 1;
+  string id = 2;
+  Upload file = 3;
+}
+
+// SingleUploadFileResponse
+message SingleUploadFileResponse {
+  Error err = 1;
+  string url = 2;
+}
+
+// Upload
+message Upload {
+  bytes file = 1;
+  string filename = 2;
+  int64 size = 3;
+  string contentType = 4;
+}

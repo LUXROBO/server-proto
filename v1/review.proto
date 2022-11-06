@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package v1;
+
+option csharp_namespace = "Luxrobo.v1";
+option go_package = "luxrobo/v1";
+option java_multiple_files = true;
+option java_outer_classname = "ReviewProto";
+option java_package = "com.luxrobo.v1";
+option objc_class_prefix = "TPX";
+option php_namespace = "Luxrobo\\v1";
+
+
+// ReviewE 리뷰정보
+message ReviewE {
+  // No
+  int64 no = 1;
+  // 제목
+  string title = 2;
+  // 리뷰 내용
+  string comment = 3;
+  // 서비스 No 
+  int64 serviceNo = 4;
+  // 서비스 타입
+  string serviceType = 5;
+  // 유저 ID
+  int64 userNo = 6;
+  // 유저 이름 
+  string userName = 7;
+  // 답변 
+  repeated ReplyE replies = 8;
+  // 작성 날짜 
+  string createdAt = 9;
+  // 수정 날짜 
+  string updatedAt = 10;
+}
+
+message ReplyE {
+  // 답변 No
+  int64 no = 1;
+  // 리뷰 No
+  int64 reviewNo = 2;
+  // 답변 내용
+  string comment = 3;
+  // 유저 ID
+  int64 userNo = 4;
+  // 유저 이름 
+  string userName = 5;
+  // 답변 작성 날짜 
+  string createdAt = 6;
+  // 답변 수정 날짜 
+  string updatedAt = 7;
+
+}
+
+// 리뷰 수
+message ReviewCountE {
+  // 서비스 No lesson 
+  int64 serviceNo = 1;
+  // 리뷰 수
+  int32 cReview = 2;
+}

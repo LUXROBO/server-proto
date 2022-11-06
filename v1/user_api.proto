@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package v1;
+
+option csharp_namespace = "Luxrobo.v1";
+option go_package = "luxrobo/v1";
+option java_multiple_files = true;
+option java_outer_classname = "UserApiProto";
+option java_package = "com.luxrobo.v1";
+option objc_class_prefix = "TPX";
+option php_namespace = "Luxrobo\\v1";
+
+import "v1/base.proto";
+import "v1/user.proto";
+
+// UserAPI service.
+service UserAPI {
+  // UserList 유저조회
+  rpc UserList(UserListRequest) returns (UserListResponse);
+
+}
+
+// UserListRequest graphql query
+message UserListRequest {
+  int32 first = 1;
+  string after = 2;
+  repeated int64 userNos = 3;
+}
+
+// UserListResponse graphql query response
+message UserListResponse {
+  Error err = 1;
+  repeated UserE users = 2;
+}

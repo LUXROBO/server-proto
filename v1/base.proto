@@ -1,0 +1,126 @@
+syntax = "proto3";
+
+package v1;
+
+option csharp_namespace = "Luxrobo.v1";
+option go_package = "luxrobo/v1";
+option java_multiple_files = true;
+option java_outer_classname = "BaseProto";
+option java_package = "com.luxrobo.v1";
+option objc_class_prefix = "TPX";
+option php_namespace = "Luxrobo\\v1";
+
+import "v1/enum.proto";
+
+// Error ...
+message Error {
+  int32 errorCode = 1;
+  string errorMsg = 2;
+  string message = 3;
+  int32 statusCode = 4;
+  int64 createdAt = 5;
+}
+ 
+// ImageInfoE 이미지정보
+message ImageInfoE {
+  // raw base64 file
+  string rawFile = 1;
+  // domain URL
+  string domain = 2;
+  // full URL
+  string url = 3;
+  // 이미지 width
+  int32 width = 4;
+  // 이미지 height
+  int32 height = 5;
+  // 이미지 index sort 순서
+  int32 idx = 6;
+  // 키값 
+  string key = 7;
+}
+
+// FileInfoE 파일정보
+message FileInfoE {
+  // raw base64 file
+  string rawFile = 1;
+  // 확장자
+  string ext = 2;
+  // full URL
+  string url = 3;
+  // 이미지 index sort 순서
+  int32 idx = 4;
+  // 키값 
+  string key = 5;
+}
+
+
+// PageInfoE 페이지 정보.
+message PageInfoE {
+string startCursor = 1;
+  string endCursor = 2;
+  bool hasNextPage = 3;
+  bool hasBeforePage = 4;
+}
+
+// UserActivityE 사용자 정보
+message UserActivityE {
+  int32 cLike = 1;
+  int32 cBookmark = 2;
+  int32 cView = 3;
+  int32 cReview = 4;
+  int32 cLessonMember = 5;
+  bool isLike = 6;
+  bool isBookmark = 7;
+  LessonProgressE progress = 8;
+  // 수업 완료 날짜
+  string doneDate = 9;
+}
+
+// OrderByE 순서
+message  OrderByE {
+  string label = 1;
+  string field = 2;
+  string direction = 3;
+}
+
+// PriceRangeE 가격정보
+message PriceRangeE {
+  string label = 1;
+  int32 min = 2;
+  int32 max = 3;
+}
+
+// CoordinateE 좌표정보
+message CoordinateE {
+  double x = 1;
+  double y = 2;
+}
+
+message LessonProgressE {
+  // 진행률
+  int32 progressRate = 1;
+  // 진행
+  int32 progress = 2;
+  // 현재 페이지 
+  int32 current = 3;
+  // 전체 컨텐츠 수
+  int32 total = 4;
+  // 학습 완료 여부
+  bool isDone = 5;
+  // 완료 날짜
+  string doneDate = 6;
+}
+
+// 금액 정보
+message MoneyE {
+  int64 amount = 1;
+  CurrencyType currencyType = 2;
+}
+
+// 할인 정보
+message DiscountE {
+  // 할인 타입
+  DiscountType type = 1;
+  // 할인 값
+  int32 value = 2;
+}

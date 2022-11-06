@@ -1,0 +1,106 @@
+syntax = "proto3";
+
+package v1;
+
+option csharp_namespace = "Luxrobo.v1";
+option go_package = "luxrobo/v1";
+option java_multiple_files = true;
+option java_outer_classname = "QuestionProto";
+option java_package = "com.luxrobo.v1";
+option objc_class_prefix = "TPX";
+option php_namespace = "Luxrobo\\v1";
+
+// QuestionE 문제정보
+message QuestionE {
+  // auto No
+  int64 no = 1;
+  // 문제 제목
+  string title = 2;
+  // 문제설명정보
+  repeated QuestionInfoE infos = 3;
+  // 예시 테스트케이스
+  repeated QuestionTestcaseE exampleTestcases = 4;
+  // 채점용 테스트케이스
+  repeated QuestionTestcaseE testcases = 5;
+  // 사전코드
+  string initCode = 6;
+  // 정답코드
+  string answerCode = 7;
+  // 태그
+  repeated string tags = 8;
+  // 공개유무
+  string openType = 9;
+  // 문제유형
+  string type = 10;
+  // 난이도
+  string levelType = 11;
+  // 권장시간 (분단위)
+  string limitTime = 12;
+  // 생성자
+  int64 ownerNo = 13;
+  // 작성 날짜 
+  int64 createdAt = 14;
+  // 수정 날짜 
+  int64 updatedAt = 15;
+  // 삭제 날짜 
+  int64 deletedAt = 16;  
+}
+
+// QuestionInfoE 문제설명정보
+message QuestionInfoE {
+  // 필드명
+  string title = 1;
+  // 필드 내용
+  string description = 2;
+}
+
+// QuestionTestcaseE 테스트케이스
+message QuestionTestcaseE {
+  // 입력값
+  repeated QuestionTestcaseParamE input = 1;
+  // 출력값
+  QuestionTestcaseParamE output = 2;
+  // 배점
+  int64 score= 3;
+}
+
+// QuestionTestcaseParamE 매개변수
+message QuestionTestcaseParamE {
+  // 타입
+  string type = 1;
+  // 값
+  QuestionTestcaseParamValueE value = 2;
+}
+
+// QuestionTestcaseParamValueE 매개변수 값
+message QuestionTestcaseParamValueE {
+  QuestionTestcaseParamValueIntE valueInt = 1;
+  QuestionTestcaseParamValueIntArrayE valueIntArray = 2;
+  QuestionTestcaseParamValueStringE valueString = 3;
+  QuestionTestcaseParamValueBooleanE valueBoolean = 4;
+}
+
+// QuestionTestcaseParamValueIntE 숫자
+message QuestionTestcaseParamValueIntE {
+  int64 value = 1;
+}
+
+// QuestionTestcaseParamValueIntArrayE 숫자 배열
+message QuestionTestcaseParamValueIntArrayE {
+  repeated int64 value = 1;
+}
+
+// QuestionTestcaseParamValueStringE 문자열
+message QuestionTestcaseParamValueStringE {
+  string value = 1;
+}
+
+// QuestionTestcaseParamValueBooleanE 불리언
+message QuestionTestcaseParamValueBooleanE {
+  bool value = 1; 
+}
+
+// QuestionLevelTypeE 난이도 유형
+message QuestionLevelTypeE {
+  repeated string types = 1;
+}

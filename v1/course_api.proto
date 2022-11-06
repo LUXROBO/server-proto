@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package v1;
+
+option csharp_namespace = "Luxrobo.v1";
+option go_package = "luxrobo/v1";
+option java_multiple_files = true;
+option java_outer_classname = "CourseApiProto";
+option java_package = "com.luxrobo.v1";
+option objc_class_prefix = "TPX";
+option php_namespace = "Luxrobo\\v1";
+
+import "v1/base.proto";
+import "v1/course.proto";
+
+// CourseAPI service
+service CourseAPI {
+  rpc CourseHealth(CourseHealthRequest) returns (CourseHealthResponse);
+  rpc CourseProductList(CourseProductListRequest) returns (CourseProductListResponse);
+}
+
+message CourseHealthRequest {}
+message CourseHealthResponse {
+  Error err = 1;
+  bool status = 2;
+}
+
+message CourseProductListRequest {
+  repeated string productIds = 1;
+}
+message CourseProductListResponse {
+  Error err = 1;
+  repeated CourseProductE products = 2;
+}

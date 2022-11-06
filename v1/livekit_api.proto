@@ -1,0 +1,118 @@
+syntax = "proto3";
+
+package v1;
+
+option csharp_namespace = "Luxrobo.v1";
+option go_package = "luxrobo/v1";
+option java_multiple_files = true;
+option java_outer_classname = "UploadApiProto";
+option java_package = "com.luxrobo.v1";
+option objc_class_prefix = "TPX";
+option php_namespace = "Luxrobo\\v1";
+
+import "v1/enum.proto";
+import "v1/base.proto";
+import "v1/livekit.proto";
+
+// LivekitAPI service
+service LivekitAPI {
+  rpc LivekitHealth(LivekitHealthRequest) returns (LivekitHealthResponse);
+  rpc LivekitGetUserToken(LivekitGetJoinTokenRequest) returns (LivekitGetJoinTokenResponse);
+  rpc LivekitGetTutorToken(LivekitGetJoinTokenRequest) returns (LivekitGetJoinTokenResponse);
+  rpc LivekitGetAdminToken(LivekitGetJoinTokenRequest) returns (LivekitGetJoinTokenResponse);
+  rpc LivekitGetJoinToken(LivekitGetJoinTokenRequest) returns (LivekitGetJoinTokenResponse);
+  rpc LivekitListRoom(LivekitListRoomRequest) returns (LivekitListRoomResponse);
+  rpc LivekitListParticipants(LivekitListParticipantsRequest) returns (LivekitListParticipantsResponse);
+  rpc LivekitCreateRoom(LivekitCreateRoomRequest) returns (LivekitCreateRoomResponse);
+  rpc LivekitDeleteRoom(LivekitDeleteRoomRequest) returns (LivekitDeleteRoomResponse);
+  rpc LivekitRemoveParticipant(LivekitRemoveParticipantRequest) returns (LivekitRemoveParticipantResponse);
+  rpc LivekitMuteParticipant(LivekitMuteParticipantRequest) returns (LivekitMuteParticipantResponse);
+  rpc LivekitSendData(LivekitSendDataRequest) returns (LivekitSendDataResponse);
+  rpc LivekitUpdateRoomMetadata(LivekitUpdateRoomMetadataRequest) returns (LivekitUpdateRoomMetadataResponse);
+}
+
+message LivekitHealthRequest {}
+message LivekitHealthResponse {
+  Error err = 1;
+  bool status = 2;
+}
+
+message LivekitGetJoinTokenRequest {
+  string roomName = 1;
+  string identity = 2;
+  string name = 3;
+}
+message LivekitGetJoinTokenResponse {
+  Error err = 1;
+  string token = 2;
+}
+
+message LivekitListRoomRequest {}
+message LivekitListRoomResponse {
+  Error err = 1;
+  repeated LivekitRoomE rooms = 2;
+}
+
+message LivekitListParticipantsRequest {
+  string roomName = 1;
+}
+message LivekitListParticipantsResponse {
+  Error err = 1;
+  repeated LivekitParticipantE participants = 2;
+}
+
+message LivekitCreateRoomRequest {
+  string roomName = 1;
+}
+message LivekitCreateRoomResponse {
+  Error err = 1;
+  LivekitRoomE room = 2;
+}
+
+message LivekitDeleteRoomRequest {
+  string roomName = 1;
+}
+message LivekitDeleteRoomResponse {
+  Error err = 1;
+  bool success = 2;
+}
+
+message LivekitRemoveParticipantRequest {
+  string roomName = 1;
+  string identity = 2;
+}
+message LivekitRemoveParticipantResponse {
+  Error err = 1;
+  bool success = 2;
+}
+
+message LivekitMuteParticipantRequest {
+  string roomName = 1;
+  string identity = 2;
+  string trackSid = 3;
+  bool muted = 4;
+}
+message LivekitMuteParticipantResponse {
+  Error err = 1;
+  bool success = 2;
+}
+
+message LivekitSendDataRequest {
+  string room = 1;
+  string data = 2;
+  LivekitDataPacketKindType kind = 3;
+  repeated string destinationSids = 4;
+}
+message LivekitSendDataResponse {
+  Error err = 1;
+  bool success = 2;
+}
+
+message LivekitUpdateRoomMetadataRequest {
+  string room = 1;
+  string metadata = 2;
+}
+message LivekitUpdateRoomMetadataResponse {
+  Error err = 1;
+  LivekitRoomE room = 2;
+}

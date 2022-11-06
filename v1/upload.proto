@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package v1;
+
+option csharp_namespace = "Luxrobo.v1";
+option go_package = "luxrobo/v1";
+option java_multiple_files = true;
+option java_outer_classname = "UploadProto";
+option java_package = "com.luxrobo.v1";
+option objc_class_prefix = "TPX";
+option php_namespace = "Luxrobo\\v1";
+
+import "v1/base.proto";
+
+message UploadImageE {
+  int64 no = 1;
+  // serviceNo
+  int64 serviceNo = 2;
+  // 서비스 타입
+  string serviceType = 3;
+  // 영어타입
+  string imageKey = 4;
+  // 비디오 정보 
+  ImageInfoE image = 5;
+  // 순서
+  int32 idx = 6;
+  // 작성 날짜 
+  int64 createdAt = 7;
+  // 수정 날짜 
+  int64 updatedAt = 8;
+
+}
+
+message UploadImagesE {
+    repeated UploadImageE images = 1;
+}

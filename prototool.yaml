@@ -1,0 +1,23 @@
+protoc:
+  version: 3.8.0
+lint:
+  #url: https://github.com/uber/prototool/tree/dev/style
+  group: uber2
+  rules:
+    remove:
+      - REQUEST_RESPONSE_NAMES_MATCH_RPC
+      - REQUEST_RESPONSE_TYPES_UNIQUE
+generate:
+  plugins:
+    - name: js
+      flags: import_style=commonjs,binary
+      output: gen/node
+    - name: python
+      output: gen/python
+    # - name: grpc_python
+    #   output: gen/python
+    #   path: /usr/bin/grpc_python_plugin
+    - name: go
+      flags: plugins=grpc
+      output: gen/go
+

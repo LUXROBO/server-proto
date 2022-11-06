@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package v1;
+
+option csharp_namespace = "Luxrobo.v1";
+option go_package = "luxrobo/v1";
+option java_multiple_files = true;
+option java_outer_classname = "MarketingApiProto";
+option java_package = "com.luxrobo.v1";
+option objc_class_prefix = "TPX";
+option php_namespace = "Luxrobo\\v1";
+
+import "v1/base.proto";
+import "v1/marketing.proto";
+
+// MarketingAPI service.
+service MarketingAPI {
+  // MarketingPromotions 프로모션 상품연동된
+  rpc MarketingPromotionMap (MarketingPromotionMapRequest) returns (MarketingPromotionMapResponse);
+
+}
+
+// MarketingPromotionMapRequest graphql query
+message MarketingPromotionMapRequest {
+  repeated string productIds = 1;
+}
+
+// MarketingPromotionMapResponse graphql query response
+message MarketingPromotionMapResponse {
+  Error err = 1;
+  map<string, MarketingPromotionE> mapPromotion = 2;
+}

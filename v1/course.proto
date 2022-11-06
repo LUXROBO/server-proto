@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package v1;
+
+option csharp_namespace = "Luxrobo.v1";
+option go_package = "luxrobo/v1";
+option java_multiple_files = true;
+option java_outer_classname = "CourseProto";
+option java_package = "com.luxrobo.v1";
+option objc_class_prefix = "TPX";
+option php_namespace = "Luxrobo\\v1";
+
+import "v1/enum.proto";
+
+message CourseProductE {
+  string id = 1;
+  CourseProductDType dType = 2;
+  string name = 3;
+  int64 price = 4;
+  repeated CourseProductImageE images  = 5;
+  int64 stock = 6;
+  CourseProductPurchaseType purchaseType = 7;
+  CourseProductStateType stateType = 8;
+}
+
+message CourseProductImageE {
+  string id = 1;
+  string url = 2;
+  int64 idx = 3;
+}

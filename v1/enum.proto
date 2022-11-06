@@ -1,0 +1,283 @@
+syntax = "proto3";
+
+package v1;
+
+option csharp_namespace = "Luxrobo.v1";
+option go_package = "luxrobo/v1";
+option java_multiple_files = true;
+option java_outer_classname = "EnumProto";
+option java_package = "com.luxrobo.v1";
+option objc_class_prefix = "TPX";
+option php_namespace = "Luxrobo\\v1";
+
+// DiscountType 할인 타입
+enum DiscountType {
+    // 퍼센트
+    PERCENT = 0;
+    // 값
+    VALUE = 1;
+}
+
+// ProjectCodeType 코드 타입
+enum ProjectCodeType {
+  SCRATCH = 0;
+  ENTRY = 1;
+  PYMODI = 2;
+}
+
+// VideoType 비디오 타입
+enum VideoType {
+  HLS = 0;
+  DASH = 1;
+  YOUTUBE = 2;
+}
+
+// LessonType 강의 타입
+enum LessonType {
+  LESSON = 0;
+  LESSON_CURRICULUM = 1;
+  LESSON_BOOK = 2;
+  LESSON_NONE = 3;
+}
+
+// ServiceType 서비스 이용 타입
+enum ServiceType {
+  // 
+  NONE_TYPE = 0;
+  // LMS용
+  LMS = 1;
+  // 매이킹팩
+  MAKING_PACK = 2;
+  // 센게이지
+  CENGAGE = 3;
+  // 브릭팩
+  BRICK_PACK = 4;
+}
+
+
+// 등급/레벨 타입 
+enum LessonLevelType {
+  //
+  NONE_LEVEL = 0;
+  // 초급
+  BEGINNING_LEVEL = 1;
+  // 중급
+  INTERMEDIATE_LEVEL = 2;
+  // 고급
+  HIGH_LEVEL = 3;
+}
+
+// 그룹 타입
+enum LessonGroupType {
+  //
+  NONE_GROUP = 0;
+  // 유아
+  PRE_SCHOOLER_GROUP  = 1;
+  // 초등 초급
+  ELEMENT_BEGINNING_GROUP = 2;
+  // 초등 고급 
+  ELEMENT_HIGH_GROUP = 3;
+  // 중등
+  MIDDLE_SCHOOLER_GROUP = 4;
+  // 고등
+  HIGH_SCHOOLER_GROUP = 5;
+}
+
+enum LessonPlanViewType  {
+  //
+  LESSON_PLAN_NONE_VIEW = 0;
+  // 
+  LESSON_PLAN_SLIDE_VIEW = 1;
+}
+
+// LessonPlanContentType 컨텐츠 타입
+enum LessonPlanContentType {
+  //
+  NONE_CONTENT = 0;
+  // 기본형 컨텐츠
+  BASE_CONTENT = 1;
+  // 비디오 컨텐츠
+  VIDEO_CONTENT = 2;
+  // 멀티 여러개 컨텐츠 
+  MULTI_CONTENT = 3;
+}
+
+// LessonContentViewType 컨텐츠 뷰 타입
+enum LessonContentViewType {
+  //
+  NONE_VIEW = 0;
+  // 비디오
+  VIDEO_VIEW = 1;
+  // 코딩화면 뷰
+  CODING_VIEW = 2;
+  // 기본형 전체화면
+  NORMAL_VIEW = 3;
+  // 실습화면
+  PRACTICE_CODING_VIEW = 4;
+  // 가로줄 1 세로줄 아래 반 Deprecate
+  HORIZON_FULL_VERTICAL_DOWN_HALF_VIEW = 5;
+  // 세로줄 1 가로줄 오른쪽 반 Deprecate
+  VERTICAL_FULL_HORIZON_RIGHT_HALF_VIEW = 6;
+  // 세로줄 1 Deprecate
+  VERTICAL_FULL_VIEW = 7;
+  // 세로줄 2 Deprecate
+  VERTICAL_TWO_FULL_VIEW = 8;
+  // 가로줄 1 세로줄 1  Deprecate
+  HORIZON_FULL_VERTICAL_FULL_VIEW = 9;
+  // 가로줄 1 Deprecate
+  HORIZON_FULL_VIEW = 10;
+  // Slide View Deprecate
+  SLIDE_VIEW = 11;
+}
+
+// TrueFalseType 사용여부 타입
+enum TrueFalseType {
+  // true
+  T = 0;
+  // false
+  F = 1;
+}
+
+// ClassroomOpenType 오픈 타입
+enum ClassroomOpenType {
+  CLASSROOM_OPEN = 0;
+  CLASSROOM_CLOSE = 1;
+}
+
+
+// LessonOpenType 오픈 타입
+enum LessonOpenType {
+  OPEN = 0;
+  CLOSE = 1;
+  ALL = 2;
+  DELETE = 3;
+}
+
+// LessonPlanDataType 컨텐츠 계획 데이타 타입
+enum LessonPlanDataType {
+  BASE = 0;
+  TEXT = 1;
+  IMAGE = 2;
+  VIDEO = 3;
+  CODING = 4;
+}
+
+// LessonSummaryElementType 강의 설명 요소 타입 정의
+enum LessonSummaryElementType {
+  // 자료수집/분석/표현
+  DATA_STRUCTURE_ELEMENT = 0;
+  // 문제 분해 
+  ANALYSIS_ELEMENT = 1;
+  // 추상화 
+  ABSTRACT_ELEMENT = 2;
+  // 알고리즘과 절차
+  ALGORITHM_ELEMENT = 3;
+  // 자동화
+  AUTOMATION_ELEMENT = 4;
+  // 시물레이션
+  SIMULATION_ELEMENT = 5;
+  // 병렬화 
+  PARALLELISM_ELEMENT = 6;
+}
+
+// LessonHardwareType 하드웨어 타입
+enum LessonHardwareType {
+  // 없음 
+  NONE_HARDWARE = 0;
+  // 모디1
+  MODI1_HARDWARE = 1;
+  // 모디2
+  MODI2_HARDWARE = 2;
+  // 라즈베리 파이
+  RASPBERRY_HARDWARE = 3;
+  // 마이크로빗
+  MICROBIT_HARDWARE = 4;
+  // HELLO_AI_HARDWARE
+  HELLO_AI_HARDWARE = 5;
+}
+
+// LessonCodingType 코딩 타입
+enum LessonCodingType {
+  // 엔트리
+  ENTRY_CODING = 0;
+  // 스크레치
+  SCRATCH_CODING = 1;
+  // PyMODI
+  PYMODI_CODING = 2;
+}
+
+
+// CreationType 
+enum CreationType {
+  FREE = 0;
+  BINGO_MACHINE = 1;
+  RANDOM_ROULETTE = 2;
+  ROTATING_PENCIL_HOLDER = 3;
+  JOYTROPE = 4;
+  LED_TIMER = 5;
+  MOOD_LAMP = 6;
+  LED_METRONIUM = 7;
+  SAFE = 8;
+  FISHING = 9;
+  SURFING_BOT = 10;
+  TONGS_ARM = 11;
+  RC_CAR = 12;
+  PIRATE_SHIP = 13;
+  CROCODILE_TEETH = 14;
+  LIGHTHOUSE = 15;
+  HELICOPTER = 16;
+  MONSTER_TRUCK = 17;
+}
+
+// LIVEKIT TYPE
+enum LivekitParticipantStateType {
+  JOINING = 0;
+  JOINED = 1;
+  ACTIVE = 2;
+  DISCONNECTED = 3;
+}
+
+enum LivekitTrackSourceType {
+  UNKNOWN = 0;
+  CAMERA = 1;
+  MICROPHONE = 2; 
+  SCREEN_SHARE = 3; 
+  SCREEN_SHARE_AUDIO = 4;
+}
+
+enum LivekitVideoQualityType {
+  LOW = 0;
+  MEDIUM = 1;
+  HIGH = 2;
+}
+
+enum UserLoginType {
+  EMAIL = 0;
+  KAKAO = 1;
+  GOOGLE = 2;
+}
+
+enum LivekitDataPacketKindType {
+    RELIABLE = 0;
+    LOSSY = 1;
+}
+
+enum CourseProductDType {
+  MERCHANDISE = 0;
+  COURSE = 1;
+}
+
+enum CourseProductPurchaseType {
+  PURCHASE = 0;
+  RENTAL = 1;
+}
+
+enum CourseProductStateType {
+  ON = 0;
+  OFF = 1;
+  SOLDOUT = 2;
+}
+
+enum CurrencyType {
+  KRW = 0;
+}

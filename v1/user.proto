@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package v1;
+
+option csharp_namespace = "Luxrobo.v1";
+option go_package = "luxrobo/v1";
+option java_multiple_files = true;
+option java_outer_classname = "UserProto";
+option java_package = "com.luxrobo.v1";
+option objc_class_prefix = "TPX";
+option php_namespace = "Luxrobo\\v1";
+
+import "v1/base.proto";
+import "v1/enum.proto";
+
+// UserE 유저정보
+message UserE {
+  // auto No
+  int64 no = 1;
+  // lessonNo
+  string email = 2;
+  // 로그인 타입
+  UserLoginType loginType = 3;
+  // 모바일 번호
+  string phone = 4;
+  // 생년월일
+  string birth = 5;
+  // 프로필 리스트 
+  repeated UserProfileE profiles = 6;
+  // 디바이스 리스트 
+  repeated UserDeviceE devices = 7;
+  // 작성 날짜 
+  int64 createdAt = 8;
+  // 수정 날짜 
+  int64 updatedAt = 9;
+  // 삭제 날짜 
+  int64 deletedAt = 10;
+}
+
+// UserProfileE 유저 프로필
+message UserProfileE {
+  // ID 
+  string id = 1;
+  // 이름 
+  string name = 2;
+  // 타입 
+  string type = 3;
+  // 아바타 
+  ImageInfoE avatar = 4;
+  // 작성 날짜 
+  int64 createdAt = 5;
+  // 수정 날짜 
+  int64 updatedAt = 6;
+}
+
+// UserDeviceE 유저 디바이스
+message UserDeviceE {
+  // 
+  string uuid = 1;
+}

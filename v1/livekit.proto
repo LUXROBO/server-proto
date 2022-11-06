@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package v1;
+
+option csharp_namespace = "Luxrobo.v1";
+option go_package = "luxrobo/v1";
+option java_multiple_files = true;
+option java_outer_classname = "LivekitProto";
+option java_package = "com.luxrobo.v1";
+option objc_class_prefix = "TPX";
+option php_namespace = "Luxrobo\\v1";
+
+import "v1/enum.proto";
+
+message LivekitRoomE {
+  string sid = 1;
+  string name = 2;
+  int64 emptyTimeout = 3;
+  int64 creationTime = 4;
+  int64 maxParticipants = 5;
+  string turnPassword = 6;
+  repeated LivekitCodecE enableCodecs = 7;
+  string metadata = 8;
+  int64 numParticipants = 9;
+}
+
+message LivekitCodecE {
+  string mime = 1;
+  string fmtpLine = 2;
+}
+
+message LivekitParticipantE {
+  string sid = 1;
+  string identity = 2;
+  string name = 3;
+  string state = 4;
+  repeated LivekitTrackE tracks = 5;
+  string metadata = 6;
+  int64 joinedAt   = 7;
+  bool isPublisher = 8;
+}
+
+message LivekitTrackE {
+  string sid = 1;
+  string type = 2;
+  string name = 3;
+  bool muted = 4;
+  int64 width = 5;
+  int64 height = 6;
+  bool simulcast = 7;
+  bool disableDtx = 8;
+  LivekitTrackSourceType source = 9;
+  repeated LivekitVideoLayerE layers = 10;
+  string mimeType = 11;
+}
+
+message LivekitVideoLayerE {
+  LivekitVideoQualityType quality = 1;
+  int64 width = 2; 
+  int64 height = 3;
+  int64 bitrate = 4;
+}

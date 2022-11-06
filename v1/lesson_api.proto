@@ -1,0 +1,108 @@
+syntax = "proto3";
+
+package v1;
+
+option csharp_namespace = "Luxrobo.v1";
+option go_package = "luxrobo/v1";
+option java_multiple_files = true;
+option java_outer_classname = "LessonApiProto";
+option java_package = "com.luxrobo.v1";
+option objc_class_prefix = "TPX";
+option php_namespace = "Luxrobo\\v1";
+
+import "v1/base.proto";
+import "v1/lesson.proto";
+import "v1/video.proto";
+
+// LessonAPI service.
+service LessonAPI {
+  // LessonGraphqlQuery graphql query helper method.
+  rpc LessonGraphqlQuery(LessonGraphqlQueryRequest) returns (LessonGraphqlQueryResponse);
+  // LessonList .
+  rpc LessonList(LessonListRequest) returns (LessonListResponse);
+  // LessonBookList .
+  rpc LessonBookList(LessonBookListRequest) returns (LessonBookListResponse);
+  // LessonCurriculumList .
+  rpc LessonCurriculumList(LessonCurriculumListRequest) returns (LessonCurriculumListResponse);
+  //  LessonPlanContentCoding .
+  rpc LessonPlanContentCoding(LessonPlanContentCodingRequest) returns (LessonPlanContentCodingResponse);
+  // LessonMediaSync .
+  rpc LessonMediaSync(LessonMediaSyncRequest) returns (LessonMediaSyncResponse);
+  // LessonHealth check method.
+  rpc LessonHealth(LessonHealthRequest) returns (LessonHealthResponse) {}
+}
+
+// LessonGraphqlQueryRequest graphql query
+message LessonGraphqlQueryRequest {
+  string query  = 1;
+  string operationName = 2;
+}
+
+// LessonGraphqlQueryResponse graphql query response
+message LessonGraphqlQueryResponse {
+  Error err = 1;
+  string result = 2;
+}
+
+message LessonListRequest {
+  int32 first = 1;
+  string after = 2;
+  repeated string lessonIds = 3;
+}
+
+message LessonListResponse {
+  Error err = 1;
+  repeated LessonE lessons = 2;
+}
+
+
+message LessonBookListRequest {
+  int32 first = 1;
+  string after = 2;
+  repeated string bookIds = 3;
+}
+
+message LessonBookListResponse {
+  Error err = 1;
+  repeated LessonBookE lessonBooks = 2;
+}
+
+message LessonCurriculumListRequest {
+  int32 first = 1;  
+  string after = 2;
+  repeated string curriculumIds = 3;
+}
+
+message LessonPlanContentCodingRequest {
+  int64 lessonNo = 1;
+  int64 lessonPlanContentNo = 2;
+}
+
+message  LessonPlanContentCodingResponse {
+  Error err = 1;
+  LessonPlanContentTemplateCodingE coding = 2;
+}
+
+message LessonCurriculumListResponse {
+  Error err = 1;
+  repeated LessonCurriculumE lessonCurriculums = 2;
+} 
+
+message LessonMediaSyncRequest {
+  VideoInfoE body = 1;
+}
+
+
+message LessonMediaSyncResponse {
+  Error err = 1;
+  string result = 2;
+}
+
+// LessonHealthRequest health request 
+message LessonHealthRequest {}
+
+// LessonHealthResponse health response
+message LessonHealthResponse {
+  Error err = 1;
+  bool status = 2;
+}

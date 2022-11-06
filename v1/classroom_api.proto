@@ -1,0 +1,93 @@
+syntax = "proto3";
+
+package v1;
+
+option csharp_namespace = "Luxrobo.v1";
+option go_package = "luxrobo/v1";
+option java_multiple_files = true;
+option java_outer_classname = "ClassroomApiProto";
+option java_package = "com.luxrobo.v1";
+option objc_class_prefix = "TPX";
+option php_namespace = "Luxrobo\\v1";
+
+import "v1/base.proto";
+import "v1/classroom.proto";
+import "v1/enum.proto";
+
+// ClassroomAPI service.
+service ClassroomAPI {
+  // ClassroomGraphqlQuery graphql query helper method.
+  rpc ClassroomGraphqlQuery(ClassroomGraphqlQueryRequest) returns (ClassroomGraphqlQueryResponse);
+  // ClassroomLessonList  리스트 요청
+  rpc ClassroomLessonList(ClassroomLessonListRequest) returns (ClassroomLessonListResponse);
+  // ClassroomLessonUpdate 클래스 업데이트
+  rpc ClassroomLessonUpdate(ClassroomLessonUpdateRequest) returns (ClassroomLessonUpdateResponse);
+  // ClassroomLessonGroupList  그룹 리스트 요청
+  rpc ClassroomLessonGroupList(ClassroomLessonGroupListRequest) returns (ClassroomLessonGroupListResponse);
+  // ClassroomHealth check method.
+  rpc ClassroomHealth(ClassroomHealthRequest) returns (ClassroomHealthResponse) {}
+}
+
+// ClassroomGraphqlQueryRequest graphql query
+message ClassroomGraphqlQueryRequest {
+    string query  = 1;
+    string operationName = 2;
+}
+
+// ClassroomGraphqlQueryResponse graphql query response
+message ClassroomGraphqlQueryResponse {
+    Error err = 1;
+    string result = 2;
+}
+
+// ClassroomLessonListWhere 필터 조건 정보
+message ClassroomLessonListWhere {
+  string classroomId = 1;
+  int64 userNo = 2;
+}
+
+message ClassroomLessonListRequest {
+  int32 first = 1;
+  string after = 2;
+  int32 offset = 3;
+  OrderByE orderBy = 4;
+  ClassroomLessonListWhere where = 5;
+}
+
+message ClassroomLessonListResponse {
+  Error err = 1;
+  int32 total = 2;
+  repeated ClassroomLessonE classroomLessons = 3;
+}
+
+// ClassroomLessonUpdateRequest 학급 강의 업데이트  요청
+message ClassroomLessonUpdateRequest {
+  int64 lessonNo = 1;
+  LessonOpenType type = 2;
+}
+
+// ClassroomLessonDeleteResponse 학급 강의 업데이트 응답
+message ClassroomLessonUpdateResponse {
+  Error err = 1;
+}
+
+message ClassroomLessonGroupListRequest {
+  int32 first = 1;
+  string after = 2;
+  OrderByE orderBy = 3;
+  ClassroomLessonListWhere where = 4;
+}
+
+message ClassroomLessonGroupListResponse {
+  Error err = 1;
+  repeated ClassroomLessonE classroomLessons = 2;
+}
+
+// ClassroomHealthRequest health request 
+message ClassroomHealthRequest {}
+
+// ClassroomHealthResponse health response
+message ClassroomHealthResponse {
+    Error err = 1;
+    bool status = 2;
+}

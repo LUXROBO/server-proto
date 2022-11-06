@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package v1;
+
+option csharp_namespace = "Luxrobo.v1";
+option go_package = "luxrobo/v1";
+option java_multiple_files = true;
+option java_outer_classname = "ReviewApiProto";
+option java_package = "com.luxrobo.v1";
+option objc_class_prefix = "TPX";
+option php_namespace = "Luxrobo\\v1";
+
+import "v1/base.proto";
+import "v1/review.proto";
+
+// ReviewAPI service.
+service ReviewAPI {
+  // ReviewGraphqlQuery graphql query helper method.
+  rpc ReviewGraphqlQuery(ReviewGraphqlQueryRequest) returns (ReviewGraphqlQueryResponse);
+  // ReviewCount ...
+  rpc ReviewCount(ReviewCountRequest) returns (ReviewCountResponse);
+  // ReviewHealth check method.
+  rpc ReviewHealth(ReviewHealthRequest) returns (ReviewHealthResponse) {}
+}
+
+// ReviewGraphqlQueryRequest graphql query
+message ReviewGraphqlQueryRequest {
+    string query  = 1;
+    string operationName = 2;
+}
+
+// ReviewGraphqlQueryResponse graphql query response
+message ReviewGraphqlQueryResponse {
+    Error err = 1;
+    string result = 2;
+}
+
+message ReviewCountRequest {
+  repeated string lessonIds = 1;
+}
+
+message ReviewCountResponse {
+  Error err = 1;
+  repeated ReviewCountE counts = 2;
+}
+
+// ReviewHealthRequest health request 
+message ReviewHealthRequest {}
+
+// ReviewHealthResponse health response
+message ReviewHealthResponse {
+    Error err = 1;
+    bool status = 2;
+}

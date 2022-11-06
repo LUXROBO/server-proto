@@ -1,0 +1,186 @@
+syntax = "proto3";
+
+package v1;
+
+option csharp_namespace = "Luxrobo.v1";
+option go_package = "luxrobo/v1";
+option java_multiple_files = true;
+option java_outer_classname = "SearchApiProto";
+option java_package = "com.luxrobo.v1";
+option objc_class_prefix = "TPX";
+option php_namespace = "Luxrobo\\v1";
+
+import "v1/base.proto";
+
+
+// SearchAPI service.
+service SearchAPI {
+  // SearchGraphqlQuery graphql query helper method.
+  rpc SearchGraphqlQuery(SearchGraphqlQueryRequest) returns (SearchGraphqlQueryResponse);
+  // SearchIndex 
+  rpc SearchIndex(SearchIndexRequest) returns (SearchIndexResponse);
+  // SearchIndexDelete 
+  rpc SearchIndexDelete(SearchIndexDeleteRequest) returns (SearchIndexDeleteResponse);
+  // SearchLesson
+  rpc SearchLesson(SearchLessonRequest) returns (SearchLessonResponse);
+  // SearchLessonBook
+  rpc SearchLessonBook(SearchLessonBookRequest) returns (SearchLessonBookResponse);
+  // SearchLessonCurriculum
+  rpc SearchLessonCurriculum(SearchLessonCurriculumRequest) returns (SearchLessonCurriculumResponse);
+  // SearchLessonCurriculum
+  rpc SearchQuestion(SearchQuestionRequest) returns (SearchQuestionResponse);
+  // SearchHealth check method.
+  rpc SearchHealth(SearchHealthRequest) returns (SearchHealthResponse) {}
+}
+
+// SearchGraphqlQueryRequest graphql query
+message SearchGraphqlQueryRequest {
+  string query  = 1;
+  string operationName = 2;
+}
+ 
+// SearchGraphqlQueryResponse graphql query response
+message SearchGraphqlQueryResponse {
+  Error err = 1;
+  string result = 2;
+}
+
+// SearchIndexRequest ...
+message SearchIndexRequest {
+  string indexType = 1;
+  string serviceNo = 2;
+}
+
+// SearchIndexResponse ...
+message SearchIndexResponse {
+  Error err = 1;
+}
+
+// SearchIndexDeleteRequest 인덱스 삭제 요청
+message SearchIndexDeleteRequest {
+  string indexType = 1;
+  string serviceNo = 2;
+}
+
+// SearchIndexDeleteResponse 인덱스 삭제 응답
+message SearchIndexDeleteResponse {
+  Error err = 1;
+}
+
+// SearchLessonWhere 필터 조건 정보
+message SearchLessonWhere {
+  string filter = 1;
+  repeated string lessonIds = 2;
+  string serviceType =  3;
+  repeated string serviceTypes =  4;
+  string levelType = 5;
+  string groupType = 6;
+  repeated string tags = 7;
+  string openType = 8;
+  int64 ownerNo = 9;
+}
+
+// SearchLessonRequest 강의 검색 요청
+message SearchLessonRequest {
+  int32 first = 1;
+  string after = 2;
+  int32 offset = 3;
+  OrderByE orderBy = 4;
+  SearchLessonWhere where = 5;
+}
+
+// SearchLessonResponse 강의 검색 응답
+message SearchLessonResponse {
+  Error err = 1;
+  int32 total = 2;
+  repeated string lessonIds = 3;
+}
+
+
+// SearchLessonBookWhere 필터 조건 정보
+message SearchLessonBookWhere {
+  string filter = 1;
+  string serviceType = 2;
+  repeated string bookIds = 3;
+}
+
+// SearchLessonBookRequest 책 검색 요청
+message SearchLessonBookRequest {
+  int32 first = 1;
+  string after = 2;
+  int32 offset = 3;
+  OrderByE orderBy = 4;
+  SearchLessonBookWhere where = 5;
+}
+
+// SearchLessonBookResponse 책 검색 응답
+message SearchLessonBookResponse {
+  Error err = 1;
+  int32 total = 2;
+  repeated string bookIds = 3;
+
+}
+
+// SearchLessonCurriculumWhere 필터 조건 정보
+message SearchLessonCurriculumWhere {
+  string filter = 1;
+  string serviceType = 2;
+  repeated string serviceTypes =  3;
+  repeated string curriculumIds = 4;
+  repeated string tags = 5;
+  string levelType = 6;
+  string groupType = 7;
+  string openType = 8;
+  int64 ownerNo = 9;
+}
+
+// SearchLessonCurriculumRequest 커리큘럼 검색 요청
+message SearchLessonCurriculumRequest {
+  int32 first = 1;
+  string after = 2;
+  int32 offset = 3;
+  OrderByE orderBy = 4;
+  SearchLessonCurriculumWhere where = 5;
+}
+
+// SearchLessonCurriculumResponse 커리큘럼 검색 응답
+message SearchLessonCurriculumResponse {
+  Error err = 1;
+  int32 total = 2;
+  repeated string curriculumIds = 3;
+
+}
+
+// SearchQuestionWhere 필터 조건 정보
+message SearchQuestionWhere {
+  string filter = 1;
+  repeated string questionIds = 2;
+  repeated string levelTypes = 3;
+  repeated string types = 4;
+  string openType = 5;
+  int64 ownerNo = 6;
+}
+
+message SearchQuestionRequest {
+  int32 first = 1;
+  string after = 2;
+  int32 offset = 3;
+  OrderByE orderBy = 4;
+  SearchQuestionWhere where = 5;
+}
+
+message SearchQuestionResponse {
+  Error err = 1;
+  int32 total = 2;
+  repeated string questionIds = 3;
+}
+
+
+// SearchHealthRequest health request 
+message SearchHealthRequest {}
+
+// SearchHealthResponse health response
+message SearchHealthResponse {
+  Error err = 1;
+  bool status = 2;
+}

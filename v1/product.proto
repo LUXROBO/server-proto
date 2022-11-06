@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package v1;
+
+option csharp_namespace = "Luxrobo.v1";
+option go_package = "luxrobo/v1";
+option java_multiple_files = true;
+option java_outer_classname = "ProductProto";
+option java_package = "com.luxrobo.v1";
+option objc_class_prefix = "TPX";
+option php_namespace = "Luxrobo\\v1";
+
+import "v1/base.proto";
+
+// ProductE 상품
+message ProductE {
+  // auto No
+  int64 no = 1;
+  // productNo
+  int64 productNo = 2;
+  // 제목
+  string title = 3;
+  // 소제목
+  string subTitle = 4;
+  // 설명
+  string describe = 5;
+  // 메인 이미지
+  repeated ImageInfoE mainImgs = 6;
+  // 작성 날짜 
+  string createdAt = 7;
+  // 수정 날짜 
+  string updatedAt = 8;
+}
+

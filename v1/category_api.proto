@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package v1;
+
+option csharp_namespace = "Luxrobo.v1";
+option go_package = "luxrobo/v1";
+option java_multiple_files = true;
+option java_outer_classname = "CategoryApiProto";
+option java_package = "com.luxrobo.v1";
+option objc_class_prefix = "TPX";
+option php_namespace = "Luxrobo\\v1";
+
+import "v1/base.proto";
+
+// CategoryAPI service.
+service CategoryAPI {
+  // CategoryGraphqlQuery graphql query helper method.
+  rpc CategoryGraphqlQuery(CategoryGraphqlQueryRequest) returns (CategoryGraphqlQueryResponse);
+  // CategoryHealth check method.
+  rpc CategoryHealth(CategoryHealthRequest) returns (CategoryHealthResponse) {}
+}
+
+// CategoryGraphqlQueryRequest graphql query
+message CategoryGraphqlQueryRequest {
+    string query  = 1;
+    string operationName = 2;
+}
+
+// CategoryGraphqlQueryResponse graphql query response
+message CategoryGraphqlQueryResponse {
+    Error err = 1;
+    string result = 2;
+}
+
+// CategoryHealthRequest health request 
+message CategoryHealthRequest {}
+
+// CategoryHealthResponse health response
+message CategoryHealthResponse {
+    Error err = 1;
+    bool status = 2;
+}

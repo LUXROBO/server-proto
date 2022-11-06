@@ -1,0 +1,168 @@
+syntax = "proto3";
+
+package v1;
+
+option csharp_namespace = "Luxrobo.v1";
+option go_package = "luxrobo/v1";
+option java_multiple_files = true;
+option java_outer_classname = "StatProto";
+option java_package = "com.luxrobo.v1";
+option objc_class_prefix = "TPX";
+option php_namespace = "Luxrobo\\v1";
+
+import "v1/base.proto";
+
+message StatLessonActivityE {
+  // 강의 ID
+  string lessonId = 1;
+  // 북마크수
+  int32 cBookmark = 2;
+  // 좋아요수
+  int32 cLike = 3;
+  // 진도율
+  int32 progress = 4;
+  // 강의 컨텐츠 활동 정보
+  repeated StatLessonPlanContentActivityE lessonPlanContentActivities = 5;
+}
+
+message StatLessonPlanContentActivityE {
+  string lessonId = 1;
+  string lessonPlanContentId = 2;
+  int32 seconds = 3;
+  bool isDone = 4;
+  string doneDate = 5;
+}
+
+
+// StatUserSummary 통계 사용자 Summary
+message StatUserSummaryE {
+  int64 no = 1;
+  int64 userNo = 2;
+  string userName = 3;
+  string provider = 4;
+  int32 cRetry = 5;
+  int32 cSuccess = 6;
+  string sTime = 7;
+  string eTime = 8;
+  StatStudyTimeE studyTime = 9;
+  StatRateE rate = 10;
+  StatCapacityMeanE capacityMean = 11;
+  StatCapacityWeeklyE capacityWeekly = 12;
+  StatUserLessonCountE lessonCount = 13;
+}
+
+message StatUserLessonCountE {
+  // 수업 수강 숫자 
+  int32 lessonRegisterCount = 1;
+  // 내가 생성한  수업 
+  int32 lessonOwnerCount = 2;
+  // 내가 생성한 수업의 수강생 
+  int32 lessonOwnerStudentCount = 3;
+  // 내가 생성한 수업의 평균 수강생 
+  int32 lessonOwnerStudentMeanCount = 4;
+  // 수강 완료 숫자
+  int32 lessonDoneCount = 5;
+}
+
+message StatRateE {
+  // 정답율 
+  int32 success = 1;
+  // 정확도 비율
+  int32 accuracy = 2;
+  // 진도율
+  int32 progress = 3;
+}
+
+// StatStudyE 
+message StatStudyTimeE {
+  // 코딩
+  string coding = 1;
+  // 게임
+  string game = 2;
+  // 영어
+  string english = 3;
+  // 일반 
+  string normal = 4;
+  // 기간
+  string days = 5;
+}
+
+// StatCapacityMeanE 능력치 평균
+message StatCapacityMeanE {
+  // 기억력
+  StatCapacityInfoE memory = 1;
+  // 집중력
+  StatCapacityInfoE concentration = 2;
+  // 순발력 
+  StatCapacityInfoE changingSituation = 3;
+  // 사고력
+  StatCapacityInfoE thinkingSkill = 4;
+  // 언어능력
+  StatCapacityInfoE language = 5;
+}
+
+// StatCapacityWeeklyE 능력치 주간 리스트
+message StatCapacityWeeklyE {
+  // 기억력
+  repeated StatCapacityE memories= 1;
+  // 집중력
+  repeated StatCapacityE concentrations = 2;
+  // 순발력 
+  repeated StatCapacityE changingSituations = 3;
+  // 사고력
+  repeated StatCapacityE thinkingSkills = 4;
+  // 언어능력
+  repeated StatCapacityE languages = 5;
+}
+
+// StatCapacityE 능력지 정보
+message StatCapacityInfoE {
+  // 평균점수
+  int32 mean = 1;
+  // 설명
+  string describe = 2;
+}
+
+// StatCapacityE 능력지 정보
+message StatCapacityE {
+  // 점수
+  int32 value = 1;
+  // 날짜
+  string date = 2;
+}
+
+message StatUserViewE {
+  string user = 1;
+  // 강의 No
+  int64 lessonNo = 2;
+  // 커리큘럼 No 
+  int64 curriculumNo = 3;
+  // 뷰수
+  int32 cView = 4;
+  // 북마크수
+  int32 cBookmark = 5;
+  // 좋아요수
+  int32 cLike = 6;
+  // 참여자수
+  int32 cLessonMember = 7;
+  // 리뷰수
+  int32 cReview = 8;
+  // 진행정보
+  LessonProgressE progress = 9;
+  // 유저 좋아요 여부
+  bool isLike = 10;
+  // 유저 뷰 여부
+  bool isView = 11;
+  // 유저 북마크 여부
+  bool isBookmark = 12;
+}
+
+// 강의 컨텐츠 정보
+message StatLessonContentE {
+  string lessonId = 1;
+  string lessonContentId = 2;
+  bool isDone = 3;
+  string doneDate = 4;
+  int32 idx= 5;
+  string userHashKey = 6;
+}

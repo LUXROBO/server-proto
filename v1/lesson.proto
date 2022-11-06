@@ -1,0 +1,477 @@
+syntax = "proto3";
+
+package v1;
+
+option csharp_namespace = "Luxrobo.v1";
+option go_package = "luxrobo/v1";
+option java_multiple_files = true;
+option java_outer_classname = "LessonProto";
+option java_package = "com.luxrobo.v1";
+option objc_class_prefix = "TPX";
+option php_namespace = "Luxrobo\\v1";
+
+import "v1/base.proto";
+import "v1/enum.proto";
+import "v1/video.proto";
+
+// LessonE 강의정보
+message LessonE {
+  // auto No
+  int64 no = 1;
+  // lessonNo
+  int64 lessonNo = 2;
+  // 강의 제목
+  string title = 3;
+  // 강의 소제목
+  string subTitle = 4;
+  // 강의 설명
+  string describe = 5;
+  // 색상
+  string color = 6;
+  // 텍스트 색상
+  string textColor = 7;
+  // 백그라운드 이미지
+  ImageInfoE bgImg = 8;
+  // 소개 비디오 
+  string videoUrl = 9;
+  // 소개 비디오 타입
+  VideoType videoType = 10;
+  // 메인 이미지
+  repeated ImageInfoE mainImgs = 11;
+  // 수업 시간
+  int32 classTime = 12;
+  // 유저 Activity 정보
+  UserActivityE userActivity = 13;
+  // 레벨 타입 
+  string levelType = 14;
+  // 그룹 타입 
+  string groupType = 15;
+  // 잠금 타입 
+  string lockType = 16;
+  // 코딩 생성자 타입
+  string creationType = 17;
+  // 서비스 타입
+  string serviceType = 18;
+  // 학습요소 JSON
+  string elementJson = 19;
+  // 학습정보
+  LessonSummaryE summary = 20;
+  // 정답 코드
+  string AnswerCode = 21;
+  // 강의 계획 Array
+  repeated LessonPlanE lessonPlans = 22;
+  // 태그 리스트
+  repeated string tags = 23;
+  // 오픈 여부
+  string openType = 24;
+  // 메인 이미지
+  repeated FileInfoE files = 25;
+  // 수업 등록자 No
+  int64 userNo = 26;
+  // 작성자 User No
+  int64 ownerNo = 27;
+  // 작성자 User 이름
+  string ownerName = 28;
+  // 진도율 퍼센트 정보 
+  int32 progressRate = 29;
+  // 진행 정보
+  LessonProgressE progress = 30;
+  // 수정가능 여부
+  bool isEdit = 31;
+  // 순서 idx
+  int32 idx = 32;
+  // 강의시작 
+  int64 startTime = 33;
+  // 강의 시작 타입 
+  string startType = 34;
+  // 강의 시작 여부 
+  bool isStart = 35;
+  // Epub URL
+  string epubUrl = 36;
+  // 작성 날짜 
+  int64 createdAt = 37;
+  // 수정 날짜 
+  int64 updatedAt = 38;
+  // 삭제 날짜 
+  int64 deletedAt = 39;
+}
+
+// LessonLevelE 레벨정보
+message LessonLevelE {
+  string type = 1;
+  string label = 2;
+}
+
+// LessonGroupE 그룹정보
+message LessonGroupE {
+  string type = 1;
+  string label = 2;
+}
+
+
+// LessonBookE 강의책 정보
+message LessonBookE {
+  // auto No
+  int64 no = 1;
+  // bookNo
+  int64 bookNo = 2;
+  // 제목
+  string title = 3;
+  // 소제목
+  string subTitle = 4;
+  // 설명
+  string describe = 5;
+  // 색상
+  string color = 6;
+  // 텍스트 색상
+  string textColor = 7;
+  // 백그라운드 이미지
+  ImageInfoE bgImg = 8;
+  // 서비스 타입
+  string serviceType = 9;
+  // 메인 이미지
+  repeated ImageInfoE mainImgs = 10;
+  // 태그 리스트
+  repeated string tags = 11;
+  // 커리큘럼 Array
+  repeated LessonCurriculumE lessonCurriculums = 12;
+  // 순서 idx
+  int32 idx = 13;
+  // 작성 날짜 
+  int64 createdAt = 14;
+  // 수정 날짜 
+  int64 updatedAt = 15;
+}
+
+// LessonCurriculumE 커리큘럼 정보
+message LessonCurriculumE {
+  // auto No
+  int64 no = 1;
+  // curriculumNo
+  int64 curriculumNo = 2;
+  // 커리큘럼 제목
+  string title = 3;
+  //
+  string label = 4;
+  //
+  string labelColor = 5;
+  // 커리큘럼 소제목
+  string subTitle = 6;
+  // 커리큘럼 설명
+  string describe = 7;
+  // 색상
+  string color = 8;
+  // 텍스트 색상
+  string textColor = 9;
+  // 백그라운드 이미지
+  ImageInfoE bgImg = 10;
+  // 서비스 타입
+  string serviceType = 11;
+  // 커리큘럼 뷰타입
+  string viewType = 12;
+  // 메인 이미지
+  repeated ImageInfoE mainImgs = 13;
+  // 유저 Activity 정보
+  UserActivityE userActivity = 14;
+  // 태그 리스트
+  repeated string tags = 15;
+  // 강의 Array
+  repeated LessonE lessons = 16;
+  // 수업 등록자 No
+  int64 userNo = 17;
+  // 순서 idx
+  int32 idx = 18;
+  // 오픈 여부
+  string openType = 19;
+  // 레벨 타입 
+  string levelType = 20;
+  // 그룹 타입 
+  string groupType = 21;
+  // 작성자 User No
+  int64 ownerNo = 22;
+  // 작성자 User 이름
+  string ownerName = 23;
+  // 학습요소 JSON
+  string elementJson = 24;
+  // 학습정보
+  LessonSummaryE summary = 25;
+  // 작성 날짜 
+  int64 createdAt = 26;
+  // 수정 날짜 
+  int64 updatedAt = 27;
+  // 삭제 날짜 
+  int64 deletedAt = 28;
+}
+
+// LessonPlanE 강의계획
+message LessonPlanE {
+  // auto No
+  int64 no = 1;
+  // planNo
+  int64 planNo = 2;
+  // 강의 ID
+  int64 lessonNo = 3;
+  // 계획 제목
+  string title = 4;
+  //소제목
+  string subTitle = 5;
+  // 순서 idx
+  int32 idx = 6;
+  // 수업계획 그룹
+  repeated LessonPlanContentE contents = 7;
+  // 뷰타입
+  string viewType = 8;
+  // 작성 날짜 
+  int64 createdAt = 9;
+  // 수정 날짜 
+  int64 updatedAt = 10;
+}
+
+message LessonPlanLayoutE {
+  int64 no = 1;
+  string title = 2;
+  int32 idx = 3;
+  string type = 4;
+  ImageInfoE image = 5;
+}
+
+// LessonPlanContentE 컨텐츠
+message LessonPlanContentE {
+  // 컨텐츠 ID
+  int64 no = 1;
+  // 강의 ID
+  int64 lessonNo = 2;
+  // 강의 계획 ID
+  int64 lessonPlanNo = 3;
+  // 계획 컨텐츠 제목
+  string title = 4;
+  // 컨텐츠 타입
+  string type = 5;
+  // 뷰 타입 
+  string viewType = 6;
+  // 템플릿 정보 
+  repeated LessonPlanContentTemplateE templates = 7;
+  // base 컨텐츠 정보
+  LessonPlanContentTemplateBaseE base = 8;
+  // 텍스트 컨텐츠 정보
+  LessonPlanContentTemplateTextE text = 9;
+  // 이미지 컨텐츠 정보
+  LessonPlanContentTemplateImageE image = 10;
+  // 비디오 컨텐츠 정보
+  LessonPlanContentTemplateVideoE video = 11;
+  // 코딩 컨텐츠 정보
+  LessonPlanContentTemplateCodingE coding = 12;
+  // 순서
+  int32 idx = 13;
+  // 학습 완료 여부
+  bool isDone = 14;
+  // 완료 날짜
+  string doneDate = 15;
+}
+
+// LessonPlanContentSubscribeE 컨텐츠 진행정보 subscribe
+message LessonPlanContentSubscribeE {
+  // 컨텐츠 ID
+  int64 no = 1;
+  // 강의 ID
+  int64 lessonNo = 2;
+  // 강의 계획 ID
+  int64 lessonPlanNo = 3;
+  // 학습 완료 여부
+  bool isDone = 4;
+  // 완료 날짜
+  string doneDate = 5;
+  // 진행 정보
+  LessonProgressE progress = 6;
+}
+
+
+message LessonPlanContentTemplateE {
+  // base 컨텐츠 정보
+  LessonPlanContentTemplateBaseE base = 1;
+  // 텍스트 컨텐츠 정보
+  LessonPlanContentTemplateTextE text = 2;
+  // 이미지 컨텐츠 정보
+  LessonPlanContentTemplateImageE image = 3;
+  // 비디오 컨텐츠 정보
+  LessonPlanContentTemplateVideoE video = 4;
+  // 코딩 컨텐츠 정보
+  LessonPlanContentTemplateCodingE coding = 5;
+}
+
+// 컨텐츠 BASE타입 
+message LessonPlanContentTemplateBaseE {
+  // 
+  string id = 1;
+  // 데이타  타입
+  string type = 2;
+  // 이미지 정보
+  ImageInfoE img = 3;
+  // 내용
+  string content = 4;
+  // 순서
+  int32 idx = 5;
+  // 좌표정보
+  CoordinateE coordinate = 6;
+}
+
+// 컨텐츠 텍스트타입 
+message LessonPlanContentTemplateTextE {
+  //
+  string id = 1;
+  // 데이타  타입
+  string type = 2;
+  // 내용
+  string content = 3;
+  // 순서
+  int32 idx = 4;
+  // 좌표정보
+  CoordinateE coordinate = 5;
+}
+
+// 컨텐츠 이미지타입 
+message LessonPlanContentTemplateImageE {
+  //
+  string id = 1;
+  // 데이타  타입
+  string type = 2;
+  // 이미지
+  ImageInfoE img = 3;
+  // 순서
+  int32 idx = 4;
+  // 좌표정보
+  CoordinateE coordinate = 5;
+  // 전환 이미지 여부 
+  bool isReverse = 6;
+}
+
+
+// 컨텐츠 비디오타입 
+message LessonPlanContentTemplateVideoE {
+  //
+  string id = 1;
+  // 비디오 No
+  int64 videoNo = 2;
+  // 비디오 
+  string videoUrl = 3;
+  // 비디오 타입
+  string videoType = 4;
+  // 썸네일 이미지
+  ImageInfoE thumbImg = 5;
+  // 데이타  타입
+  string type = 6;
+  // 순서
+  int32 idx = 7;
+  // 좌표정보
+  CoordinateE coordinate = 8;
+}
+
+// 컨텐츠 코딩타입 
+message LessonPlanContentTemplateCodingE {
+  //
+  string id = 1;
+  // 데이타  타입
+  string type = 2;
+  // 코딩 타입 
+  string codingType = 3;
+  // 정답 코드 
+  string answerCode = 4;
+  // 정답 이미지 
+  repeated ImageInfoE answerImgs = 5;
+  // 사전 코드 
+  string initCode = 6;
+  // 코딩 문제들
+  repeated string questions = 7;
+  // 실습 목표
+  string purpose = 8;
+  // 순서
+  int32 idx = 9;
+  // 코딩 생성자 타입
+  string creationType = 10;
+  // 하드웨어 타입 
+  repeated LessonHardwareE hardwareTypes = 11;
+  // 좌표정보
+  CoordinateE coordinate = 12;
+}
+
+message LessonImageE {
+  int64 no = 1;
+  // serviceNo
+  int64 serviceNo = 2;
+  // 서비스 타입
+  string serviceType = 3;
+  // 영어타입
+  string imageKey = 4;
+  // 비디오 정보 
+  ImageInfoE image = 5;
+  // 순서
+  int32 idx = 6;
+  // 작성 날짜 
+  int64 createdAt = 7;
+  // 수정 날짜 
+  int64 updatedAt = 8;
+
+}
+
+message LessonVideoE {
+  int64 no = 1;
+  // serviceNo
+  int64 serviceNo = 2;
+  // 서비스 타입
+  string serviceType = 3;
+  // 영어타입
+  string lang = 4;
+  // 비디오 정보 
+  VideoInfoE video = 5;
+  // 순서
+  int32 idx = 6;
+  // 작성 날짜 
+  int64 createdAt = 7;
+  // 수정 날짜 
+  int64 updatedAt = 8;
+}
+
+message LessonSummaryE {
+  // 강의 소개
+  string intro = 1;
+  // 목표 정리 여러줄
+  repeated string goals = 2;
+  // 결과물 셜명 여러줄
+  repeated string outputs = 3;
+  // 멀티 요소 String
+  repeated string elements = 4;
+  // 하드웨어 타입 
+  repeated LessonHardwareE hardwareTypes = 5;
+  // 코딩툴 String 
+  repeated string codingTypes = 6;
+}
+
+message LessonHardwareE {
+  int64 no = 1;
+  // 하드웨어 타입
+  string hardwareType = 2;
+  //
+  string title = 3;
+  //
+  string subTitle = 4;
+  // 메인 이미지
+  ImageInfoE mainImg = 5;
+  // 순서 idx
+  int32 idx = 6;
+  // 작성 날짜 
+  int64 createdAt = 7;
+  // 수정 날짜 
+  int64 updatedAt = 8;
+}
+
+// 언어변환필요한 데이타 정의
+message LessonLanguageE {
+  // 제목
+  string title = 1;
+  // 라벨 
+  string label = 2;
+  // 커리큘럼 소제목
+  string subTitle = 3;
+  // 커리큘럼 설명
+  string describe = 4;
+}

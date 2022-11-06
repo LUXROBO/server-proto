@@ -1,0 +1,145 @@
+syntax = "proto3";
+
+package v1;
+
+option csharp_namespace = "Luxrobo.v1";
+option go_package = "luxrobo/v1";
+option java_multiple_files = true;
+option java_outer_classname = "StatApiProto";
+option java_package = "com.luxrobo.v1";
+option objc_class_prefix = "TPX";
+option php_namespace = "Luxrobo\\v1";
+
+import "v1/base.proto";
+import "v1/stat.proto";
+
+// StatAPI service.
+service StatAPI {
+  // StatGraphqlQuery graphql query helper method.
+  rpc StatGraphqlQuery(StatGraphqlQueryRequest) returns (StatGraphqlQueryResponse);
+  // StatView 통계 뷰 정보 요청
+  rpc StatView(StatViewRequest) returns (StatViewResponse);
+  // StatAddLesson 통계 등록 SQS 
+  rpc StatAddLesson(StatAddLessonRequest) returns (StatAddLessonResponse);
+  // StatAddLessonProc 통계 등록 작업 Worker에서 실행
+  rpc StatAddLessonProc(StatAddLessonProcRequest) returns (StatAddLessonProcResponse);
+  // StatDelLesson 강의 삭제
+  rpc StatDelLesson(StatDelLessonRequest) returns (StatDelLessonResponse);
+  // StatList 통계 리스트 요청
+  rpc StatList(StatListRequest) returns (StatListResponse);
+  // StatCount 북마크, 좋아요기타 총수 요청
+  rpc StatLessonActivity(StatLessonActivityRequest) returns (StatLessonActivityResponse);
+  // StatHealth check method.
+  rpc StatHealth(StatHealthRequest) returns (StatHealthResponse) {}
+}
+
+// StatGraphqlQueryRequest graphql query
+message StatGraphqlQueryRequest {
+    string query  = 1;
+    string operationName = 2;
+}
+
+// StatGraphqlQueryResponse graphql query response
+message StatGraphqlQueryResponse {
+    Error err = 1;
+    string result = 2;
+}
+
+message StatViewRequest {
+  string user = 1;
+  repeated string lessonIds = 2;
+}
+
+message StatViewResponse {
+  Error err = 1;
+  repeated StatUserViewE views = 2;
+}
+
+message StatAddLessonRequest {
+  // 강의 작성자 ID 
+  string ownerId = 1;
+  // 강의 ID 
+  string lessonId = 2;
+  // 강의 컨텐츠 ID 
+  string lessonContentId = 3;
+  // 강의 시작 시간
+  string sTime = 4;
+  // 강의 마지막 시간
+  string eTime = 5;
+  // 강의 컨텐츠 수
+  int32 cContent = 6;
+}
+
+message StatAddLessonResponse {
+  Error err = 1;
+  string result = 2;
+}
+
+message StatAddLessonProcRequest {
+  // 강의 작성자 ID 
+  string ownerId = 1;
+  // 강의 ID 
+  string lessonId = 2;
+  // 강의 컨텐츠 ID 
+  string lessonContentId = 3;
+  // 강의 시작 시간
+  string sTime = 4;
+  // 강의 마지막 시간
+  string eTime = 5;
+  // 강의 컨텐츠 수
+  int32 cContent = 6;
+}
+
+message StatAddLessonProcResponse {
+  Error err = 1;
+  string result = 2;
+}
+
+message StatDelLessonRequest {
+  // 강의 NO
+  int64 lessonNo = 1;
+}
+
+message StatDelLessonResponse {
+  Error err = 1;
+}
+
+// StatListWhere 필터 조건 정보
+message StatListWhere {
+  string type = 1;
+  int64 userNo = 2;
+}
+
+// StatListRequest 요청 리스트
+message StatListRequest {
+  int32 first = 1;
+  string after = 2;
+  int32 offset = 3;
+  OrderByE orderBy = 4;
+  StatListWhere where = 5;
+}
+
+// StatListResponse 요청 완료 강의 Ids
+message StatListResponse {
+  Error err = 1;
+  int32 total = 2;
+  repeated string lessonIds = 3;
+}
+
+message StatLessonActivityRequest {
+  repeated string lessonIds = 1;
+}
+
+message StatLessonActivityResponse {
+  repeated StatLessonActivityE lessonActivities = 1;
+  Error err = 2;
+}
+
+// ProductHealthRequest health request 
+message StatHealthRequest {}
+
+// ProjectHealthResponse health response
+message StatHealthResponse {
+    Error err = 1;
+    bool status = 2;
+}

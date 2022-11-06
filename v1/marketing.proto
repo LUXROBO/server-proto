@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package v1;
+
+option csharp_namespace = "Luxrobo.v1";
+option go_package = "luxrobo/v1";
+option java_multiple_files = true;
+option java_outer_classname = "MarketingApiProto";
+option java_package = "com.luxrobo.v1";
+option objc_class_prefix = "TPX";
+option php_namespace = "Luxrobo\\v1";
+
+import "v1/base.proto";
+
+// MarketingPromotionE 프로모션 정보
+message MarketingPromotionE {
+  string id = 1;
+  string name = 3;
+  DiscountE discount = 4;
+  MarketingProductE product = 2;
+  string startTime = 5;
+  string endTime = 6;
+}
+
+// MarketingProductE 마케팅 제품
+message MarketingProductE {
+  string id = 1;
+  string name = 2;
+  MoneyE originPrice = 3;
+  MoneyE promotionPrice = 4;
+}

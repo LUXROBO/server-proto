@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package v1;
+
+option csharp_namespace = "Luxrobo.v1";
+option go_package = "luxrobo/v1";
+option java_multiple_files = true;
+option java_outer_classname = "ProductApiProto";
+option java_package = "com.luxrobo.v1";
+option objc_class_prefix = "TPX";
+option php_namespace = "Luxrobo\\v1";
+
+import "v1/base.proto";
+
+// ProductAPI service.
+service ProductAPI {
+  // ProductGraphqlQuery graphql query helper method.
+  rpc ProductGraphqlQuery(ProductGraphqlQueryRequest) returns (ProductGraphqlQueryResponse);
+  // ProductHealth check method.
+  rpc ProductHealth(ProductHealthRequest) returns (ProductHealthResponse) {}
+}
+
+// ProductGraphqlQueryRequest graphql query
+message ProductGraphqlQueryRequest {
+    string query  = 1;
+    string operationName = 2;
+}
+
+// ProductGraphqlQueryResponse graphql query response
+message ProductGraphqlQueryResponse {
+    Error err = 1;
+    string result = 2;
+}
+
+// ProductHealthRequest health request 
+message ProductHealthRequest {
+  int32 first = 1;
+  string after = 2;
+  repeated string lessonIds = 3;
+}
+
+// ProductHealthResponse health response
+message ProductHealthResponse {
+    Error err = 1;
+    bool status = 2;
+}

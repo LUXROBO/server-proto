@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package v1;
+
+option csharp_namespace = "Luxrobo.v1";
+option go_package = "luxrobo/v1";
+option java_multiple_files = true;
+option java_outer_classname = "AppApiProto";
+option java_package = "com.luxrobo.v1";
+option objc_class_prefix = "TPX";
+option php_namespace = "Luxrobo\\v1";
+
+import "v1/base.proto";
+
+// AppAPI service.
+service AppAPI {
+  // AppGraphqlQuery graphql query helper method.
+  rpc AppGraphqlQuery(AppGraphqlQueryRequest) returns (AppGraphqlQueryResponse);
+  // AppHealth check method.
+  rpc AppHealth(AppHealthRequest) returns (AppHealthResponse) {}
+}
+
+// AppGraphqlQueryRequest graphql query
+message AppGraphqlQueryRequest {
+    string query  = 1;
+    string operationName = 2;
+}
+
+// AppGraphqlQueryResponse graphql query response
+message AppGraphqlQueryResponse {
+    Error err = 1;
+    string result = 2;
+}
+
+// AppHealthRequest health request 
+message AppHealthRequest {}
+
+// AppHealthResponse health response
+message AppHealthResponse {
+    Error err = 1;
+    bool status = 2;
+}
