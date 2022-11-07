@@ -1,0 +1,36 @@
+name: Proto CI & CD
+on:
+  push:
+    paths:
+      - 'v1/**'
+      - 'predict/**'
+      - 'gen/**'
+      - 'nlp/**'
+      - '.github/workflows/proto.yml'
+    branches:
+      - develop
+      - release
+  pull_request:
+    paths:
+      - 'v1/**'
+      - 'predict/**'
+      - 'gen/**'
+      - 'nlp/**'
+      - '.github/workflows/proto.yml'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.USER_CHECKOUT_TOKEN }}
+
+      - name: Setup
+        run: git config --global --add url."https://${{ secrets.USER_CHECKOUT_TOKEN }}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
+
+      - name: Run Compile
+        run: |
+          make compile

@@ -1,9 +1,14 @@
 compile:
 	prototool compile
 
-install:
-	go get -u github.com/golang/protobuf/protoc-gen-go
+mac_install:
 	brew install prototool
+
+linux_install:
+	curl -sSL \
+      https://github.com/uber/prototool/releases/download/v1.8.0/prototool-$(uname -s)-$(uname -m) \
+      -o /usr/local/bin/prototool && \
+      chmod +x /usr/local/bin/prototool
 
 gen:
 	prototool generate
