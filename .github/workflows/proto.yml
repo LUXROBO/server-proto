@@ -24,13 +24,6 @@ jobs:
     steps:
       - name: Checkout source code
         uses: actions/checkout@v2
-        with:
-          ref: ${{ github.head_ref }}
-          token: ${{ secrets.USER_CHECKOUT_TOKEN }}
-
-      - name: Setup
-        run: git config --global --add url."https://${{ secrets.USER_CHECKOUT_TOKEN }}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
-
       - name: Run Compile
         run: |
           make compile
