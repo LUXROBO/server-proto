@@ -7,9 +7,11 @@ mac_install:
 linux_install:
 	curl -sSL \
       https://github.com/uber/prototool/releases/download/v1.8.0/prototool-$(uname -s)-$(uname -m) \
-      -o prototool && \
+      -o /usr/local/bin/prototool && \
 			ls -al && \
-      chmod +x prototool
+			ls -al /usr/local/bin && \
+			ls -al /usr/local/bin | grep prototool && \
+      chmod +x /usr/local/bin/prototool
 
 gen:
 	prototool generate
