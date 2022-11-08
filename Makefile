@@ -8,6 +8,7 @@ linux_install:
 	curl -sSL \
       https://github.com/uber/prototool/releases/download/v1.8.0/prototool-$(uname -s)-$(uname -m) \
       -o prototool && \
+			ls -al && \
       chmod +x prototool
 
 gen:
