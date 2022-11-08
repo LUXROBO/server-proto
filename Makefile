@@ -12,7 +12,8 @@ linux_install:
 			ls -al /usr/local/bin && \
 			ls -al /usr/local/bin | grep prototool && \
       chmod +x /usr/local/bin/prototool && \
-			ls -al /usr/local/bin | grep prototool
+			ls -al /usr/local/bin | grep prototool && \
+			/usr/local/bin/prototool
 
 gen:
 	prototool generate
