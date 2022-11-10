@@ -1,0 +1,30 @@
+name: Proto CI & CD
+on:
+  push:
+    paths:
+      - 'v1/**'
+      - 'predict/**'
+      - 'gen/**'
+      - 'nlp/**'
+      - '.github/workflows/proto.yml'
+    branches:
+      - develop
+      - release
+  pull_request:
+    paths:
+      - 'v1/**'
+      - 'predict/**'
+      - 'gen/**'
+      - 'nlp/**'
+      - '.github/workflows/proto.yml'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v2
+      - name: Run Compile
+        run: |
+          make linux_install
+          make compile
