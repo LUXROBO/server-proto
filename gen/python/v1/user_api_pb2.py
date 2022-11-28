@@ -22,7 +22,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='v1',
   syntax='proto3',
   serialized_options=_b('\n\016com.luxrobo.v1B\014UserApiProtoP\001Z\nluxrobo/v1\242\002\003TPX\252\002\nLuxrobo.v1\312\002\nLuxrobo\\v1'),
-  serialized_pb=_b('\n\x11v1/user_api.proto\x12\x02v1\x1a\rv1/base.proto\x1a\rv1/user.proto\"@\n\x0fUserListRequest\x12\r\n\x05\x66irst\x18\x01 \x01(\x05\x12\r\n\x05\x61\x66ter\x18\x02 \x01(\t\x12\x0f\n\x07userIds\x18\x03 \x03(\t\"J\n\x16UserProfileListRequest\x12\r\n\x05\x66irst\x18\x01 \x01(\x05\x12\r\n\x05\x61\x66ter\x18\x02 \x01(\t\x12\x12\n\nprofileIds\x18\x03 \x03(\x03\"D\n\x10UserListResponse\x12\x16\n\x03\x65rr\x18\x01 \x01(\x0b\x32\t.v1.Error\x12\x18\n\x05users\x18\x02 \x03(\x0b\x32\t.v1.UserE\"U\n\x17UserProfileListResponse\x12\x16\n\x03\x65rr\x18\x01 \x01(\x0b\x32\t.v1.Error\x12\"\n\x08profiles\x18\x02 \x03(\x0b\x32\x10.v1.UserProfileE2\x8c\x01\n\x07UserAPI\x12\x35\n\x08UserList\x12\x13.v1.UserListRequest\x1a\x14.v1.UserListResponse\x12J\n\x0fUserProfileList\x12\x1a.v1.UserProfileListRequest\x1a\x1b.v1.UserProfileListResponseBL\n\x0e\x63om.luxrobo.v1B\x0cUserApiProtoP\x01Z\nluxrobo/v1\xa2\x02\x03TPX\xaa\x02\nLuxrobo.v1\xca\x02\nLuxrobo\\v1b\x06proto3')
+  serialized_pb=_b('\n\x11v1/user_api.proto\x12\x02v1\x1a\rv1/base.proto\x1a\rv1/user.proto\"@\n\x0fUserListRequest\x12\r\n\x05\x66irst\x18\x01 \x01(\x05\x12\r\n\x05\x61\x66ter\x18\x02 \x01(\t\x12\x0f\n\x07userIds\x18\x03 \x03(\t\"i\n\x16UserProfileListRequest\x12\r\n\x05\x66irst\x18\x01 \x01(\x05\x12\r\n\x05\x61\x66ter\x18\x02 \x01(\t\x12\x0e\n\x06userId\x18\x03 \x01(\t\x12\r\n\x05phone\x18\x04 \x01(\t\x12\x12\n\nprofileIds\x18\x05 \x03(\t\"D\n\x10UserListResponse\x12\x16\n\x03\x65rr\x18\x01 \x01(\x0b\x32\t.v1.Error\x12\x18\n\x05users\x18\x02 \x03(\x0b\x32\t.v1.UserE\"U\n\x17UserProfileListResponse\x12\x16\n\x03\x65rr\x18\x01 \x01(\x0b\x32\t.v1.Error\x12\"\n\x08profiles\x18\x02 \x03(\x0b\x32\x10.v1.UserProfileE2\x8c\x01\n\x07UserAPI\x12\x35\n\x08UserList\x12\x13.v1.UserListRequest\x1a\x14.v1.UserListResponse\x12J\n\x0fUserProfileList\x12\x1a.v1.UserProfileListRequest\x1a\x1b.v1.UserProfileListResponseBL\n\x0e\x63om.luxrobo.v1B\x0cUserApiProtoP\x01Z\nluxrobo/v1\xa2\x02\x03TPX\xaa\x02\nLuxrobo.v1\xca\x02\nLuxrobo\\v1b\x06proto3')
   ,
   dependencies=[v1_dot_base__pb2.DESCRIPTOR,v1_dot_user__pb2.DESCRIPTOR,])
 
@@ -96,8 +96,22 @@ _USERPROFILELISTREQUEST = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='profileIds', full_name='v1.UserProfileListRequest.profileIds', index=2,
-      number=3, type=3, cpp_type=2, label=3,
+      name='userId', full_name='v1.UserProfileListRequest.userId', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='phone', full_name='v1.UserProfileListRequest.phone', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='profileIds', full_name='v1.UserProfileListRequest.profileIds', index=4,
+      number=5, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -115,7 +129,7 @@ _USERPROFILELISTREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=121,
-  serialized_end=195,
+  serialized_end=226,
 )
 
 
@@ -152,8 +166,8 @@ _USERLISTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=197,
-  serialized_end=265,
+  serialized_start=228,
+  serialized_end=296,
 )
 
 
@@ -190,8 +204,8 @@ _USERPROFILELISTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=267,
-  serialized_end=352,
+  serialized_start=298,
+  serialized_end=383,
 )
 
 _USERLISTRESPONSE.fields_by_name['err'].message_type = v1_dot_base__pb2._ERROR
@@ -241,8 +255,8 @@ _USERAPI = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=355,
-  serialized_end=495,
+  serialized_start=386,
+  serialized_end=526,
   methods=[
   _descriptor.MethodDescriptor(
     name='UserList',
