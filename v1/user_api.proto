@@ -17,7 +17,8 @@ import "v1/user.proto";
 service UserAPI {
   // UserList 유저조회
   rpc UserList(UserListRequest) returns (UserListResponse);
-  rpc UserProfiles(UserProfileListRequest) returns (UserProfileListResponse);
+  // UserProfileList 유저 프로필 조회
+  rpc UserProfileList(UserProfileListRequest) returns (UserProfileListResponse);
 
 }
 
