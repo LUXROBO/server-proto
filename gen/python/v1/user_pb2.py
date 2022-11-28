@@ -14,7 +14,6 @@ _sym_db = _symbol_database.Default()
 
 
 from v1 import base_pb2 as v1_dot_base__pb2
-from v1 import enum_pb2 as v1_dot_enum__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -22,9 +21,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='v1',
   syntax='proto3',
   serialized_options=_b('\n\016com.luxrobo.v1B\tUserProtoP\001Z\nluxrobo/v1\242\002\003TPX\252\002\nLuxrobo.v1\312\002\nLuxrobo\\v1'),
-  serialized_pb=_b('\n\rv1/user.proto\x12\x02v1\x1a\rv1/base.proto\x1a\rv1/enum.proto\"\xe5\x01\n\x05UserE\x12\n\n\x02no\x18\x01 \x01(\x03\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12$\n\tloginType\x18\x03 \x01(\x0e\x32\x11.v1.UserLoginType\x12\r\n\x05phone\x18\x04 \x01(\t\x12\r\n\x05\x62irth\x18\x05 \x01(\t\x12\"\n\x08profiles\x18\x06 \x03(\x0b\x32\x10.v1.UserProfileE\x12 \n\x07\x64\x65vices\x18\x07 \x03(\x0b\x32\x0f.v1.UserDeviceE\x12\x11\n\tcreatedAt\x18\x08 \x01(\x03\x12\x11\n\tupdatedAt\x18\t \x01(\x03\x12\x11\n\tdeletedAt\x18\n \x01(\x03\"\xab\x01\n\x0cUserProfileE\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\r\n\x05phone\x18\x03 \x01(\t\x12\r\n\x05\x62irth\x18\x04 \x01(\t\x12\x0c\n\x04role\x18\x05 \x01(\t\x12\x0f\n\x07roleVal\x18\x06 \x01(\x03\x12\x1e\n\x06\x61vatar\x18\x07 \x01(\x0b\x32\x0e.v1.ImageInfoE\x12\x11\n\tcreatedAt\x18\x08 \x01(\x03\x12\x11\n\tupdatedAt\x18\t \x01(\x03\"\x1b\n\x0bUserDeviceE\x12\x0c\n\x04uuid\x18\x01 \x01(\tBI\n\x0e\x63om.luxrobo.v1B\tUserProtoP\x01Z\nluxrobo/v1\xa2\x02\x03TPX\xaa\x02\nLuxrobo.v1\xca\x02\nLuxrobo\\v1b\x06proto3')
+  serialized_pb=_b('\n\rv1/user.proto\x12\x02v1\x1a\rv1/base.proto\"\xf5\x01\n\x05UserE\x12\n\n\x02id\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\r\n\x05state\x18\x03 \x01(\t\x12\"\n\x08profiles\x18\x04 \x03(\x0b\x32\x10.v1.UserProfileE\x12 \n\x07\x64\x65vices\x18\x05 \x03(\x0b\x32\x0f.v1.UserDeviceE\x12\x15\n\rlastLoginDate\x18\x06 \x01(\t\x12\x15\n\remailVerified\x18\x07 \x01(\x08\x12\x15\n\rphoneVerified\x18\x08 \x01(\x08\x12\x11\n\tcreatedAt\x18\t \x01(\x03\x12\x11\n\tupdatedAt\x18\n \x01(\x03\x12\x11\n\tdeletedAt\x18\x0b \x01(\x03\"\xc0\x01\n\x0cUserProfileE\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\r\n\x05phone\x18\x03 \x01(\t\x12\r\n\x05\x62irth\x18\x04 \x01(\t\x12\x0c\n\x04role\x18\x05 \x01(\t\x12\x0f\n\x07roleVal\x18\x06 \x01(\x03\x12\x1e\n\x06\x61vatar\x18\x07 \x01(\x0b\x32\x0e.v1.ImageInfoE\x12\x13\n\x0b\x63odingTypes\x18\x08 \x03(\t\x12\x11\n\tcreatedAt\x18\t \x01(\x03\x12\x11\n\tupdatedAt\x18\n \x01(\x03\"\x1b\n\x0bUserDeviceE\x12\x0c\n\x04uuid\x18\x01 \x01(\tBI\n\x0e\x63om.luxrobo.v1B\tUserProtoP\x01Z\nluxrobo/v1\xa2\x02\x03TPX\xaa\x02\nLuxrobo.v1\xca\x02\nLuxrobo\\v1b\x06proto3')
   ,
-  dependencies=[v1_dot_base__pb2.DESCRIPTOR,v1_dot_enum__pb2.DESCRIPTOR,])
+  dependencies=[v1_dot_base__pb2.DESCRIPTOR,])
 
 
 
@@ -37,9 +36,9 @@ _USERE = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='no', full_name='v1.UserE.no', index=0,
-      number=1, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
+      name='id', full_name='v1.UserE.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -51,57 +50,64 @@ _USERE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='loginType', full_name='v1.UserE.loginType', index=2,
-      number=3, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='phone', full_name='v1.UserE.phone', index=3,
-      number=4, type=9, cpp_type=9, label=1,
+      name='state', full_name='v1.UserE.state', index=2,
+      number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='birth', full_name='v1.UserE.birth', index=4,
-      number=5, type=9, cpp_type=9, label=1,
+      name='profiles', full_name='v1.UserE.profiles', index=3,
+      number=4, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='devices', full_name='v1.UserE.devices', index=4,
+      number=5, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='lastLoginDate', full_name='v1.UserE.lastLoginDate', index=5,
+      number=6, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='profiles', full_name='v1.UserE.profiles', index=5,
-      number=6, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
+      name='emailVerified', full_name='v1.UserE.emailVerified', index=6,
+      number=7, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='devices', full_name='v1.UserE.devices', index=6,
-      number=7, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
+      name='phoneVerified', full_name='v1.UserE.phoneVerified', index=7,
+      number=8, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='createdAt', full_name='v1.UserE.createdAt', index=7,
-      number=8, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='updatedAt', full_name='v1.UserE.updatedAt', index=8,
+      name='createdAt', full_name='v1.UserE.createdAt', index=8,
       number=9, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='deletedAt', full_name='v1.UserE.deletedAt', index=9,
+      name='updatedAt', full_name='v1.UserE.updatedAt', index=9,
       number=10, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='deletedAt', full_name='v1.UserE.deletedAt', index=10,
+      number=11, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -118,8 +124,8 @@ _USERE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=52,
-  serialized_end=281,
+  serialized_start=37,
+  serialized_end=282,
 )
 
 
@@ -180,15 +186,22 @@ _USERPROFILEE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='createdAt', full_name='v1.UserProfileE.createdAt', index=7,
-      number=8, type=3, cpp_type=2, label=1,
+      name='codingTypes', full_name='v1.UserProfileE.codingTypes', index=7,
+      number=8, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='createdAt', full_name='v1.UserProfileE.createdAt', index=8,
+      number=9, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='updatedAt', full_name='v1.UserProfileE.updatedAt', index=8,
-      number=9, type=3, cpp_type=2, label=1,
+      name='updatedAt', full_name='v1.UserProfileE.updatedAt', index=9,
+      number=10, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -205,8 +218,8 @@ _USERPROFILEE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=284,
-  serialized_end=455,
+  serialized_start=285,
+  serialized_end=477,
 )
 
 
@@ -236,11 +249,10 @@ _USERDEVICEE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=457,
-  serialized_end=484,
+  serialized_start=479,
+  serialized_end=506,
 )
 
-_USERE.fields_by_name['loginType'].enum_type = v1_dot_enum__pb2._USERLOGINTYPE
 _USERE.fields_by_name['profiles'].message_type = _USERPROFILEE
 _USERE.fields_by_name['devices'].message_type = _USERDEVICEE
 _USERPROFILEE.fields_by_name['avatar'].message_type = v1_dot_base__pb2._IMAGEINFOE

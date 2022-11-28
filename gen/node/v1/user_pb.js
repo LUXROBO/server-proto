@@ -13,8 +13,6 @@ var global = Function('return this')();
 
 var v1_base_pb = require('../v1/base_pb.js');
 goog.object.extend(proto, v1_base_pb);
-var v1_enum_pb = require('../v1/enum_pb.js');
-goog.object.extend(proto, v1_enum_pb);
 goog.exportSymbol('proto.v1.UserDeviceE', null, global);
 goog.exportSymbol('proto.v1.UserE', null, global);
 goog.exportSymbol('proto.v1.UserProfileE', null, global);
@@ -50,7 +48,7 @@ if (goog.DEBUG && !COMPILED) {
  * @constructor
  */
 proto.v1.UserProfileE = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.v1.UserProfileE.repeatedFields_, null);
 };
 goog.inherits(proto.v1.UserProfileE, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -87,7 +85,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<number>}
  * @const
  */
-proto.v1.UserE.repeatedFields_ = [6,7];
+proto.v1.UserE.repeatedFields_ = [4,5];
 
 
 
@@ -120,18 +118,19 @@ proto.v1.UserE.prototype.toObject = function(opt_includeInstance) {
  */
 proto.v1.UserE.toObject = function(includeInstance, msg) {
   var f, obj = {
-    no: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    id: jspb.Message.getFieldWithDefault(msg, 1, ""),
     email: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    logintype: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    phone: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    birth: jspb.Message.getFieldWithDefault(msg, 5, ""),
+    state: jspb.Message.getFieldWithDefault(msg, 3, ""),
     profilesList: jspb.Message.toObjectList(msg.getProfilesList(),
     proto.v1.UserProfileE.toObject, includeInstance),
     devicesList: jspb.Message.toObjectList(msg.getDevicesList(),
     proto.v1.UserDeviceE.toObject, includeInstance),
-    createdat: jspb.Message.getFieldWithDefault(msg, 8, 0),
-    updatedat: jspb.Message.getFieldWithDefault(msg, 9, 0),
-    deletedat: jspb.Message.getFieldWithDefault(msg, 10, 0)
+    lastlogindate: jspb.Message.getFieldWithDefault(msg, 6, ""),
+    emailverified: jspb.Message.getBooleanFieldWithDefault(msg, 7, false),
+    phoneverified: jspb.Message.getBooleanFieldWithDefault(msg, 8, false),
+    createdat: jspb.Message.getFieldWithDefault(msg, 9, 0),
+    updatedat: jspb.Message.getFieldWithDefault(msg, 10, 0),
+    deletedat: jspb.Message.getFieldWithDefault(msg, 11, 0)
   };
 
   if (includeInstance) {
@@ -169,44 +168,48 @@ proto.v1.UserE.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {number} */ (reader.readInt64());
-      msg.setNo(value);
+      var value = /** @type {string} */ (reader.readString());
+      msg.setId(value);
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
       msg.setEmail(value);
       break;
     case 3:
-      var value = /** @type {!proto.v1.UserLoginType} */ (reader.readEnum());
-      msg.setLogintype(value);
+      var value = /** @type {string} */ (reader.readString());
+      msg.setState(value);
       break;
     case 4:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setPhone(value);
-      break;
-    case 5:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setBirth(value);
-      break;
-    case 6:
       var value = new proto.v1.UserProfileE;
       reader.readMessage(value,proto.v1.UserProfileE.deserializeBinaryFromReader);
       msg.addProfiles(value);
       break;
-    case 7:
+    case 5:
       var value = new proto.v1.UserDeviceE;
       reader.readMessage(value,proto.v1.UserDeviceE.deserializeBinaryFromReader);
       msg.addDevices(value);
       break;
+    case 6:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setLastlogindate(value);
+      break;
+    case 7:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setEmailverified(value);
+      break;
     case 8:
-      var value = /** @type {number} */ (reader.readInt64());
-      msg.setCreatedat(value);
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setPhoneverified(value);
       break;
     case 9:
       var value = /** @type {number} */ (reader.readInt64());
-      msg.setUpdatedat(value);
+      msg.setCreatedat(value);
       break;
     case 10:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setUpdatedat(value);
+      break;
+    case 11:
       var value = /** @type {number} */ (reader.readInt64());
       msg.setDeletedat(value);
       break;
@@ -239,9 +242,9 @@ proto.v1.UserE.prototype.serializeBinary = function() {
  */
 proto.v1.UserE.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getNo();
-  if (f !== 0) {
-    writer.writeInt64(
+  f = message.getId();
+  if (f.length > 0) {
+    writer.writeString(
       1,
       f
     );
@@ -253,31 +256,17 @@ proto.v1.UserE.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getLogintype();
-  if (f !== 0.0) {
-    writer.writeEnum(
+  f = message.getState();
+  if (f.length > 0) {
+    writer.writeString(
       3,
-      f
-    );
-  }
-  f = message.getPhone();
-  if (f.length > 0) {
-    writer.writeString(
-      4,
-      f
-    );
-  }
-  f = message.getBirth();
-  if (f.length > 0) {
-    writer.writeString(
-      5,
       f
     );
   }
   f = message.getProfilesList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
-      6,
+      4,
       f,
       proto.v1.UserProfileE.serializeBinaryToWriter
     );
@@ -285,29 +274,50 @@ proto.v1.UserE.serializeBinaryToWriter = function(message, writer) {
   f = message.getDevicesList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
-      7,
+      5,
       f,
       proto.v1.UserDeviceE.serializeBinaryToWriter
     );
   }
-  f = message.getCreatedat();
-  if (f !== 0) {
-    writer.writeInt64(
+  f = message.getLastlogindate();
+  if (f.length > 0) {
+    writer.writeString(
+      6,
+      f
+    );
+  }
+  f = message.getEmailverified();
+  if (f) {
+    writer.writeBool(
+      7,
+      f
+    );
+  }
+  f = message.getPhoneverified();
+  if (f) {
+    writer.writeBool(
       8,
       f
     );
   }
-  f = message.getUpdatedat();
+  f = message.getCreatedat();
   if (f !== 0) {
     writer.writeInt64(
       9,
       f
     );
   }
-  f = message.getDeletedat();
+  f = message.getUpdatedat();
   if (f !== 0) {
     writer.writeInt64(
       10,
+      f
+    );
+  }
+  f = message.getDeletedat();
+  if (f !== 0) {
+    writer.writeInt64(
+      11,
       f
     );
   }
@@ -315,17 +325,17 @@ proto.v1.UserE.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional int64 no = 1;
- * @return {number}
+ * optional string id = 1;
+ * @return {string}
  */
-proto.v1.UserE.prototype.getNo = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+proto.v1.UserE.prototype.getId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
-/** @param {number} value */
-proto.v1.UserE.prototype.setNo = function(value) {
-  jspb.Message.setProto3IntField(this, 1, value);
+/** @param {string} value */
+proto.v1.UserE.prototype.setId = function(value) {
+  jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
@@ -345,63 +355,33 @@ proto.v1.UserE.prototype.setEmail = function(value) {
 
 
 /**
- * optional UserLoginType loginType = 3;
- * @return {!proto.v1.UserLoginType}
- */
-proto.v1.UserE.prototype.getLogintype = function() {
-  return /** @type {!proto.v1.UserLoginType} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
-};
-
-
-/** @param {!proto.v1.UserLoginType} value */
-proto.v1.UserE.prototype.setLogintype = function(value) {
-  jspb.Message.setProto3EnumField(this, 3, value);
-};
-
-
-/**
- * optional string phone = 4;
+ * optional string state = 3;
  * @return {string}
  */
-proto.v1.UserE.prototype.getPhone = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+proto.v1.UserE.prototype.getState = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
 
 /** @param {string} value */
-proto.v1.UserE.prototype.setPhone = function(value) {
-  jspb.Message.setProto3StringField(this, 4, value);
+proto.v1.UserE.prototype.setState = function(value) {
+  jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
 /**
- * optional string birth = 5;
- * @return {string}
- */
-proto.v1.UserE.prototype.getBirth = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
-};
-
-
-/** @param {string} value */
-proto.v1.UserE.prototype.setBirth = function(value) {
-  jspb.Message.setProto3StringField(this, 5, value);
-};
-
-
-/**
- * repeated UserProfileE profiles = 6;
+ * repeated UserProfileE profiles = 4;
  * @return {!Array<!proto.v1.UserProfileE>}
  */
 proto.v1.UserE.prototype.getProfilesList = function() {
   return /** @type{!Array<!proto.v1.UserProfileE>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.v1.UserProfileE, 6));
+    jspb.Message.getRepeatedWrapperField(this, proto.v1.UserProfileE, 4));
 };
 
 
 /** @param {!Array<!proto.v1.UserProfileE>} value */
 proto.v1.UserE.prototype.setProfilesList = function(value) {
-  jspb.Message.setRepeatedWrapperField(this, 6, value);
+  jspb.Message.setRepeatedWrapperField(this, 4, value);
 };
 
 
@@ -411,7 +391,7 @@ proto.v1.UserE.prototype.setProfilesList = function(value) {
  * @return {!proto.v1.UserProfileE}
  */
 proto.v1.UserE.prototype.addProfiles = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 6, opt_value, proto.v1.UserProfileE, opt_index);
+  return jspb.Message.addToRepeatedWrapperField(this, 4, opt_value, proto.v1.UserProfileE, opt_index);
 };
 
 
@@ -424,18 +404,18 @@ proto.v1.UserE.prototype.clearProfilesList = function() {
 
 
 /**
- * repeated UserDeviceE devices = 7;
+ * repeated UserDeviceE devices = 5;
  * @return {!Array<!proto.v1.UserDeviceE>}
  */
 proto.v1.UserE.prototype.getDevicesList = function() {
   return /** @type{!Array<!proto.v1.UserDeviceE>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.v1.UserDeviceE, 7));
+    jspb.Message.getRepeatedWrapperField(this, proto.v1.UserDeviceE, 5));
 };
 
 
 /** @param {!Array<!proto.v1.UserDeviceE>} value */
 proto.v1.UserE.prototype.setDevicesList = function(value) {
-  jspb.Message.setRepeatedWrapperField(this, 7, value);
+  jspb.Message.setRepeatedWrapperField(this, 5, value);
 };
 
 
@@ -445,7 +425,7 @@ proto.v1.UserE.prototype.setDevicesList = function(value) {
  * @return {!proto.v1.UserDeviceE}
  */
 proto.v1.UserE.prototype.addDevices = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 7, opt_value, proto.v1.UserDeviceE, opt_index);
+  return jspb.Message.addToRepeatedWrapperField(this, 5, opt_value, proto.v1.UserDeviceE, opt_index);
 };
 
 
@@ -458,50 +438,102 @@ proto.v1.UserE.prototype.clearDevicesList = function() {
 
 
 /**
- * optional int64 createdAt = 8;
- * @return {number}
+ * optional string lastLoginDate = 6;
+ * @return {string}
  */
-proto.v1.UserE.prototype.getCreatedat = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
+proto.v1.UserE.prototype.getLastlogindate = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
 };
 
 
-/** @param {number} value */
-proto.v1.UserE.prototype.setCreatedat = function(value) {
-  jspb.Message.setProto3IntField(this, 8, value);
+/** @param {string} value */
+proto.v1.UserE.prototype.setLastlogindate = function(value) {
+  jspb.Message.setProto3StringField(this, 6, value);
 };
 
 
 /**
- * optional int64 updatedAt = 9;
+ * optional bool emailVerified = 7;
+ * @return {boolean}
+ */
+proto.v1.UserE.prototype.getEmailverified = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 7, false));
+};
+
+
+/** @param {boolean} value */
+proto.v1.UserE.prototype.setEmailverified = function(value) {
+  jspb.Message.setProto3BooleanField(this, 7, value);
+};
+
+
+/**
+ * optional bool phoneVerified = 8;
+ * @return {boolean}
+ */
+proto.v1.UserE.prototype.getPhoneverified = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 8, false));
+};
+
+
+/** @param {boolean} value */
+proto.v1.UserE.prototype.setPhoneverified = function(value) {
+  jspb.Message.setProto3BooleanField(this, 8, value);
+};
+
+
+/**
+ * optional int64 createdAt = 9;
  * @return {number}
  */
-proto.v1.UserE.prototype.getUpdatedat = function() {
+proto.v1.UserE.prototype.getCreatedat = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 9, 0));
 };
 
 
 /** @param {number} value */
-proto.v1.UserE.prototype.setUpdatedat = function(value) {
+proto.v1.UserE.prototype.setCreatedat = function(value) {
   jspb.Message.setProto3IntField(this, 9, value);
 };
 
 
 /**
- * optional int64 deletedAt = 10;
+ * optional int64 updatedAt = 10;
  * @return {number}
  */
-proto.v1.UserE.prototype.getDeletedat = function() {
+proto.v1.UserE.prototype.getUpdatedat = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 10, 0));
 };
 
 
 /** @param {number} value */
-proto.v1.UserE.prototype.setDeletedat = function(value) {
+proto.v1.UserE.prototype.setUpdatedat = function(value) {
   jspb.Message.setProto3IntField(this, 10, value);
 };
 
 
+/**
+ * optional int64 deletedAt = 11;
+ * @return {number}
+ */
+proto.v1.UserE.prototype.getDeletedat = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 11, 0));
+};
+
+
+/** @param {number} value */
+proto.v1.UserE.prototype.setDeletedat = function(value) {
+  jspb.Message.setProto3IntField(this, 11, value);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.v1.UserProfileE.repeatedFields_ = [8];
 
 
 
@@ -541,8 +573,9 @@ proto.v1.UserProfileE.toObject = function(includeInstance, msg) {
     role: jspb.Message.getFieldWithDefault(msg, 5, ""),
     roleval: jspb.Message.getFieldWithDefault(msg, 6, 0),
     avatar: (f = msg.getAvatar()) && v1_base_pb.ImageInfoE.toObject(includeInstance, f),
-    createdat: jspb.Message.getFieldWithDefault(msg, 8, 0),
-    updatedat: jspb.Message.getFieldWithDefault(msg, 9, 0)
+    codingtypesList: (f = jspb.Message.getRepeatedField(msg, 8)) == null ? undefined : f,
+    createdat: jspb.Message.getFieldWithDefault(msg, 9, 0),
+    updatedat: jspb.Message.getFieldWithDefault(msg, 10, 0)
   };
 
   if (includeInstance) {
@@ -609,10 +642,14 @@ proto.v1.UserProfileE.deserializeBinaryFromReader = function(msg, reader) {
       msg.setAvatar(value);
       break;
     case 8:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addCodingtypes(value);
+      break;
+    case 9:
       var value = /** @type {number} */ (reader.readInt64());
       msg.setCreatedat(value);
       break;
-    case 9:
+    case 10:
       var value = /** @type {number} */ (reader.readInt64());
       msg.setUpdatedat(value);
       break;
@@ -695,17 +732,24 @@ proto.v1.UserProfileE.serializeBinaryToWriter = function(message, writer) {
       v1_base_pb.ImageInfoE.serializeBinaryToWriter
     );
   }
+  f = message.getCodingtypesList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      8,
+      f
+    );
+  }
   f = message.getCreatedat();
   if (f !== 0) {
     writer.writeInt64(
-      8,
+      9,
       f
     );
   }
   f = message.getUpdatedat();
   if (f !== 0) {
     writer.writeInt64(
-      9,
+      10,
       f
     );
   }
@@ -836,32 +880,64 @@ proto.v1.UserProfileE.prototype.hasAvatar = function() {
 
 
 /**
- * optional int64 createdAt = 8;
- * @return {number}
+ * repeated string codingTypes = 8;
+ * @return {!Array<string>}
  */
-proto.v1.UserProfileE.prototype.getCreatedat = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
+proto.v1.UserProfileE.prototype.getCodingtypesList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 8));
 };
 
 
-/** @param {number} value */
-proto.v1.UserProfileE.prototype.setCreatedat = function(value) {
-  jspb.Message.setProto3IntField(this, 8, value);
+/** @param {!Array<string>} value */
+proto.v1.UserProfileE.prototype.setCodingtypesList = function(value) {
+  jspb.Message.setField(this, 8, value || []);
 };
 
 
 /**
- * optional int64 updatedAt = 9;
+ * @param {string} value
+ * @param {number=} opt_index
+ */
+proto.v1.UserProfileE.prototype.addCodingtypes = function(value, opt_index) {
+  jspb.Message.addToRepeatedField(this, 8, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ */
+proto.v1.UserProfileE.prototype.clearCodingtypesList = function() {
+  this.setCodingtypesList([]);
+};
+
+
+/**
+ * optional int64 createdAt = 9;
  * @return {number}
  */
-proto.v1.UserProfileE.prototype.getUpdatedat = function() {
+proto.v1.UserProfileE.prototype.getCreatedat = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 9, 0));
 };
 
 
 /** @param {number} value */
-proto.v1.UserProfileE.prototype.setUpdatedat = function(value) {
+proto.v1.UserProfileE.prototype.setCreatedat = function(value) {
   jspb.Message.setProto3IntField(this, 9, value);
+};
+
+
+/**
+ * optional int64 updatedAt = 10;
+ * @return {number}
+ */
+proto.v1.UserProfileE.prototype.getUpdatedat = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 10, 0));
+};
+
+
+/** @param {number} value */
+proto.v1.UserProfileE.prototype.setUpdatedat = function(value) {
+  jspb.Message.setProto3IntField(this, 10, value);
 };
 
 
