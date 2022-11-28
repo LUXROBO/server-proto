@@ -314,7 +314,7 @@ proto.v1.UserListRequest.prototype.clearUseridsList = function() {
  * @private {!Array<number>}
  * @const
  */
-proto.v1.UserProfileListRequest.repeatedFields_ = [3];
+proto.v1.UserProfileListRequest.repeatedFields_ = [5];
 
 
 
@@ -349,7 +349,9 @@ proto.v1.UserProfileListRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     first: jspb.Message.getFieldWithDefault(msg, 1, 0),
     after: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    profileidsList: (f = jspb.Message.getRepeatedField(msg, 3)) == null ? undefined : f
+    userid: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    phone: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    profileidsList: (f = jspb.Message.getRepeatedField(msg, 5)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -395,8 +397,16 @@ proto.v1.UserProfileListRequest.deserializeBinaryFromReader = function(msg, read
       msg.setAfter(value);
       break;
     case 3:
-      var value = /** @type {!Array<number>} */ (reader.readPackedInt64());
-      msg.setProfileidsList(value);
+      var value = /** @type {string} */ (reader.readString());
+      msg.setUserid(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPhone(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addProfileids(value);
       break;
     default:
       reader.skipField();
@@ -441,10 +451,24 @@ proto.v1.UserProfileListRequest.serializeBinaryToWriter = function(message, writ
       f
     );
   }
+  f = message.getUserid();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+  f = message.getPhone();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
+    );
+  }
   f = message.getProfileidsList();
   if (f.length > 0) {
-    writer.writePackedInt64(
-      3,
+    writer.writeRepeatedString(
+      5,
       f
     );
   }
@@ -482,26 +506,56 @@ proto.v1.UserProfileListRequest.prototype.setAfter = function(value) {
 
 
 /**
- * repeated int64 profileIds = 3;
- * @return {!Array<number>}
+ * optional string userId = 3;
+ * @return {string}
  */
-proto.v1.UserProfileListRequest.prototype.getProfileidsList = function() {
-  return /** @type {!Array<number>} */ (jspb.Message.getRepeatedField(this, 3));
+proto.v1.UserProfileListRequest.prototype.getUserid = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
 
-/** @param {!Array<number>} value */
-proto.v1.UserProfileListRequest.prototype.setProfileidsList = function(value) {
-  jspb.Message.setField(this, 3, value || []);
+/** @param {string} value */
+proto.v1.UserProfileListRequest.prototype.setUserid = function(value) {
+  jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
 /**
- * @param {number} value
+ * optional string phone = 4;
+ * @return {string}
+ */
+proto.v1.UserProfileListRequest.prototype.getPhone = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/** @param {string} value */
+proto.v1.UserProfileListRequest.prototype.setPhone = function(value) {
+  jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * repeated string profileIds = 5;
+ * @return {!Array<string>}
+ */
+proto.v1.UserProfileListRequest.prototype.getProfileidsList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 5));
+};
+
+
+/** @param {!Array<string>} value */
+proto.v1.UserProfileListRequest.prototype.setProfileidsList = function(value) {
+  jspb.Message.setField(this, 5, value || []);
+};
+
+
+/**
+ * @param {string} value
  * @param {number=} opt_index
  */
 proto.v1.UserProfileListRequest.prototype.addProfileids = function(value, opt_index) {
-  jspb.Message.addToRepeatedField(this, 3, value, opt_index);
+  jspb.Message.addToRepeatedField(this, 5, value, opt_index);
 };
 
 
