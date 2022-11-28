@@ -536,10 +536,13 @@ proto.v1.UserProfileE.toObject = function(includeInstance, msg) {
   var f, obj = {
     id: jspb.Message.getFieldWithDefault(msg, 1, ""),
     name: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    type: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    phone: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    birth: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    role: jspb.Message.getFieldWithDefault(msg, 5, ""),
+    roleval: jspb.Message.getFieldWithDefault(msg, 6, 0),
     avatar: (f = msg.getAvatar()) && v1_base_pb.ImageInfoE.toObject(includeInstance, f),
-    createdat: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    updatedat: jspb.Message.getFieldWithDefault(msg, 6, 0)
+    createdat: jspb.Message.getFieldWithDefault(msg, 8, 0),
+    updatedat: jspb.Message.getFieldWithDefault(msg, 9, 0)
   };
 
   if (includeInstance) {
@@ -586,18 +589,30 @@ proto.v1.UserProfileE.deserializeBinaryFromReader = function(msg, reader) {
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
-      msg.setType(value);
+      msg.setPhone(value);
       break;
     case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setBirth(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setRole(value);
+      break;
+    case 6:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setRoleval(value);
+      break;
+    case 7:
       var value = new v1_base_pb.ImageInfoE;
       reader.readMessage(value,v1_base_pb.ImageInfoE.deserializeBinaryFromReader);
       msg.setAvatar(value);
       break;
-    case 5:
+    case 8:
       var value = /** @type {number} */ (reader.readInt64());
       msg.setCreatedat(value);
       break;
-    case 6:
+    case 9:
       var value = /** @type {number} */ (reader.readInt64());
       msg.setUpdatedat(value);
       break;
@@ -644,17 +659,38 @@ proto.v1.UserProfileE.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getType();
+  f = message.getPhone();
   if (f.length > 0) {
     writer.writeString(
       3,
       f
     );
   }
+  f = message.getBirth();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
+    );
+  }
+  f = message.getRole();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
+      f
+    );
+  }
+  f = message.getRoleval();
+  if (f !== 0) {
+    writer.writeInt64(
+      6,
+      f
+    );
+  }
   f = message.getAvatar();
   if (f != null) {
     writer.writeMessage(
-      4,
+      7,
       f,
       v1_base_pb.ImageInfoE.serializeBinaryToWriter
     );
@@ -662,14 +698,14 @@ proto.v1.UserProfileE.serializeBinaryToWriter = function(message, writer) {
   f = message.getCreatedat();
   if (f !== 0) {
     writer.writeInt64(
-      5,
+      8,
       f
     );
   }
   f = message.getUpdatedat();
   if (f !== 0) {
     writer.writeInt64(
-      6,
+      9,
       f
     );
   }
@@ -707,33 +743,78 @@ proto.v1.UserProfileE.prototype.setName = function(value) {
 
 
 /**
- * optional string type = 3;
+ * optional string phone = 3;
  * @return {string}
  */
-proto.v1.UserProfileE.prototype.getType = function() {
+proto.v1.UserProfileE.prototype.getPhone = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
 
 /** @param {string} value */
-proto.v1.UserProfileE.prototype.setType = function(value) {
+proto.v1.UserProfileE.prototype.setPhone = function(value) {
   jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
 /**
- * optional ImageInfoE avatar = 4;
+ * optional string birth = 4;
+ * @return {string}
+ */
+proto.v1.UserProfileE.prototype.getBirth = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/** @param {string} value */
+proto.v1.UserProfileE.prototype.setBirth = function(value) {
+  jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * optional string role = 5;
+ * @return {string}
+ */
+proto.v1.UserProfileE.prototype.getRole = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/** @param {string} value */
+proto.v1.UserProfileE.prototype.setRole = function(value) {
+  jspb.Message.setProto3StringField(this, 5, value);
+};
+
+
+/**
+ * optional int64 roleVal = 6;
+ * @return {number}
+ */
+proto.v1.UserProfileE.prototype.getRoleval = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
+};
+
+
+/** @param {number} value */
+proto.v1.UserProfileE.prototype.setRoleval = function(value) {
+  jspb.Message.setProto3IntField(this, 6, value);
+};
+
+
+/**
+ * optional ImageInfoE avatar = 7;
  * @return {?proto.v1.ImageInfoE}
  */
 proto.v1.UserProfileE.prototype.getAvatar = function() {
   return /** @type{?proto.v1.ImageInfoE} */ (
-    jspb.Message.getWrapperField(this, v1_base_pb.ImageInfoE, 4));
+    jspb.Message.getWrapperField(this, v1_base_pb.ImageInfoE, 7));
 };
 
 
 /** @param {?proto.v1.ImageInfoE|undefined} value */
 proto.v1.UserProfileE.prototype.setAvatar = function(value) {
-  jspb.Message.setWrapperField(this, 4, value);
+  jspb.Message.setWrapperField(this, 7, value);
 };
 
 
@@ -750,37 +831,37 @@ proto.v1.UserProfileE.prototype.clearAvatar = function() {
  * @return {boolean}
  */
 proto.v1.UserProfileE.prototype.hasAvatar = function() {
-  return jspb.Message.getField(this, 4) != null;
+  return jspb.Message.getField(this, 7) != null;
 };
 
 
 /**
- * optional int64 createdAt = 5;
+ * optional int64 createdAt = 8;
  * @return {number}
  */
 proto.v1.UserProfileE.prototype.getCreatedat = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
 };
 
 
 /** @param {number} value */
 proto.v1.UserProfileE.prototype.setCreatedat = function(value) {
-  jspb.Message.setProto3IntField(this, 5, value);
+  jspb.Message.setProto3IntField(this, 8, value);
 };
 
 
 /**
- * optional int64 updatedAt = 6;
+ * optional int64 updatedAt = 9;
  * @return {number}
  */
 proto.v1.UserProfileE.prototype.getUpdatedat = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 9, 0));
 };
 
 
 /** @param {number} value */
 proto.v1.UserProfileE.prototype.setUpdatedat = function(value) {
-  jspb.Message.setProto3IntField(this, 6, value);
+  jspb.Message.setProto3IntField(this, 9, value);
 };
 
 
