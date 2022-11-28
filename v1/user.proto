@@ -43,14 +43,20 @@ message UserProfileE {
   string id = 1;
   // 이름 
   string name = 2;
-  // 타입 
-  string type = 3;
+  // phone
+  string phone = 3;
+  // 생년월일
+  string birth = 4;
+  // Role
+  string role = 5;
+  // Role Value
+  int64 roleVal = 6;
   // 아바타 
-  ImageInfoE avatar = 4;
+  ImageInfoE avatar = 7;
   // 작성 날짜 
-  int64 createdAt = 5;
-  // 수정 날짜 
-  int64 updatedAt = 6;
+  int64 createdAt = 8;
+  // 수정 날짜
+  int64 updatedAt = 9;
 }
 
 // UserDeviceE 유저 디바이스

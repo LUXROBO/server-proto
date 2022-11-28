@@ -17,6 +17,7 @@ import "v1/user.proto";
 service UserAPI {
   // UserList 유저조회
   rpc UserList(UserListRequest) returns (UserListResponse);
+  rpc UserProfiles(UserProfileListRequest) returns (UserProfileListResponse);
 
 }
 
@@ -24,11 +25,24 @@ service UserAPI {
 message UserListRequest {
   int32 first = 1;
   string after = 2;
-  repeated int64 userNos = 3;
+  repeated string userIds = 3;
+}
+
+// UserProfileListRequest 유저 프로필 리스트 요청
+message UserProfileListRequest {
+  int32 first = 1;
+  string after = 2;
+  repeated int64 profileIds = 3;
 }
 
 // UserListResponse graphql query response
 message UserListResponse {
   Error err = 1;
   repeated UserE users = 2;
+}
+
+// UserProfileListResponse 유저 프로필 리스트 응답
+message UserProfileListResponse {
+  Error err = 1;
+  repeated UserProfileE profiles = 2;
 }
