@@ -33,7 +33,10 @@ message UserListRequest {
 message UserProfileListRequest {
   int32 first = 1;
   string after = 2;
-  repeated int64 profileIds = 3;
+  string userId = 3;
+  string phone = 4;
+  repeated string profileIds = 5;
+  
 }
 
 // UserListResponse graphql query response
