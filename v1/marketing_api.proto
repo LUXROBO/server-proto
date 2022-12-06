@@ -17,8 +17,8 @@ import "v1/marketing.proto";
 service MarketingAPI {
   // MarketingPromotions 프로모션 상품연동된
   rpc MarketingPromotionMap (MarketingPromotionMapRequest) returns (MarketingPromotionMapResponse);
-  //
-  rpc MarketingCouponDownloadMap (MarketingCouponDownloadMapRequest) returns (MarketingCouponDownloadMapResponse);
+  // MarketingCouponDownloadOnly ...
+  rpc MarketingCouponDownloadOnly (MarketingCouponDownloadOnlyRequest) returns (MarketingCouponDownloadOnlyResponse);
 
 }
 
@@ -34,13 +34,14 @@ message MarketingPromotionMapResponse {
 }
 
 
-// MarketingCouponDownloadMapRequest graphql query
-message MarketingCouponDownloadMapRequest {
-  repeated string userIds = 1;
+// MarketingCouponDownloadOnlyRequest graphql query
+message MarketingCouponDownloadOnlyRequest {
+  string userId = 1;
+  string couponId = 2;
 }
 
-// MarketingCouponDownloadMapResponse graphql query response
-message MarketingCouponDownloadMapResponse {
+// MarketingCouponDownloadOnlyResponse graphql query response
+message MarketingCouponDownloadOnlyResponse {
   Error err = 1;
-  map<string, MarketingCouponDownloadE> mapCouponDownload = 2;
+  MarketingCouponDownloadE couponDownload = 2;
 }
