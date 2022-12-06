@@ -17,6 +17,8 @@ import "v1/marketing.proto";
 service MarketingAPI {
   // MarketingPromotions 프로모션 상품연동된
   rpc MarketingPromotionMap (MarketingPromotionMapRequest) returns (MarketingPromotionMapResponse);
+  //
+  rpc MarketingCouponDownloadMap (MarketingCouponDownloadMapRequest) returns (MarketingCouponDownloadMapResponse);
 
 }
 
@@ -29,4 +31,16 @@ message MarketingPromotionMapRequest {
 message MarketingPromotionMapResponse {
   Error err = 1;
   map<string, MarketingPromotionE> mapPromotion = 2;
+}
+
+
+// MarketingCouponDownloadMapRequest graphql query
+message MarketingCouponDownloadMapRequest {
+  repeated string userIds = 1;
+}
+
+// MarketingCouponDownloadMapResponse graphql query response
+message MarketingCouponDownloadMapResponse {
+  Error err = 1;
+  map<string, MarketingCouponDownloadE> mapCouponDownload = 2;
 }
