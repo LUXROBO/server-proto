@@ -29,3 +29,20 @@ message MarketingProductE {
   MoneyE originPrice = 3;
   MoneyE promotionPrice = 4;
 }
+
+
+// MarketingCouponDownloadE 쿠폰 다운로드 정보
+message MarketingCouponDownloadE {
+  string id = 1;
+  string couponId = 2;
+  string name = 3;
+  string status = 4;
+  DiscountE discount = 5;
+  string scopeType = 6;
+  MoneyE maxDiscountPrice = 7;
+  MoneyE minOrderPrice = 8;
+  int32 availableDay = 9;
+  string startTime = 10;
+  string endTime = 11;
+  string createdAt = 12;
+}

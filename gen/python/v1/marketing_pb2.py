@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='v1',
   syntax='proto3',
   serialized_options=_b('\n\016com.luxrobo.v1B\021MarketingApiProtoP\001Z\nluxrobo/v1\242\002\003TPX\252\002\nLuxrobo.v1\312\002\nLuxrobo\\v1'),
-  serialized_pb=_b('\n\x12v1/marketing.proto\x12\x02v1\x1a\rv1/base.proto\"\x9c\x01\n\x13MarketingPromotionE\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x1f\n\x08\x64iscount\x18\x04 \x01(\x0b\x32\r.v1.DiscountE\x12&\n\x07product\x18\x02 \x01(\x0b\x32\x15.v1.MarketingProductE\x12\x11\n\tstartTime\x18\x05 \x01(\t\x12\x0f\n\x07\x65ndTime\x18\x06 \x01(\t\"r\n\x11MarketingProductE\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x1f\n\x0boriginPrice\x18\x03 \x01(\x0b\x32\n.v1.MoneyE\x12\"\n\x0epromotionPrice\x18\x04 \x01(\x0b\x32\n.v1.MoneyEBQ\n\x0e\x63om.luxrobo.v1B\x11MarketingApiProtoP\x01Z\nluxrobo/v1\xa2\x02\x03TPX\xaa\x02\nLuxrobo.v1\xca\x02\nLuxrobo\\v1b\x06proto3')
+  serialized_pb=_b('\n\x12v1/marketing.proto\x12\x02v1\x1a\rv1/base.proto\"\x9c\x01\n\x13MarketingPromotionE\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x1f\n\x08\x64iscount\x18\x04 \x01(\x0b\x32\r.v1.DiscountE\x12&\n\x07product\x18\x02 \x01(\x0b\x32\x15.v1.MarketingProductE\x12\x11\n\tstartTime\x18\x05 \x01(\t\x12\x0f\n\x07\x65ndTime\x18\x06 \x01(\t\"r\n\x11MarketingProductE\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x1f\n\x0boriginPrice\x18\x03 \x01(\x0b\x32\n.v1.MoneyE\x12\"\n\x0epromotionPrice\x18\x04 \x01(\x0b\x32\n.v1.MoneyE\"\xa0\x02\n\x18MarketingCouponDownloadE\x12\n\n\x02id\x18\x01 \x01(\t\x12\x10\n\x08\x63ouponId\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x0e\n\x06status\x18\x04 \x01(\t\x12\x1f\n\x08\x64iscount\x18\x05 \x01(\x0b\x32\r.v1.DiscountE\x12\x11\n\tscopeType\x18\x06 \x01(\t\x12$\n\x10maxDiscountPrice\x18\x07 \x01(\x0b\x32\n.v1.MoneyE\x12!\n\rminOrderPrice\x18\x08 \x01(\x0b\x32\n.v1.MoneyE\x12\x14\n\x0c\x61vailableDay\x18\t \x01(\x05\x12\x11\n\tstartTime\x18\n \x01(\t\x12\x0f\n\x07\x65ndTime\x18\x0b \x01(\t\x12\x11\n\tcreatedAt\x18\x0c \x01(\tBQ\n\x0e\x63om.luxrobo.v1B\x11MarketingApiProtoP\x01Z\nluxrobo/v1\xa2\x02\x03TPX\xaa\x02\nLuxrobo.v1\xca\x02\nLuxrobo\\v1b\x06proto3')
   ,
   dependencies=[v1_dot_base__pb2.DESCRIPTOR,])
 
@@ -145,12 +145,124 @@ _MARKETINGPRODUCTE = _descriptor.Descriptor(
   serialized_end=314,
 )
 
+
+_MARKETINGCOUPONDOWNLOADE = _descriptor.Descriptor(
+  name='MarketingCouponDownloadE',
+  full_name='v1.MarketingCouponDownloadE',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='v1.MarketingCouponDownloadE.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='couponId', full_name='v1.MarketingCouponDownloadE.couponId', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='name', full_name='v1.MarketingCouponDownloadE.name', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='status', full_name='v1.MarketingCouponDownloadE.status', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='discount', full_name='v1.MarketingCouponDownloadE.discount', index=4,
+      number=5, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='scopeType', full_name='v1.MarketingCouponDownloadE.scopeType', index=5,
+      number=6, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='maxDiscountPrice', full_name='v1.MarketingCouponDownloadE.maxDiscountPrice', index=6,
+      number=7, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='minOrderPrice', full_name='v1.MarketingCouponDownloadE.minOrderPrice', index=7,
+      number=8, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='availableDay', full_name='v1.MarketingCouponDownloadE.availableDay', index=8,
+      number=9, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='startTime', full_name='v1.MarketingCouponDownloadE.startTime', index=9,
+      number=10, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='endTime', full_name='v1.MarketingCouponDownloadE.endTime', index=10,
+      number=11, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='createdAt', full_name='v1.MarketingCouponDownloadE.createdAt', index=11,
+      number=12, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=317,
+  serialized_end=605,
+)
+
 _MARKETINGPROMOTIONE.fields_by_name['discount'].message_type = v1_dot_base__pb2._DISCOUNTE
 _MARKETINGPROMOTIONE.fields_by_name['product'].message_type = _MARKETINGPRODUCTE
 _MARKETINGPRODUCTE.fields_by_name['originPrice'].message_type = v1_dot_base__pb2._MONEYE
 _MARKETINGPRODUCTE.fields_by_name['promotionPrice'].message_type = v1_dot_base__pb2._MONEYE
+_MARKETINGCOUPONDOWNLOADE.fields_by_name['discount'].message_type = v1_dot_base__pb2._DISCOUNTE
+_MARKETINGCOUPONDOWNLOADE.fields_by_name['maxDiscountPrice'].message_type = v1_dot_base__pb2._MONEYE
+_MARKETINGCOUPONDOWNLOADE.fields_by_name['minOrderPrice'].message_type = v1_dot_base__pb2._MONEYE
 DESCRIPTOR.message_types_by_name['MarketingPromotionE'] = _MARKETINGPROMOTIONE
 DESCRIPTOR.message_types_by_name['MarketingProductE'] = _MARKETINGPRODUCTE
+DESCRIPTOR.message_types_by_name['MarketingCouponDownloadE'] = _MARKETINGCOUPONDOWNLOADE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 MarketingPromotionE = _reflection.GeneratedProtocolMessageType('MarketingPromotionE', (_message.Message,), {
@@ -166,6 +278,13 @@ MarketingProductE = _reflection.GeneratedProtocolMessageType('MarketingProductE'
   # @@protoc_insertion_point(class_scope:v1.MarketingProductE)
   })
 _sym_db.RegisterMessage(MarketingProductE)
+
+MarketingCouponDownloadE = _reflection.GeneratedProtocolMessageType('MarketingCouponDownloadE', (_message.Message,), {
+  'DESCRIPTOR' : _MARKETINGCOUPONDOWNLOADE,
+  '__module__' : 'v1.marketing_pb2'
+  # @@protoc_insertion_point(class_scope:v1.MarketingCouponDownloadE)
+  })
+_sym_db.RegisterMessage(MarketingCouponDownloadE)
 
 
 DESCRIPTOR._options = None
