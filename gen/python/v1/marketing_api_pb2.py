@@ -22,7 +22,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='v1',
   syntax='proto3',
   serialized_options=_b('\n\016com.luxrobo.v1B\021MarketingApiProtoP\001Z\nluxrobo/v1\242\002\003TPX\252\002\nLuxrobo.v1\312\002\nLuxrobo\\v1'),
-  serialized_pb=_b('\n\x16v1/marketing_api.proto\x12\x02v1\x1a\rv1/base.proto\x1a\x12v1/marketing.proto\"2\n\x1cMarketingPromotionMapRequest\x12\x12\n\nproductIds\x18\x01 \x03(\t\"\xd0\x01\n\x1dMarketingPromotionMapResponse\x12\x16\n\x03\x65rr\x18\x01 \x01(\x0b\x32\t.v1.Error\x12I\n\x0cmapPromotion\x18\x02 \x03(\x0b\x32\x33.v1.MarketingPromotionMapResponse.MapPromotionEntry\x1aL\n\x11MapPromotionEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12&\n\x05value\x18\x02 \x01(\x0b\x32\x17.v1.MarketingPromotionE:\x02\x38\x01\"4\n!MarketingCouponDownloadMapRequest\x12\x0f\n\x07userIds\x18\x01 \x03(\t\"\xee\x01\n\"MarketingCouponDownloadMapResponse\x12\x16\n\x03\x65rr\x18\x01 \x01(\x0b\x32\t.v1.Error\x12X\n\x11mapCouponDownload\x18\x02 \x03(\x0b\x32=.v1.MarketingCouponDownloadMapResponse.MapCouponDownloadEntry\x1aV\n\x16MapCouponDownloadEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12+\n\x05value\x18\x02 \x01(\x0b\x32\x1c.v1.MarketingCouponDownloadE:\x02\x38\x01\x32\xd9\x01\n\x0cMarketingAPI\x12\\\n\x15MarketingPromotionMap\x12 .v1.MarketingPromotionMapRequest\x1a!.v1.MarketingPromotionMapResponse\x12k\n\x1aMarketingCouponDownloadMap\x12%.v1.MarketingCouponDownloadMapRequest\x1a&.v1.MarketingCouponDownloadMapResponseBQ\n\x0e\x63om.luxrobo.v1B\x11MarketingApiProtoP\x01Z\nluxrobo/v1\xa2\x02\x03TPX\xaa\x02\nLuxrobo.v1\xca\x02\nLuxrobo\\v1b\x06proto3')
+  serialized_pb=_b('\n\x16v1/marketing_api.proto\x12\x02v1\x1a\rv1/base.proto\x1a\x12v1/marketing.proto\"2\n\x1cMarketingPromotionMapRequest\x12\x12\n\nproductIds\x18\x01 \x03(\t\"\xd0\x01\n\x1dMarketingPromotionMapResponse\x12\x16\n\x03\x65rr\x18\x01 \x01(\x0b\x32\t.v1.Error\x12I\n\x0cmapPromotion\x18\x02 \x03(\x0b\x32\x33.v1.MarketingPromotionMapResponse.MapPromotionEntry\x1aL\n\x11MapPromotionEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12&\n\x05value\x18\x02 \x01(\x0b\x32\x17.v1.MarketingPromotionE:\x02\x38\x01\"F\n\"MarketingCouponDownloadOnlyRequest\x12\x0e\n\x06userId\x18\x01 \x01(\t\x12\x10\n\x08\x63ouponId\x18\x02 \x01(\t\"s\n#MarketingCouponDownloadOnlyResponse\x12\x16\n\x03\x65rr\x18\x01 \x01(\x0b\x32\t.v1.Error\x12\x34\n\x0e\x63ouponDownload\x18\x02 \x01(\x0b\x32\x1c.v1.MarketingCouponDownloadE2\xdc\x01\n\x0cMarketingAPI\x12\\\n\x15MarketingPromotionMap\x12 .v1.MarketingPromotionMapRequest\x1a!.v1.MarketingPromotionMapResponse\x12n\n\x1bMarketingCouponDownloadOnly\x12&.v1.MarketingCouponDownloadOnlyRequest\x1a\'.v1.MarketingCouponDownloadOnlyResponseBQ\n\x0e\x63om.luxrobo.v1B\x11MarketingApiProtoP\x01Z\nluxrobo/v1\xa2\x02\x03TPX\xaa\x02\nLuxrobo.v1\xca\x02\nLuxrobo\\v1b\x06proto3')
   ,
   dependencies=[v1_dot_base__pb2.DESCRIPTOR,v1_dot_marketing__pb2.DESCRIPTOR,])
 
@@ -135,17 +135,24 @@ _MARKETINGPROMOTIONMAPRESPONSE = _descriptor.Descriptor(
 )
 
 
-_MARKETINGCOUPONDOWNLOADMAPREQUEST = _descriptor.Descriptor(
-  name='MarketingCouponDownloadMapRequest',
-  full_name='v1.MarketingCouponDownloadMapRequest',
+_MARKETINGCOUPONDOWNLOADONLYREQUEST = _descriptor.Descriptor(
+  name='MarketingCouponDownloadOnlyRequest',
+  full_name='v1.MarketingCouponDownloadOnlyRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='userIds', full_name='v1.MarketingCouponDownloadMapRequest.userIds', index=0,
-      number=1, type=9, cpp_type=9, label=3,
-      has_default_value=False, default_value=[],
+      name='userId', full_name='v1.MarketingCouponDownloadOnlyRequest.userId', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='couponId', full_name='v1.MarketingCouponDownloadOnlyRequest.couponId', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -162,26 +169,26 @@ _MARKETINGCOUPONDOWNLOADMAPREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=328,
-  serialized_end=380,
+  serialized_end=398,
 )
 
 
-_MARKETINGCOUPONDOWNLOADMAPRESPONSE_MAPCOUPONDOWNLOADENTRY = _descriptor.Descriptor(
-  name='MapCouponDownloadEntry',
-  full_name='v1.MarketingCouponDownloadMapResponse.MapCouponDownloadEntry',
+_MARKETINGCOUPONDOWNLOADONLYRESPONSE = _descriptor.Descriptor(
+  name='MarketingCouponDownloadOnlyResponse',
+  full_name='v1.MarketingCouponDownloadOnlyResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='key', full_name='v1.MarketingCouponDownloadMapResponse.MapCouponDownloadEntry.key', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
+      name='err', full_name='v1.MarketingCouponDownloadOnlyResponse.err', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='value', full_name='v1.MarketingCouponDownloadMapResponse.MapCouponDownloadEntry.value', index=1,
+      name='couponDownload', full_name='v1.MarketingCouponDownloadOnlyResponse.couponDownload', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -193,65 +200,26 @@ _MARKETINGCOUPONDOWNLOADMAPRESPONSE_MAPCOUPONDOWNLOADENTRY = _descriptor.Descrip
   nested_types=[],
   enum_types=[
   ],
-  serialized_options=_b('8\001'),
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=535,
-  serialized_end=621,
-)
-
-_MARKETINGCOUPONDOWNLOADMAPRESPONSE = _descriptor.Descriptor(
-  name='MarketingCouponDownloadMapResponse',
-  full_name='v1.MarketingCouponDownloadMapResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='err', full_name='v1.MarketingCouponDownloadMapResponse.err', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='mapCouponDownload', full_name='v1.MarketingCouponDownloadMapResponse.mapCouponDownload', index=1,
-      number=2, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[_MARKETINGCOUPONDOWNLOADMAPRESPONSE_MAPCOUPONDOWNLOADENTRY, ],
-  enum_types=[
-  ],
   serialized_options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=383,
-  serialized_end=621,
+  serialized_start=400,
+  serialized_end=515,
 )
 
 _MARKETINGPROMOTIONMAPRESPONSE_MAPPROMOTIONENTRY.fields_by_name['value'].message_type = v1_dot_marketing__pb2._MARKETINGPROMOTIONE
 _MARKETINGPROMOTIONMAPRESPONSE_MAPPROMOTIONENTRY.containing_type = _MARKETINGPROMOTIONMAPRESPONSE
 _MARKETINGPROMOTIONMAPRESPONSE.fields_by_name['err'].message_type = v1_dot_base__pb2._ERROR
 _MARKETINGPROMOTIONMAPRESPONSE.fields_by_name['mapPromotion'].message_type = _MARKETINGPROMOTIONMAPRESPONSE_MAPPROMOTIONENTRY
-_MARKETINGCOUPONDOWNLOADMAPRESPONSE_MAPCOUPONDOWNLOADENTRY.fields_by_name['value'].message_type = v1_dot_marketing__pb2._MARKETINGCOUPONDOWNLOADE
-_MARKETINGCOUPONDOWNLOADMAPRESPONSE_MAPCOUPONDOWNLOADENTRY.containing_type = _MARKETINGCOUPONDOWNLOADMAPRESPONSE
-_MARKETINGCOUPONDOWNLOADMAPRESPONSE.fields_by_name['err'].message_type = v1_dot_base__pb2._ERROR
-_MARKETINGCOUPONDOWNLOADMAPRESPONSE.fields_by_name['mapCouponDownload'].message_type = _MARKETINGCOUPONDOWNLOADMAPRESPONSE_MAPCOUPONDOWNLOADENTRY
+_MARKETINGCOUPONDOWNLOADONLYRESPONSE.fields_by_name['err'].message_type = v1_dot_base__pb2._ERROR
+_MARKETINGCOUPONDOWNLOADONLYRESPONSE.fields_by_name['couponDownload'].message_type = v1_dot_marketing__pb2._MARKETINGCOUPONDOWNLOADE
 DESCRIPTOR.message_types_by_name['MarketingPromotionMapRequest'] = _MARKETINGPROMOTIONMAPREQUEST
 DESCRIPTOR.message_types_by_name['MarketingPromotionMapResponse'] = _MARKETINGPROMOTIONMAPRESPONSE
-DESCRIPTOR.message_types_by_name['MarketingCouponDownloadMapRequest'] = _MARKETINGCOUPONDOWNLOADMAPREQUEST
-DESCRIPTOR.message_types_by_name['MarketingCouponDownloadMapResponse'] = _MARKETINGCOUPONDOWNLOADMAPRESPONSE
+DESCRIPTOR.message_types_by_name['MarketingCouponDownloadOnlyRequest'] = _MARKETINGCOUPONDOWNLOADONLYREQUEST
+DESCRIPTOR.message_types_by_name['MarketingCouponDownloadOnlyResponse'] = _MARKETINGCOUPONDOWNLOADONLYRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 MarketingPromotionMapRequest = _reflection.GeneratedProtocolMessageType('MarketingPromotionMapRequest', (_message.Message,), {
@@ -276,32 +244,23 @@ MarketingPromotionMapResponse = _reflection.GeneratedProtocolMessageType('Market
 _sym_db.RegisterMessage(MarketingPromotionMapResponse)
 _sym_db.RegisterMessage(MarketingPromotionMapResponse.MapPromotionEntry)
 
-MarketingCouponDownloadMapRequest = _reflection.GeneratedProtocolMessageType('MarketingCouponDownloadMapRequest', (_message.Message,), {
-  'DESCRIPTOR' : _MARKETINGCOUPONDOWNLOADMAPREQUEST,
+MarketingCouponDownloadOnlyRequest = _reflection.GeneratedProtocolMessageType('MarketingCouponDownloadOnlyRequest', (_message.Message,), {
+  'DESCRIPTOR' : _MARKETINGCOUPONDOWNLOADONLYREQUEST,
   '__module__' : 'v1.marketing_api_pb2'
-  # @@protoc_insertion_point(class_scope:v1.MarketingCouponDownloadMapRequest)
+  # @@protoc_insertion_point(class_scope:v1.MarketingCouponDownloadOnlyRequest)
   })
-_sym_db.RegisterMessage(MarketingCouponDownloadMapRequest)
+_sym_db.RegisterMessage(MarketingCouponDownloadOnlyRequest)
 
-MarketingCouponDownloadMapResponse = _reflection.GeneratedProtocolMessageType('MarketingCouponDownloadMapResponse', (_message.Message,), {
-
-  'MapCouponDownloadEntry' : _reflection.GeneratedProtocolMessageType('MapCouponDownloadEntry', (_message.Message,), {
-    'DESCRIPTOR' : _MARKETINGCOUPONDOWNLOADMAPRESPONSE_MAPCOUPONDOWNLOADENTRY,
-    '__module__' : 'v1.marketing_api_pb2'
-    # @@protoc_insertion_point(class_scope:v1.MarketingCouponDownloadMapResponse.MapCouponDownloadEntry)
-    })
-  ,
-  'DESCRIPTOR' : _MARKETINGCOUPONDOWNLOADMAPRESPONSE,
+MarketingCouponDownloadOnlyResponse = _reflection.GeneratedProtocolMessageType('MarketingCouponDownloadOnlyResponse', (_message.Message,), {
+  'DESCRIPTOR' : _MARKETINGCOUPONDOWNLOADONLYRESPONSE,
   '__module__' : 'v1.marketing_api_pb2'
-  # @@protoc_insertion_point(class_scope:v1.MarketingCouponDownloadMapResponse)
+  # @@protoc_insertion_point(class_scope:v1.MarketingCouponDownloadOnlyResponse)
   })
-_sym_db.RegisterMessage(MarketingCouponDownloadMapResponse)
-_sym_db.RegisterMessage(MarketingCouponDownloadMapResponse.MapCouponDownloadEntry)
+_sym_db.RegisterMessage(MarketingCouponDownloadOnlyResponse)
 
 
 DESCRIPTOR._options = None
 _MARKETINGPROMOTIONMAPRESPONSE_MAPPROMOTIONENTRY._options = None
-_MARKETINGCOUPONDOWNLOADMAPRESPONSE_MAPCOUPONDOWNLOADENTRY._options = None
 
 _MARKETINGAPI = _descriptor.ServiceDescriptor(
   name='MarketingAPI',
@@ -309,8 +268,8 @@ _MARKETINGAPI = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=624,
-  serialized_end=841,
+  serialized_start=518,
+  serialized_end=738,
   methods=[
   _descriptor.MethodDescriptor(
     name='MarketingPromotionMap',
@@ -322,12 +281,12 @@ _MARKETINGAPI = _descriptor.ServiceDescriptor(
     serialized_options=None,
   ),
   _descriptor.MethodDescriptor(
-    name='MarketingCouponDownloadMap',
-    full_name='v1.MarketingAPI.MarketingCouponDownloadMap',
+    name='MarketingCouponDownloadOnly',
+    full_name='v1.MarketingAPI.MarketingCouponDownloadOnly',
     index=1,
     containing_service=None,
-    input_type=_MARKETINGCOUPONDOWNLOADMAPREQUEST,
-    output_type=_MARKETINGCOUPONDOWNLOADMAPRESPONSE,
+    input_type=_MARKETINGCOUPONDOWNLOADONLYREQUEST,
+    output_type=_MARKETINGCOUPONDOWNLOADONLYRESPONSE,
     serialized_options=None,
   ),
 ])
