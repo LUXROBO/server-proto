@@ -26,7 +26,7 @@ message OrderCourseCanceledRequest {
 // MarketingPromotionMapResponse graphql query response
 message OrderCourseCanceledResponse {
   Error err = 1;
-  repeated OrderRefundE orderRefund = 2;
+  repeated OrderRefundE orderRefunds = 2;
 }
 
 // OrderRefundE 환불정보

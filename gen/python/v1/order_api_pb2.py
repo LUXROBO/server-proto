@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='v1',
   syntax='proto3',
   serialized_options=_b('\n\016com.luxrobo.v1B\rOrderApiProtoP\001Z\nluxrobo/v1\242\002\003TPX\252\002\nLuxrobo.v1\312\002\nLuxrobo\\v1'),
-  serialized_pb=_b('\n\x12v1/order_api.proto\x12\x02v1\x1a\rv1/base.proto\"5\n\x1aOrderCourseCanceledRequest\x12\x17\n\x0fscheduleGroupId\x18\x01 \x01(\t\"\\\n\x1bOrderCourseCanceledResponse\x12\x16\n\x03\x65rr\x18\x01 \x01(\x0b\x32\t.v1.Error\x12%\n\x0borderRefund\x18\x02 \x03(\x0b\x32\x10.v1.OrderRefundE\"W\n\x0cOrderRefundE\x12\x11\n\torderCode\x18\x01 \x01(\t\x12\x0e\n\x06userId\x18\x02 \x01(\t\x12$\n\x10totalRefundPrice\x18\x03 \x01(\x0b\x32\n.v1.MoneyE2b\n\x08OrderAPI\x12V\n\x13OrderCourseCanceled\x12\x1e.v1.OrderCourseCanceledRequest\x1a\x1f.v1.OrderCourseCanceledResponseBM\n\x0e\x63om.luxrobo.v1B\rOrderApiProtoP\x01Z\nluxrobo/v1\xa2\x02\x03TPX\xaa\x02\nLuxrobo.v1\xca\x02\nLuxrobo\\v1b\x06proto3')
+  serialized_pb=_b('\n\x12v1/order_api.proto\x12\x02v1\x1a\rv1/base.proto\"5\n\x1aOrderCourseCanceledRequest\x12\x17\n\x0fscheduleGroupId\x18\x01 \x01(\t\"]\n\x1bOrderCourseCanceledResponse\x12\x16\n\x03\x65rr\x18\x01 \x01(\x0b\x32\t.v1.Error\x12&\n\x0corderRefunds\x18\x02 \x03(\x0b\x32\x10.v1.OrderRefundE\"W\n\x0cOrderRefundE\x12\x11\n\torderCode\x18\x01 \x01(\t\x12\x0e\n\x06userId\x18\x02 \x01(\t\x12$\n\x10totalRefundPrice\x18\x03 \x01(\x0b\x32\n.v1.MoneyE2b\n\x08OrderAPI\x12V\n\x13OrderCourseCanceled\x12\x1e.v1.OrderCourseCanceledRequest\x1a\x1f.v1.OrderCourseCanceledResponseBM\n\x0e\x63om.luxrobo.v1B\rOrderApiProtoP\x01Z\nluxrobo/v1\xa2\x02\x03TPX\xaa\x02\nLuxrobo.v1\xca\x02\nLuxrobo\\v1b\x06proto3')
   ,
   dependencies=[v1_dot_base__pb2.DESCRIPTOR,])
 
@@ -74,7 +74,7 @@ _ORDERCOURSECANCELEDRESPONSE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='orderRefund', full_name='v1.OrderCourseCanceledResponse.orderRefund', index=1,
+      name='orderRefunds', full_name='v1.OrderCourseCanceledResponse.orderRefunds', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -93,7 +93,7 @@ _ORDERCOURSECANCELEDRESPONSE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=96,
-  serialized_end=188,
+  serialized_end=189,
 )
 
 
@@ -137,12 +137,12 @@ _ORDERREFUNDE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=190,
-  serialized_end=277,
+  serialized_start=191,
+  serialized_end=278,
 )
 
 _ORDERCOURSECANCELEDRESPONSE.fields_by_name['err'].message_type = v1_dot_base__pb2._ERROR
-_ORDERCOURSECANCELEDRESPONSE.fields_by_name['orderRefund'].message_type = _ORDERREFUNDE
+_ORDERCOURSECANCELEDRESPONSE.fields_by_name['orderRefunds'].message_type = _ORDERREFUNDE
 _ORDERREFUNDE.fields_by_name['totalRefundPrice'].message_type = v1_dot_base__pb2._MONEYE
 DESCRIPTOR.message_types_by_name['OrderCourseCanceledRequest'] = _ORDERCOURSECANCELEDREQUEST
 DESCRIPTOR.message_types_by_name['OrderCourseCanceledResponse'] = _ORDERCOURSECANCELEDRESPONSE
@@ -179,8 +179,8 @@ _ORDERAPI = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=279,
-  serialized_end=377,
+  serialized_start=280,
+  serialized_end=378,
   methods=[
   _descriptor.MethodDescriptor(
     name='OrderCourseCanceled',
