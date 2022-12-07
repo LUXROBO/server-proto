@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package v1;
+
+option csharp_namespace = "Luxrobo.v1";
+option go_package = "luxrobo/v1";
+option java_multiple_files = true;
+option java_outer_classname = "OrderApiProto";
+option java_package = "com.luxrobo.v1";
+option objc_class_prefix = "TPX";
+option php_namespace = "Luxrobo\\v1";
+
+import "v1/base.proto";
+
+// OrderAPI service.
+service OrderAPI {
+  // OrderCourseCanceled 스케줄 폐강 주문 환불정보  리턴
+  rpc OrderCourseCanceled (OrderCourseCanceledRequest) returns (OrderCourseCanceledResponse);
+}
+
+// MarketingPromotionMapRequest graphql query
+message OrderCourseCanceledRequest {
+    string scheduleGroupId  = 1;
+}
+
+// MarketingPromotionMapResponse graphql query response
+message OrderCourseCanceledResponse {
+  Error err = 1;
+  repeated OrderRefundE orderRefund = 2;
+}
+
+// OrderRefundE 환불정보
+message OrderRefundE {
+    string orderCode = 1;
+    string userId = 2;
+    MoneyE totalRefundPrice = 3;
+}
