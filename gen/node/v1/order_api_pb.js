@@ -246,7 +246,7 @@ proto.v1.OrderCourseCanceledResponse.prototype.toObject = function(opt_includeIn
 proto.v1.OrderCourseCanceledResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     err: (f = msg.getErr()) && v1_base_pb.Error.toObject(includeInstance, f),
-    orderrefundList: jspb.Message.toObjectList(msg.getOrderrefundList(),
+    orderrefundsList: jspb.Message.toObjectList(msg.getOrderrefundsList(),
     proto.v1.OrderRefundE.toObject, includeInstance)
   };
 
@@ -292,7 +292,7 @@ proto.v1.OrderCourseCanceledResponse.deserializeBinaryFromReader = function(msg,
     case 2:
       var value = new proto.v1.OrderRefundE;
       reader.readMessage(value,proto.v1.OrderRefundE.deserializeBinaryFromReader);
-      msg.addOrderrefund(value);
+      msg.addOrderrefunds(value);
       break;
     default:
       reader.skipField();
@@ -331,7 +331,7 @@ proto.v1.OrderCourseCanceledResponse.serializeBinaryToWriter = function(message,
       v1_base_pb.Error.serializeBinaryToWriter
     );
   }
-  f = message.getOrderrefundList();
+  f = message.getOrderrefundsList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
       2,
@@ -376,17 +376,17 @@ proto.v1.OrderCourseCanceledResponse.prototype.hasErr = function() {
 
 
 /**
- * repeated OrderRefundE orderRefund = 2;
+ * repeated OrderRefundE orderRefunds = 2;
  * @return {!Array<!proto.v1.OrderRefundE>}
  */
-proto.v1.OrderCourseCanceledResponse.prototype.getOrderrefundList = function() {
+proto.v1.OrderCourseCanceledResponse.prototype.getOrderrefundsList = function() {
   return /** @type{!Array<!proto.v1.OrderRefundE>} */ (
     jspb.Message.getRepeatedWrapperField(this, proto.v1.OrderRefundE, 2));
 };
 
 
 /** @param {!Array<!proto.v1.OrderRefundE>} value */
-proto.v1.OrderCourseCanceledResponse.prototype.setOrderrefundList = function(value) {
+proto.v1.OrderCourseCanceledResponse.prototype.setOrderrefundsList = function(value) {
   jspb.Message.setRepeatedWrapperField(this, 2, value);
 };
 
@@ -396,7 +396,7 @@ proto.v1.OrderCourseCanceledResponse.prototype.setOrderrefundList = function(val
  * @param {number=} opt_index
  * @return {!proto.v1.OrderRefundE}
  */
-proto.v1.OrderCourseCanceledResponse.prototype.addOrderrefund = function(opt_value, opt_index) {
+proto.v1.OrderCourseCanceledResponse.prototype.addOrderrefunds = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.v1.OrderRefundE, opt_index);
 };
 
@@ -404,8 +404,8 @@ proto.v1.OrderCourseCanceledResponse.prototype.addOrderrefund = function(opt_val
 /**
  * Clears the list making it empty but non-null.
  */
-proto.v1.OrderCourseCanceledResponse.prototype.clearOrderrefundList = function() {
-  this.setOrderrefundList([]);
+proto.v1.OrderCourseCanceledResponse.prototype.clearOrderrefundsList = function() {
+  this.setOrderrefundsList([]);
 };
 
 
