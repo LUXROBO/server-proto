@@ -443,6 +443,7 @@ proto.v1.OrderRefundE.toObject = function(includeInstance, msg) {
   var f, obj = {
     ordercode: jspb.Message.getFieldWithDefault(msg, 1, ""),
     userid: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    profileid: jspb.Message.getFieldWithDefault(msg, 3, ""),
     totalrefundprice: (f = msg.getTotalrefundprice()) && v1_base_pb.MoneyE.toObject(includeInstance, f)
   };
 
@@ -489,6 +490,10 @@ proto.v1.OrderRefundE.deserializeBinaryFromReader = function(msg, reader) {
       msg.setUserid(value);
       break;
     case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setProfileid(value);
+      break;
+    case 4:
       var value = new v1_base_pb.MoneyE;
       reader.readMessage(value,v1_base_pb.MoneyE.deserializeBinaryFromReader);
       msg.setTotalrefundprice(value);
@@ -536,10 +541,17 @@ proto.v1.OrderRefundE.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = message.getProfileid();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
   f = message.getTotalrefundprice();
   if (f != null) {
     writer.writeMessage(
-      3,
+      4,
       f,
       v1_base_pb.MoneyE.serializeBinaryToWriter
     );
@@ -578,18 +590,33 @@ proto.v1.OrderRefundE.prototype.setUserid = function(value) {
 
 
 /**
- * optional MoneyE totalRefundPrice = 3;
+ * optional string profileId = 3;
+ * @return {string}
+ */
+proto.v1.OrderRefundE.prototype.getProfileid = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/** @param {string} value */
+proto.v1.OrderRefundE.prototype.setProfileid = function(value) {
+  jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional MoneyE totalRefundPrice = 4;
  * @return {?proto.v1.MoneyE}
  */
 proto.v1.OrderRefundE.prototype.getTotalrefundprice = function() {
   return /** @type{?proto.v1.MoneyE} */ (
-    jspb.Message.getWrapperField(this, v1_base_pb.MoneyE, 3));
+    jspb.Message.getWrapperField(this, v1_base_pb.MoneyE, 4));
 };
 
 
 /** @param {?proto.v1.MoneyE|undefined} value */
 proto.v1.OrderRefundE.prototype.setTotalrefundprice = function(value) {
-  jspb.Message.setWrapperField(this, 3, value);
+  jspb.Message.setWrapperField(this, 4, value);
 };
 
 
@@ -606,7 +633,7 @@ proto.v1.OrderRefundE.prototype.clearTotalrefundprice = function() {
  * @return {boolean}
  */
 proto.v1.OrderRefundE.prototype.hasTotalrefundprice = function() {
-  return jspb.Message.getField(this, 3) != null;
+  return jspb.Message.getField(this, 4) != null;
 };
 
 
