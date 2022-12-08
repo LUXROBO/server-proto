@@ -33,5 +33,6 @@ message OrderCourseCanceledResponse {
 message OrderRefundE {
     string orderCode = 1;
     string userId = 2;
-    MoneyE totalRefundPrice = 3;
+    string profileId = 3;
+    MoneyE totalRefundPrice = 4;
 }
