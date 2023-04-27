@@ -29,6 +29,7 @@ service LivekitAPI {
   rpc LivekitMuteParticipant(LivekitMuteParticipantRequest) returns (LivekitMuteParticipantResponse);
   rpc LivekitSendData(LivekitSendDataRequest) returns (LivekitSendDataResponse);
   rpc LivekitUpdateRoomMetadata(LivekitUpdateRoomMetadataRequest) returns (LivekitUpdateRoomMetadataResponse);
+  rpc LivekitCreateToken(LivekitCreateTokenRequest) returns (LivekitCreateTokenResponse);
 }
 
 message LivekitHealthRequest {}
@@ -115,4 +116,14 @@ message LivekitUpdateRoomMetadataRequest {
 message LivekitUpdateRoomMetadataResponse {
   Error err = 1;
   LivekitRoomE room = 2;
+}
+
+message LivekitCreateTokenRequest {
+  string roomName = 1;
+  string identity = 2;
+  string name = 3;
+}
+message LivekitCreateTokenResponse {
+  Error err = 1;
+  string token = 2;
 }
