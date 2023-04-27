@@ -3885,7 +3885,8 @@ proto.v1.LivekitCreateTokenRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     roomname: jspb.Message.getFieldWithDefault(msg, 1, ""),
     identity: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    name: jspb.Message.getFieldWithDefault(msg, 3, "")
+    name: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    permission: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
   if (includeInstance) {
@@ -3933,6 +3934,10 @@ proto.v1.LivekitCreateTokenRequest.deserializeBinaryFromReader = function(msg, r
     case 3:
       var value = /** @type {string} */ (reader.readString());
       msg.setName(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPermission(value);
       break;
     default:
       reader.skipField();
@@ -3984,6 +3989,13 @@ proto.v1.LivekitCreateTokenRequest.serializeBinaryToWriter = function(message, w
       f
     );
   }
+  f = message.getPermission();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
+    );
+  }
 };
 
 
@@ -4029,6 +4041,21 @@ proto.v1.LivekitCreateTokenRequest.prototype.getName = function() {
 /** @param {string} value */
 proto.v1.LivekitCreateTokenRequest.prototype.setName = function(value) {
   jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional string permission = 4;
+ * @return {string}
+ */
+proto.v1.LivekitCreateTokenRequest.prototype.getPermission = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/** @param {string} value */
+proto.v1.LivekitCreateTokenRequest.prototype.setPermission = function(value) {
+  jspb.Message.setProto3StringField(this, 4, value);
 };
 
 

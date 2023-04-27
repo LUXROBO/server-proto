@@ -122,6 +122,7 @@ message LivekitCreateTokenRequest {
   string roomName = 1;
   string identity = 2;
   string name = 3;
+  string permission = 4;
 }
 message LivekitCreateTokenResponse {
   Error err = 1;

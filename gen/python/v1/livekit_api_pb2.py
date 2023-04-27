@@ -23,7 +23,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='v1',
   syntax='proto3',
   serialized_options=_b('\n\016com.luxrobo.v1B\016UploadApiProtoP\001Z\nluxrobo/v1\242\002\003TPX\252\002\nLuxrobo.v1\312\002\nLuxrobo\\v1'),
-  serialized_pb=_b('\n\x14v1/livekit_api.proto\x12\x02v1\x1a\rv1/enum.proto\x1a\rv1/base.proto\x1a\x10v1/livekit.proto\"\x16\n\x14LivekitHealthRequest\"?\n\x15LivekitHealthResponse\x12\x16\n\x03\x65rr\x18\x01 \x01(\x0b\x32\t.v1.Error\x12\x0e\n\x06status\x18\x02 \x01(\x08\"N\n\x1aLivekitGetJoinTokenRequest\x12\x10\n\x08roomName\x18\x01 \x01(\t\x12\x10\n\x08identity\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\"D\n\x1bLivekitGetJoinTokenResponse\x12\x16\n\x03\x65rr\x18\x01 \x01(\x0b\x32\t.v1.Error\x12\r\n\x05token\x18\x02 \x01(\t\"\x18\n\x16LivekitListRoomRequest\"R\n\x17LivekitListRoomResponse\x12\x16\n\x03\x65rr\x18\x01 \x01(\x0b\x32\t.v1.Error\x12\x1f\n\x05rooms\x18\x02 \x03(\x0b\x32\x10.v1.LivekitRoomE\"2\n\x1eLivekitListParticipantsRequest\x12\x10\n\x08roomName\x18\x01 \x01(\t\"h\n\x1fLivekitListParticipantsResponse\x12\x16\n\x03\x65rr\x18\x01 \x01(\x0b\x32\t.v1.Error\x12-\n\x0cparticipants\x18\x02 \x03(\x0b\x32\x17.v1.LivekitParticipantE\",\n\x18LivekitCreateRoomRequest\x12\x10\n\x08roomName\x18\x01 \x01(\t\"S\n\x19LivekitCreateRoomResponse\x12\x16\n\x03\x65rr\x18\x01 \x01(\x0b\x32\t.v1.Error\x12\x1e\n\x04room\x18\x02 \x01(\x0b\x32\x10.v1.LivekitRoomE\",\n\x18LivekitDeleteRoomRequest\x12\x10\n\x08roomName\x18\x01 \x01(\t\"D\n\x19LivekitDeleteRoomResponse\x12\x16\n\x03\x65rr\x18\x01 \x01(\x0b\x32\t.v1.Error\x12\x0f\n\x07success\x18\x02 \x01(\x08\"E\n\x1fLivekitRemoveParticipantRequest\x12\x10\n\x08roomName\x18\x01 \x01(\t\x12\x10\n\x08identity\x18\x02 \x01(\t\"K\n LivekitRemoveParticipantResponse\x12\x16\n\x03\x65rr\x18\x01 \x01(\x0b\x32\t.v1.Error\x12\x0f\n\x07success\x18\x02 \x01(\x08\"d\n\x1dLivekitMuteParticipantRequest\x12\x10\n\x08roomName\x18\x01 \x01(\t\x12\x10\n\x08identity\x18\x02 \x01(\t\x12\x10\n\x08trackSid\x18\x03 \x01(\t\x12\r\n\x05muted\x18\x04 \x01(\x08\"I\n\x1eLivekitMuteParticipantResponse\x12\x16\n\x03\x65rr\x18\x01 \x01(\x0b\x32\t.v1.Error\x12\x0f\n\x07success\x18\x02 \x01(\x08\"z\n\x16LivekitSendDataRequest\x12\x0c\n\x04room\x18\x01 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x02 \x01(\t\x12+\n\x04kind\x18\x03 \x01(\x0e\x32\x1d.v1.LivekitDataPacketKindType\x12\x17\n\x0f\x64\x65stinationSids\x18\x04 \x03(\t\"B\n\x17LivekitSendDataResponse\x12\x16\n\x03\x65rr\x18\x01 \x01(\x0b\x32\t.v1.Error\x12\x0f\n\x07success\x18\x02 \x01(\x08\"B\n LivekitUpdateRoomMetadataRequest\x12\x0c\n\x04room\x18\x01 \x01(\t\x12\x10\n\x08metadata\x18\x02 \x01(\t\"[\n!LivekitUpdateRoomMetadataResponse\x12\x16\n\x03\x65rr\x18\x01 \x01(\x0b\x32\t.v1.Error\x12\x1e\n\x04room\x18\x02 \x01(\x0b\x32\x10.v1.LivekitRoomE\"M\n\x19LivekitCreateTokenRequest\x12\x10\n\x08roomName\x18\x01 \x01(\t\x12\x10\n\x08identity\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\"C\n\x1aLivekitCreateTokenResponse\x12\x16\n\x03\x65rr\x18\x01 \x01(\x0b\x32\t.v1.Error\x12\r\n\x05token\x18\x02 \x01(\t2\xdb\t\n\nLivekitAPI\x12\x44\n\rLivekitHealth\x12\x18.v1.LivekitHealthRequest\x1a\x19.v1.LivekitHealthResponse\x12V\n\x13LivekitGetUserToken\x12\x1e.v1.LivekitGetJoinTokenRequest\x1a\x1f.v1.LivekitGetJoinTokenResponse\x12W\n\x14LivekitGetTutorToken\x12\x1e.v1.LivekitGetJoinTokenRequest\x1a\x1f.v1.LivekitGetJoinTokenResponse\x12W\n\x14LivekitGetAdminToken\x12\x1e.v1.LivekitGetJoinTokenRequest\x1a\x1f.v1.LivekitGetJoinTokenResponse\x12V\n\x13LivekitGetJoinToken\x12\x1e.v1.LivekitGetJoinTokenRequest\x1a\x1f.v1.LivekitGetJoinTokenResponse\x12J\n\x0fLivekitListRoom\x12\x1a.v1.LivekitListRoomRequest\x1a\x1b.v1.LivekitListRoomResponse\x12\x62\n\x17LivekitListParticipants\x12\".v1.LivekitListParticipantsRequest\x1a#.v1.LivekitListParticipantsResponse\x12P\n\x11LivekitCreateRoom\x12\x1c.v1.LivekitCreateRoomRequest\x1a\x1d.v1.LivekitCreateRoomResponse\x12P\n\x11LivekitDeleteRoom\x12\x1c.v1.LivekitDeleteRoomRequest\x1a\x1d.v1.LivekitDeleteRoomResponse\x12\x65\n\x18LivekitRemoveParticipant\x12#.v1.LivekitRemoveParticipantRequest\x1a$.v1.LivekitRemoveParticipantResponse\x12_\n\x16LivekitMuteParticipant\x12!.v1.LivekitMuteParticipantRequest\x1a\".v1.LivekitMuteParticipantResponse\x12J\n\x0fLivekitSendData\x12\x1a.v1.LivekitSendDataRequest\x1a\x1b.v1.LivekitSendDataResponse\x12h\n\x19LivekitUpdateRoomMetadata\x12$.v1.LivekitUpdateRoomMetadataRequest\x1a%.v1.LivekitUpdateRoomMetadataResponse\x12S\n\x12LivekitCreateToken\x12\x1d.v1.LivekitCreateTokenRequest\x1a\x1e.v1.LivekitCreateTokenResponseBN\n\x0e\x63om.luxrobo.v1B\x0eUploadApiProtoP\x01Z\nluxrobo/v1\xa2\x02\x03TPX\xaa\x02\nLuxrobo.v1\xca\x02\nLuxrobo\\v1b\x06proto3')
+  serialized_pb=_b('\n\x14v1/livekit_api.proto\x12\x02v1\x1a\rv1/enum.proto\x1a\rv1/base.proto\x1a\x10v1/livekit.proto\"\x16\n\x14LivekitHealthRequest\"?\n\x15LivekitHealthResponse\x12\x16\n\x03\x65rr\x18\x01 \x01(\x0b\x32\t.v1.Error\x12\x0e\n\x06status\x18\x02 \x01(\x08\"N\n\x1aLivekitGetJoinTokenRequest\x12\x10\n\x08roomName\x18\x01 \x01(\t\x12\x10\n\x08identity\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\"D\n\x1bLivekitGetJoinTokenResponse\x12\x16\n\x03\x65rr\x18\x01 \x01(\x0b\x32\t.v1.Error\x12\r\n\x05token\x18\x02 \x01(\t\"\x18\n\x16LivekitListRoomRequest\"R\n\x17LivekitListRoomResponse\x12\x16\n\x03\x65rr\x18\x01 \x01(\x0b\x32\t.v1.Error\x12\x1f\n\x05rooms\x18\x02 \x03(\x0b\x32\x10.v1.LivekitRoomE\"2\n\x1eLivekitListParticipantsRequest\x12\x10\n\x08roomName\x18\x01 \x01(\t\"h\n\x1fLivekitListParticipantsResponse\x12\x16\n\x03\x65rr\x18\x01 \x01(\x0b\x32\t.v1.Error\x12-\n\x0cparticipants\x18\x02 \x03(\x0b\x32\x17.v1.LivekitParticipantE\",\n\x18LivekitCreateRoomRequest\x12\x10\n\x08roomName\x18\x01 \x01(\t\"S\n\x19LivekitCreateRoomResponse\x12\x16\n\x03\x65rr\x18\x01 \x01(\x0b\x32\t.v1.Error\x12\x1e\n\x04room\x18\x02 \x01(\x0b\x32\x10.v1.LivekitRoomE\",\n\x18LivekitDeleteRoomRequest\x12\x10\n\x08roomName\x18\x01 \x01(\t\"D\n\x19LivekitDeleteRoomResponse\x12\x16\n\x03\x65rr\x18\x01 \x01(\x0b\x32\t.v1.Error\x12\x0f\n\x07success\x18\x02 \x01(\x08\"E\n\x1fLivekitRemoveParticipantRequest\x12\x10\n\x08roomName\x18\x01 \x01(\t\x12\x10\n\x08identity\x18\x02 \x01(\t\"K\n LivekitRemoveParticipantResponse\x12\x16\n\x03\x65rr\x18\x01 \x01(\x0b\x32\t.v1.Error\x12\x0f\n\x07success\x18\x02 \x01(\x08\"d\n\x1dLivekitMuteParticipantRequest\x12\x10\n\x08roomName\x18\x01 \x01(\t\x12\x10\n\x08identity\x18\x02 \x01(\t\x12\x10\n\x08trackSid\x18\x03 \x01(\t\x12\r\n\x05muted\x18\x04 \x01(\x08\"I\n\x1eLivekitMuteParticipantResponse\x12\x16\n\x03\x65rr\x18\x01 \x01(\x0b\x32\t.v1.Error\x12\x0f\n\x07success\x18\x02 \x01(\x08\"z\n\x16LivekitSendDataRequest\x12\x0c\n\x04room\x18\x01 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x02 \x01(\t\x12+\n\x04kind\x18\x03 \x01(\x0e\x32\x1d.v1.LivekitDataPacketKindType\x12\x17\n\x0f\x64\x65stinationSids\x18\x04 \x03(\t\"B\n\x17LivekitSendDataResponse\x12\x16\n\x03\x65rr\x18\x01 \x01(\x0b\x32\t.v1.Error\x12\x0f\n\x07success\x18\x02 \x01(\x08\"B\n LivekitUpdateRoomMetadataRequest\x12\x0c\n\x04room\x18\x01 \x01(\t\x12\x10\n\x08metadata\x18\x02 \x01(\t\"[\n!LivekitUpdateRoomMetadataResponse\x12\x16\n\x03\x65rr\x18\x01 \x01(\x0b\x32\t.v1.Error\x12\x1e\n\x04room\x18\x02 \x01(\x0b\x32\x10.v1.LivekitRoomE\"a\n\x19LivekitCreateTokenRequest\x12\x10\n\x08roomName\x18\x01 \x01(\t\x12\x10\n\x08identity\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x12\n\npermission\x18\x04 \x01(\t\"C\n\x1aLivekitCreateTokenResponse\x12\x16\n\x03\x65rr\x18\x01 \x01(\x0b\x32\t.v1.Error\x12\r\n\x05token\x18\x02 \x01(\t2\xdb\t\n\nLivekitAPI\x12\x44\n\rLivekitHealth\x12\x18.v1.LivekitHealthRequest\x1a\x19.v1.LivekitHealthResponse\x12V\n\x13LivekitGetUserToken\x12\x1e.v1.LivekitGetJoinTokenRequest\x1a\x1f.v1.LivekitGetJoinTokenResponse\x12W\n\x14LivekitGetTutorToken\x12\x1e.v1.LivekitGetJoinTokenRequest\x1a\x1f.v1.LivekitGetJoinTokenResponse\x12W\n\x14LivekitGetAdminToken\x12\x1e.v1.LivekitGetJoinTokenRequest\x1a\x1f.v1.LivekitGetJoinTokenResponse\x12V\n\x13LivekitGetJoinToken\x12\x1e.v1.LivekitGetJoinTokenRequest\x1a\x1f.v1.LivekitGetJoinTokenResponse\x12J\n\x0fLivekitListRoom\x12\x1a.v1.LivekitListRoomRequest\x1a\x1b.v1.LivekitListRoomResponse\x12\x62\n\x17LivekitListParticipants\x12\".v1.LivekitListParticipantsRequest\x1a#.v1.LivekitListParticipantsResponse\x12P\n\x11LivekitCreateRoom\x12\x1c.v1.LivekitCreateRoomRequest\x1a\x1d.v1.LivekitCreateRoomResponse\x12P\n\x11LivekitDeleteRoom\x12\x1c.v1.LivekitDeleteRoomRequest\x1a\x1d.v1.LivekitDeleteRoomResponse\x12\x65\n\x18LivekitRemoveParticipant\x12#.v1.LivekitRemoveParticipantRequest\x1a$.v1.LivekitRemoveParticipantResponse\x12_\n\x16LivekitMuteParticipant\x12!.v1.LivekitMuteParticipantRequest\x1a\".v1.LivekitMuteParticipantResponse\x12J\n\x0fLivekitSendData\x12\x1a.v1.LivekitSendDataRequest\x1a\x1b.v1.LivekitSendDataResponse\x12h\n\x19LivekitUpdateRoomMetadata\x12$.v1.LivekitUpdateRoomMetadataRequest\x1a%.v1.LivekitUpdateRoomMetadataResponse\x12S\n\x12LivekitCreateToken\x12\x1d.v1.LivekitCreateTokenRequest\x1a\x1e.v1.LivekitCreateTokenResponseBN\n\x0e\x63om.luxrobo.v1B\x0eUploadApiProtoP\x01Z\nluxrobo/v1\xa2\x02\x03TPX\xaa\x02\nLuxrobo.v1\xca\x02\nLuxrobo\\v1b\x06proto3')
   ,
   dependencies=[v1_dot_enum__pb2.DESCRIPTOR,v1_dot_base__pb2.DESCRIPTOR,v1_dot_livekit__pb2.DESCRIPTOR,])
 
@@ -804,6 +804,13 @@ _LIVEKITCREATETOKENREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='permission', full_name='v1.LivekitCreateTokenRequest.permission', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -817,7 +824,7 @@ _LIVEKITCREATETOKENREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=1508,
-  serialized_end=1585,
+  serialized_end=1605,
 )
 
 
@@ -854,8 +861,8 @@ _LIVEKITCREATETOKENRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1587,
-  serialized_end=1654,
+  serialized_start=1607,
+  serialized_end=1674,
 )
 
 _LIVEKITHEALTHRESPONSE.fields_by_name['err'].message_type = v1_dot_base__pb2._ERROR
@@ -1061,8 +1068,8 @@ _LIVEKITAPI = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=1657,
-  serialized_end=2900,
+  serialized_start=1677,
+  serialized_end=2920,
   methods=[
   _descriptor.MethodDescriptor(
     name='LivekitHealth',
