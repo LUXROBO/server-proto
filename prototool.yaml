@@ -14,9 +14,8 @@ generate:
       output: gen/node
     - name: python
       output: gen/python
-    # - name: grpc_python
-    #   output: gen/python
-    #   path: /usr/bin/grpc_python_plugin
+    - name: grpc_python
+      output: gen/python
     - name: go
       flags: plugins=grpc
       output: gen/go

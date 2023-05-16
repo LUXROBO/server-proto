@@ -13,6 +13,7 @@ option php_namespace = "Luxrobo\\predict";
 // Service Definition for Recommend
 service Predictor {
   rpc GetPredict (Numbers) returns (Predictions) {}
+  rpc RecommandQuiz (RecommandQuizRequest) returns (RecommandQuizResponse) {}
 }
 
 // user_number and question_number
@@ -26,4 +27,15 @@ message Predictions {
   float passrate = 1;
   int32 time = 2;
   float score = 3;
+}
+
+message RecommandQuizRequest {
+  string profile_id = 1;
+  string target = 2;
+  string difficulty = 3;
+  string language = 4;
+}
+
+message RecommandQuizResponse {
+  repeated int32 question_ids = 1;
 }
