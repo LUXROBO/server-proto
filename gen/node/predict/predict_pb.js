@@ -466,10 +466,11 @@ proto.predict.RecommandQuizRequest.prototype.toObject = function(opt_includeInst
  */
 proto.predict.RecommandQuizRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    profileId: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    target: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    difficulty: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    language: jspb.Message.getFieldWithDefault(msg, 4, "")
+    topN: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    profileId: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    target: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    difficulty: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    language: jspb.Message.getFieldWithDefault(msg, 5, "")
   };
 
   if (includeInstance) {
@@ -507,18 +508,22 @@ proto.predict.RecommandQuizRequest.deserializeBinaryFromReader = function(msg, r
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setProfileId(value);
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setTopN(value);
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
-      msg.setTarget(value);
+      msg.setProfileId(value);
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
-      msg.setDifficulty(value);
+      msg.setTarget(value);
       break;
     case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDifficulty(value);
+      break;
+    case 5:
       var value = /** @type {string} */ (reader.readString());
       msg.setLanguage(value);
       break;
@@ -551,31 +556,38 @@ proto.predict.RecommandQuizRequest.prototype.serializeBinary = function() {
  */
 proto.predict.RecommandQuizRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getProfileId();
-  if (f.length > 0) {
-    writer.writeString(
+  f = message.getTopN();
+  if (f !== 0) {
+    writer.writeInt32(
       1,
       f
     );
   }
-  f = message.getTarget();
+  f = message.getProfileId();
   if (f.length > 0) {
     writer.writeString(
       2,
       f
     );
   }
-  f = message.getDifficulty();
+  f = message.getTarget();
   if (f.length > 0) {
     writer.writeString(
       3,
       f
     );
   }
-  f = message.getLanguage();
+  f = message.getDifficulty();
   if (f.length > 0) {
     writer.writeString(
       4,
+      f
+    );
+  }
+  f = message.getLanguage();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
       f
     );
   }
@@ -583,62 +595,77 @@ proto.predict.RecommandQuizRequest.serializeBinaryToWriter = function(message, w
 
 
 /**
- * optional string profile_id = 1;
- * @return {string}
+ * optional int32 top_n = 1;
+ * @return {number}
  */
-proto.predict.RecommandQuizRequest.prototype.getProfileId = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+proto.predict.RecommandQuizRequest.prototype.getTopN = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
-/** @param {string} value */
-proto.predict.RecommandQuizRequest.prototype.setProfileId = function(value) {
-  jspb.Message.setProto3StringField(this, 1, value);
+/** @param {number} value */
+proto.predict.RecommandQuizRequest.prototype.setTopN = function(value) {
+  jspb.Message.setProto3IntField(this, 1, value);
 };
 
 
 /**
- * optional string target = 2;
+ * optional string profile_id = 2;
  * @return {string}
  */
-proto.predict.RecommandQuizRequest.prototype.getTarget = function() {
+proto.predict.RecommandQuizRequest.prototype.getProfileId = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /** @param {string} value */
-proto.predict.RecommandQuizRequest.prototype.setTarget = function(value) {
+proto.predict.RecommandQuizRequest.prototype.setProfileId = function(value) {
   jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
 /**
- * optional string difficulty = 3;
+ * optional string target = 3;
  * @return {string}
  */
-proto.predict.RecommandQuizRequest.prototype.getDifficulty = function() {
+proto.predict.RecommandQuizRequest.prototype.getTarget = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
 
 /** @param {string} value */
-proto.predict.RecommandQuizRequest.prototype.setDifficulty = function(value) {
+proto.predict.RecommandQuizRequest.prototype.setTarget = function(value) {
   jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
 /**
- * optional string language = 4;
+ * optional string difficulty = 4;
  * @return {string}
  */
-proto.predict.RecommandQuizRequest.prototype.getLanguage = function() {
+proto.predict.RecommandQuizRequest.prototype.getDifficulty = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
 
 
 /** @param {string} value */
-proto.predict.RecommandQuizRequest.prototype.setLanguage = function(value) {
+proto.predict.RecommandQuizRequest.prototype.setDifficulty = function(value) {
   jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * optional string language = 5;
+ * @return {string}
+ */
+proto.predict.RecommandQuizRequest.prototype.getLanguage = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/** @param {string} value */
+proto.predict.RecommandQuizRequest.prototype.setLanguage = function(value) {
+  jspb.Message.setProto3StringField(this, 5, value);
 };
 
 
